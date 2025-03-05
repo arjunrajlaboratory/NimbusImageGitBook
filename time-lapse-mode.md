@@ -1,0 +1,2 @@
+# Time lapse mode
+
