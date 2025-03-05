@@ -12,7 +12,4 @@
 * [Viewing your image dataset](documentation/viewing-your-data.md)
 * [Analyzing image data with objects, connections, and properties](documentation/analyzing-image-data-with-objects-connections-and-properties.md)
 * [Snapshots](documentation/snapshots.md)
-
-***
-
-* [Time lapse mode](time-lapse-mode.md)
+* [Time lapse mode](documentation/time-lapse-mode.md)
