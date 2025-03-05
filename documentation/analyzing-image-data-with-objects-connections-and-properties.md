@@ -143,3 +143,99 @@ This property is useful for:
 * Analyzing shape changes in response to treatments
 * Quantifying morphological differences between cell types
 * Correlating shape features with biological function
+
+### Best practices for intensity measurements:
+
+1. **Background correction**: Consider using background subtraction before measuring intensities for more accurate results
+2. **Consistent exposure**: For comparative studies, ensure all images were acquired with the same exposure settings
+3. **Channel selection**: Carefully select which channel to measure based on your experimental design
+4. **Annulus size**: When using annular measurements, adjust the radius to match the biological structure you're analyzing (e.g., typical cytoplasm width)
+5. **Validation**: Visually verify that your measurements align with the visible intensity patterns in your images
+
+### Blob Intensity
+
+The Blob Intensity property worker calculates pixel intensity statistics inside blob-shaped (polygon) objects in your dataset. This is ideal for measuring fluorescence within cells, nuclei, or other structures you've annotated.
+
+#### Available metrics:
+
+* **Mean Intensity**: The average pixel intensity within the object
+* **Max Intensity**: The brightest pixel value within the object
+* **Min Intensity**: The dimmest pixel value within the object
+* **Median Intensity**: The median pixel value (50th percentile)
+* **25th Percentile Intensity**: The intensity value below which 25% of pixels fall
+* **75th Percentile Intensity**: The intensity value below which 75% of pixels fall
+* **Total Intensity**: The sum of all pixel intensities within the object
+
+#### How to use:
+
+1. Create blob objects in your image (manually or using automated tools)
+2. Tag these objects appropriately (e.g., `nucleus`, `cell`, etc.)
+3. Create a new property using the Blob Intensity worker
+4. Select the channel you want to measure intensity from (this can be different from the layer where annotations are drawn)
+5. Run the property worker to calculate intensity metrics for all matching objects
+
+#### Applications:
+
+* Quantifying protein expression levels within cells
+* Measuring nuclear vs. cytoplasmic signal ratios
+* Comparing fluorescence intensities between experimental conditions
+* Identifying cells with high or low expression of a marker
+
+### Blob Intensity Percentile
+
+This worker extends the basic intensity analysis by allowing you to specify exactly which percentile to measure, giving you more flexibility for your specific analysis needs.
+
+#### Parameters:
+
+* **Channel**: The image channel to measure intensity from. Note that this can be different from the channel where annotations are drawn. So you can calculate, e.g., the RFP intensity in objects defined by the DAPI channel to calculate nuclear RFP intensity.
+* **Percentile**: A value between 0 and 99.99999 to specify which percentile intensity to calculate (default: 50)
+
+#### Output:
+
+* **Nth Percentile Intensity**: The intensity value at your specified percentile
+
+#### When to use:
+
+* When you need to focus on a specific portion of the intensity distribution
+* For filtering out outliers (using high or low percentiles)
+* When the median (50th percentile) doesn't fully capture the intensity characteristics you're interested in
+
+### Blob Annulus Intensity
+
+The Blob Annulus Intensity worker measures pixel intensity in a ring-shaped region around each blob object. This is particularly valuable for quantifying cytoplasmic signals around nuclei or membrane markers surrounding cells.
+
+#### Parameters:
+
+* **Channel**: The image channel to measure intensity from
+* **Radius**: The width of the annular region in pixels (default: 10)
+
+#### Available metrics:
+
+* **Mean Intensity**: The average pixel intensity within the annular region
+* **Max Intensity**: The brightest pixel value within the annular region
+* **Min Intensity**: The dimmest pixel value within the annular region
+* **Median Intensity**: The median pixel value in the annular region
+* **25th Percentile Intensity**: The intensity value below which 25% of pixels fall
+* **75th Percentile Intensity**: The intensity value below which 75% of pixels fall
+* **Total Intensity**: The sum of all pixel intensities within the annular region
+
+#### Applications:
+
+* Measuring cytoplasmic fluorescence around nuclear objects
+* Quantifying membrane-associated markers surrounding cells
+* Analyzing protein localization patterns at cell boundaries
+* Studying gradient distributions of signals around organelles
+
+### Blob Annulus Intensity Percentile
+
+This worker combines the flexibility of percentile selection with annular region measurement, allowing for precise control over which statistical metric to use in your ring-shaped regions of interest.
+
+#### Parameters:
+
+* **Channel**: The image channel to measure intensity from
+* **Radius**: The width of the annular region in pixels (default: 10)
+* **Percentile**: A value between 0 and 99.99999 to specify which percentile intensity to calculate (default: 50)
+
+#### Output:
+
+* **Nth Percentile Intensity**: The intensity value at your specified percentile within the annular region
