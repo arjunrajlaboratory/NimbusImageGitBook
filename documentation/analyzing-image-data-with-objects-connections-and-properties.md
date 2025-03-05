@@ -247,6 +247,181 @@ Your custom Cellpose models are saved in a `.cellpose` directory. You can:
 
 The integration between NimbusImage and Cellpose makes it easy to create specialized models for your specific research needs without requiring deep learning expertise.
 
+### Piscis for automated spot finding
+
+Piscis is a deep learning-based tool for automatically finding and segmenting spots in microscopy images. It has been trained on a large collection of diverse spot images, making it highly effective for many spot types without requiring additional training. Piscis is a powerful starting point for spot segmentation, allowing you to quickly generate spot outlines that can be refined with NimbusImage's interactive tools. It can be retrained on your own data as well, which can often give you great results if the default models don't work well for your data.
+
+> **Key tip**: If you're getting too many or too few spots, try different models first before adjusting other parameters. The built-in models vary in sensitivity, and selecting the right one is usually more effective than tweaking threshold values.
+
+#### How Piscis works
+
+Piscis uses a specialized neural network designed specifically for detecting small punctate structures in fluorescence microscopy images, such as:
+- RNA molecules in FISH experiments
+- Protein clusters
+- Vesicles
+- Small organelles
+- Synaptic puncta
+
+The model can work in both 2D (single slice) and 3D (Z-stack) modes, making it flexible for different experimental setups.
+
+#### Key parameters
+
+- **Model**: Select which pre-trained Piscis model to use
+  - Different models have varying levels of sensitivity
+  - Try several models if you're not getting optimal results
+  - Custom trained models will also appear in this list
+
+- **Mode**: Choose between "Current Z" or "Z-Stack"
+  - **Current Z**: Process each Z-slice independently (2D mode)
+  - **Z-Stack**: Process the entire Z-stack as a 3D volume (better for connecting spots across Z)
+
+- **Scale**: Adjust for the size of spots (0-5)
+  - Default value of 1 works well for most applications
+  - Increase to detect larger spots
+  - Decrease to detect smaller spots
+  - Affects how the model interprets spot size relative to the training data
+
+- **Threshold**: Confidence threshold for spot detection (0-9)
+  - Default value of 1.0 works for most cases
+  - Note that this parameter has a relatively minor effect compared to changing models
+  - Higher values create stricter detection (fewer spots)
+  - Lower values create more lenient detection (more spots)
+
+- **Skip Frames Without**: Optional tag to skip processing frames
+  - If specified, only process frames containing objects with the given tag
+  - Useful for optimizing processing time by focusing on relevant frames
+
+#### Advanced features
+
+- **Batch processing**: Process multiple positions, Z-slices, or time points
+  - Use the "Batch XY", "Batch Z", and "Batch Time" fields to specify ranges
+  - Format example: "1-3, 5-8" processes positions 1, 2, 3, 5, 6, 7, 8
+  - Note: If using "Z-Stack" mode, the "Batch Z" field is ignored
+
+#### Best practices
+
+1. **Start with the default model**: Try the default "20230905" model first
+2. **Try different models**: If detection isn't optimal, switching models is more effective than adjusting thresholds
+3. **Use Z-Stack mode** for 3D data where spots may span multiple Z-slices
+4. **Validate results visually**: Always check the detection results manually
+5. **Consider retraining**: For specialized applications, retraining on your own data can significantly improve results
+
+#### Example workflow
+
+1. Add a new Piscis tool from the toolset menu
+2. Select your channel containing spots
+3. Choose a model (start with the default)
+4. Select either "Current Z" or "Z-Stack" mode
+5. Run the model
+6. Review the results
+7. If needed, try a different model or adjust parameters and run again
+
+#### Training custom models
+
+If the pre-built models don't work well for your specific spot detection needs, consider training a custom model using the Piscis Train tool (documented separately). Custom-trained models will appear in the model selection dropdown once trained.
+
+Piscis is particularly effective for RNA FISH and similar applications where automatic detection of small punctate structures is needed, saving significant time compared to manual annotation.
+
+### Piscis Training
+
+The Piscis Training tool allows you to create custom spot detection models tailored to your specific microscopy data. By training on your own annotated examples, you can significantly improve spot detection performance for challenging or unique datasets.
+
+> **Key tip**: You don't need extensive training data to get good results! Even a few carefully annotated regions can produce a highly effective custom model.
+
+#### Why train a custom model?
+
+Consider training a custom Piscis model when:
+- Default models consistently detect too many or too few spots
+- Your spots have unusual characteristics (size, intensity, shape)
+- You're working with specialized microscopy techniques
+- Background noise or artifacts are causing detection issues
+
+#### Training data preparation
+
+To train an effective custom model:
+
+1. **Create point annotations** for the spots you want to detect
+   - Tag them consistently (e.g., "training_spots")
+   - Be thorough within your selected regions - mark all visible spots
+   
+2. **Define training regions** where your annotations are complete
+   - Use rectangles or polygons to outline areas with fully annotated spots
+   - Tag these regions consistently (e.g., "training_region")
+   - Focus on high-quality regions rather than quantity
+
+#### Key parameters
+
+- **Initial Model Name**: The base model to start training from
+  - Starting from an existing model (like "20230905") speeds up training
+  - The base model provides initial weights that get refined with your data
+
+- **New Model Name**: What to call your custom model
+  - Default is a timestamp (e.g., "20250305_143022")
+  - Consider using a descriptive name for your experiment or spot type
+
+- **Annotation Tag**: The tag used on your spot annotations
+  - Only points with this tag will be used for training
+  
+- **Region Tag**: The tag used on your training regions
+  - Only annotations within these regions will be used for training
+  - Crucial for ensuring the model learns from fully annotated areas
+
+#### Training parameters
+
+- **Learning Rate**: Controls how quickly the model adapts (default: 0.2)
+  - Higher values can lead to faster convergence but may be less stable
+  - Lower values produce more stable but slower training
+
+- **Weight Decay**: Regularization parameter to prevent overfitting (default: 0.0001)
+  - Higher values create simpler models that may generalize better
+
+- **Epochs**: Number of training iterations (default: 40)
+  - More epochs generally improve results but take longer
+  - The default is usually sufficient for good performance
+
+- **Random Seed**: Controls randomness in training for reproducibility (default: 42)
+  - Change this value if you want to try different random initializations
+
+#### Training workflow
+
+1. **Create point annotations** 
+   - Manually mark spots in representative areas of your image
+   - Apply a consistent tag (e.g., "training_points")
+
+2. **Define training regions**
+   - Draw rectangles or polygons around fully annotated areas
+   - Apply a consistent tag (e.g., "training_region")
+
+3. **Configure the Piscis Train tool**
+   - Select a base model
+   - Configure training parameters (or use defaults)
+   - Specify your annotation and region tags
+
+4. **Run the training process**
+   - This will take several minutes depending on your data
+   - The model will be saved with your specified name
+
+5. **Use your custom model**
+   - Your trained model will automatically appear in the Piscis tool's model list
+   - Select it when using Piscis for spot detection
+
+#### Best practices
+
+1. **Quality over quantity**: A few well-annotated regions are better than many poorly annotated ones
+2. **Include challenging examples**: Include difficult spots in your training data
+3. **Use representative regions**: Select areas that reflect the variability in your dataset
+4. **Start small**: Begin with a small training set and evaluate before expanding
+5. **Iterative improvement**: Train, test, correct annotations, and train again for best results
+
+#### Testing your model
+
+After training, test your model by:
+1. Using the standard Piscis tool with your new model
+2. Comparing results against manual annotations in regions not used for training
+3. Adjusting the Scale parameter slightly if needed for fine-tuning
+
+Custom-trained Piscis models often dramatically improve spot detection accuracy for specialized applications, saving significant time in your image analysis workflow.
+
 ## Connecting objects
 
 In many cases, you may want to connect objects together, for instance, the same cell through a time lapse video, or spots to a nucleus. These connections can be made manually using connection tools such as Lasso connect or also automated connection algorithms such as Connect to Nearest. Connections can also be deleted manually. These connections can also sometimes be made when a property is computed to show you what objects were used in the computation.
