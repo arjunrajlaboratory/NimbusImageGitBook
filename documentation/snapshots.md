@@ -19,7 +19,9 @@ Drag the red rectangle to cover the area of interest. The pixel-precise location
 1. **Set frame to current viewport.** If you've zoomed into a place you like, then click this button and the frame of the Snapshot will be set to precisely the region you zoomed to.
 2. **Set frame to maximum.** This button will reset the frame to contain the entire image in the view.
 
-## Downloading images
+## Downloading images and movies
+
+<div align="left"><figure><img src="../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>Downloading options</p></figcaption></figure></div>
 
 There are multiple ways in which you can download Snapshot images for use in a publication or presentation.
 

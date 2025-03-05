@@ -31,7 +31,7 @@ You can drag and drop your data directly onto the drop zones to load it into Nim
 * "Quick upload" works for most files and will automatically run the various steps using defaults.
 * If you have a more complex file structure or need to do rearrange variables, click "Advanced upload".
 
-<div align="left"><figure><img src=".gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 ## View your data
 
