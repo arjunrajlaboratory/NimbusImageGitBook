@@ -93,9 +93,65 @@ We have a number of automated tools for finding and connecting objects (cells, s
 
 ### Cellpose for automated cell finding
 
-Cellpose is a tool for finding cells in images. It is a deep learning based tool that is trained on a large number of images of cells.
+Cellpose is a deep learning-based tool for automatically finding and segmenting cells in microscopy images. It has been trained on a large collection of diverse cell images, making it highly effective for many cell types without requiring additional training. Cellpose is a powerful starting point for cell segmentation, allowing you to quickly generate cell outlines that can be refined with NimbusImage's interactive tools.
 
+{% hint style="info" %}
+Note that NimbusImage also allows for retraining of the Cellpose models to (often greatly) enhance performance for your specific dataset.
+{% endhint %}
 
+#### Available models
+
+NimbusImage includes several pre-trained Cellpose models:
+
+- **cyto3**: The most accurate for general cell segmentation (recommended default)
+- **cyto2**: An older model for cell segmentation
+- **cyto**: The original cell segmentation model
+- **nuclei**: Specifically trained for nuclear segmentation
+
+#### Key parameters
+
+- **Primary Channel**: The main channel to use for segmentation
+  - For cytoplasm segmentation (Cyto3): use your cytoplasm/membrane channel
+  - For nuclear segmentation (Nuclei): use your nuclear stain channel (e.g., DAPI)
+
+- **Secondary Channel** (optional): A secondary channel to improve segmentation
+  - For cytoplasm segmentation (Cyto3): you can add your nuclear channel
+  - For nuclear segmentation (Nuclei): leave this blank (adding a secondary channel may decrease performance)
+
+- **Diameter**: The approximate diameter of cells in pixels
+  - **This parameter is crucial for good results**
+  - Set this as close as possible to the actual cell diameter in your images
+
+- **Smoothing**: Controls how much the cell outlines are simplified (0-10)
+  - Higher values create smoother outlines with fewer vertices
+  - Default of 0.7 works well for most images
+  - Increase for smoother boundaries, decrease for more precise outlines
+  - Very precise outlines can decrease performance, especially if you have a large number of objects
+
+- **Padding**: Expand or contract the final cell outlines in pixels
+  - Positive values expand the outlines (useful if cells appear too small)
+  - Negative values contract the outlines (useful if segmentation is too generous)
+  - Default of 0 means no adjustment
+
+#### Advanced parameters for large images
+
+- **Tile Size**: The size of each image tile in pixels
+  - Default of 1024 works well for most images
+  - Decrease if you encounter errors
+  - Larger tiles will require more memory and can cause Cellpose to crash
+
+- **Tile Overlap**: The fraction of overlap between adjacent tiles
+  - Default of 0.1 (10% overlap) works well in most cases
+  - **Important**: Make sure your overlap is larger than your largest cells
+  - For example, for 1024 pixel tiles with 0.1 overlap, the largest cell should be less than 102 pixels across
+
+#### Best practices
+
+1. **Start with the right model**: Use cyto3 for general cell segmentation or nuclei for nuclear segmentation, or use your own custom retrained model
+2. **Set the diameter carefully**: This is the most important parameter for accurate results
+3. **Check results visually**: Always inspect the segmentation and refine parameters if needed
+4. **Use the secondary channel** when segmenting cytoplasm if you have a good nuclear stain
+5. **Post-process as needed**: Use NimbusImage's manual editing tools to correct any segmentation errors
 
 ## Connecting objects
 
