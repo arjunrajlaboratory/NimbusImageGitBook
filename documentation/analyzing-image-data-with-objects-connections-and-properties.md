@@ -153,6 +153,100 @@ NimbusImage includes several pre-trained Cellpose models:
 4. **Use the secondary channel** when segmenting cytoplasm if you have a good nuclear stain
 5. **Post-process as needed**: Use NimbusImage's manual editing tools to correct any segmentation errors
 
+### Cellpose Training
+
+NimbusImage offers the ability to train custom Cellpose models directly within the platform using your own annotated data. This feature allows you to create specialized segmentation models tailored to your specific cell types or imaging conditions. Custom models will often provide greatly improved performance for your specific dataset, even if your cells look pretty "normal", and especially if they don't!
+
+#### Training data preparation
+
+To train a custom model, you'll need:
+1. Representative images with cells you want to segment
+2. Accurate cell annotations (outlines) created manually or corrected from automated results
+3. Optional: Defined regions of interest for training
+
+#### Key parameters
+
+- **Base Model**: The pre-trained model to use as a starting point
+  - **cyto3**: Recommended for most cell types
+  - **nuclei**: Use when training a nuclear segmentation model
+  - **Custom models**: Previously trained models will also appear here
+
+- **Nuclear Model?**: Check this box if you're training a model for nuclear segmentation
+  - When checked, the model will be optimized for nuclear detection
+
+- **Output Model Name**: Name for your custom model
+  - This model will be saved and appear in the Cellpose worker's model list
+
+- **Primary Channel**: The main channel for segmentation
+  - For cytoplasm models: use your cytoplasm/membrane channel
+  - For nuclear models: use your nuclear stain channel
+
+- **Secondary Channel**: The secondary channel to improve segmentation
+  - For cytoplasm models: your nuclear channel
+  - For nuclear models: leave blank or set to -1
+
+- **Training Tag**: The tag applied to annotated cells used for training
+  - All cells with this tag will be used to train the model
+  - Use this to select high-quality annotations
+
+- **Training Region**: Optional tag (recommended) to define specific regions for training
+  - If selected, only annotations within these regions will be used
+  - Useful for limiting training to representative areas of your image
+
+#### Training parameters
+
+Unless you have a specific reason to change these, leave them at the default values.
+
+- **Learning Rate**: Controls how quickly the model adapts during training
+  - Default: 0.01
+  - Lower values (0.001) create more stable but slower training
+  - Higher values can speed up training but might decrease stability
+
+- **Epochs**: Number of training iterations
+  - Default: 1000
+  - More epochs generally improve results but take longer
+  - Consider increasing for complex cell types
+
+- **Weight Decay**: Regularization parameter to prevent overfitting
+  - Default: 0.0001
+  - Higher values create simpler models that may generalize better
+
+#### Training workflow
+
+1. Create high-quality annotations of your cells
+   - Tag these annotations with a consistent label (e.g., "training_cells")
+   - Ensure annotations are accurate and representative
+   - **Don't forget that what you do NOT annotate will also be used for training!**
+
+2. Optional: Define training regions
+   - Create rectangles or polygons around areas with good examples
+   - Tag these regions (e.g., "training_region")
+   - **Choosing specific regions can be very helpful in focusing the retraining on specific areas of your image**
+
+3. Add a Cellpose Training tool from the toolset menu
+   - Configure all parameters as described above
+   - Run the training process
+
+4. Use your custom model
+   - After training completes, your model will appear in the Cellpose worker's model list
+   - Select it when using the regular Cellpose tool for segmentation
+
+#### Tips for successful training
+
+1. **Provide diverse examples**: Include cells of different sizes, shapes, and intensities
+2. **Quality over quantity**: A smaller set of perfect annotations is better than many poor ones. A few good images, carefully annotated, will usually do the trick.
+3. **Choose representative regions**: Select areas with good imaging quality and typical cells. Be sure to include examples of cells that the default algorithm might have trouble with.
+4. **Be patient**: Training can take several minutes to complete
+
+#### Advanced usage
+
+Your custom Cellpose models are saved in a `.cellpose` directory. You can:
+- Manually add models trained offline to this directory
+- Share models between team members by copying model files
+- Use these models in the standard Cellpose Python package
+
+The integration between NimbusImage and Cellpose makes it easy to create specialized models for your specific research needs without requiring deep learning expertise.
+
 ## Connecting objects
 
 In many cases, you may want to connect objects together, for instance, the same cell through a time lapse video, or spots to a nucleus. These connections can be made manually using connection tools such as Lasso connect or also automated connection algorithms such as Connect to Nearest. Connections can also be deleted manually. These connections can also sometimes be made when a property is computed to show you what objects were used in the computation.
