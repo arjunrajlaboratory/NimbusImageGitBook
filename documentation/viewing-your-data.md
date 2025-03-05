@@ -1,6 +1,6 @@
-# Viewing your data
+# Viewing your image dataset
 
-Once your data is loaded into NimbusImage, you will interact with it through the viewer. The viewer allows for easy navigation and flexible visualization.
+Once your images are loaded into NimbusImage, you can interact with it through the viewer. The viewer allows for easy navigation and flexible visualization.
 
 **Key features include:**
 
