@@ -28,9 +28,9 @@ Key features of track visualization:
 - **Connected objects**: All objects connected to the current object are shown as a track
 - **Time labels**: Each object shows its time point (T=1, T=7, etc.)
 - **Connection colors**:
-  - **Blue/white connections**: Normal connections between consecutive time points
+  - **Colored connections**: Normal connections between consecutive time points. Each color represents a different track.
   - **Red connections**: Connections that skip time points (gaps in tracking)
-  - **Faded objects**: Objects from past/future time points relative to current time
+  - **Line thickness**: Forward-in-time connections are thicker than backward-in-time connections
 
 ### Track window setting
 
