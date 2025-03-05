@@ -87,9 +87,13 @@ Segment Anything "sees" what you see in the image. Adjust the contrast and zoom 
 
 You can edit objects by using the Annotation Edits -> Blob edit tool. With that tool, you can just drag on your object and it will "slice" it into a new object. Whatever line you draw will define a new outline for that segment of the object. That allows you to both remove and add areas to the objects without having to use separate brush and eraser tools.
 
-### Automated cell finding
+### Automated object finding and connection
 
-We have a number of automated cell finding and connection tools that take advantage of the latest deep learning methods.
+We have a number of automated tools for finding and connecting objects (cells, spots, etc.) that take advantage of the latest deep learning methods.
+
+### Cellpose for automated cell finding
+
+Cellpose is a tool for finding cells in images. It is a deep learning based tool that is trained on a large number of images of cells.
 
 
 
