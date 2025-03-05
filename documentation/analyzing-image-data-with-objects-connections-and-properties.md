@@ -64,6 +64,35 @@ The way to create and edit objects is through the use of **tools**. Tools are de
 
 **Automated tools.** NimbusImage has been designed to allow the use of automated algorithms for finding things like cells and points in your images, often using the latest deep learning methods. For instance, you can set up an automated tool to use Cellpose to find cells within your images. These tools often have specific parameters that you can use to obtain optimal results.
 
+### Manual blob/point/line/rectangle tools
+
+Manual blob/point/line/rectangle tools are the most basic tools in NimbusImage. Set it up by clicking on "Add New Tool" and choosing "Manual Blob", "Manual Point", "Manual Line", or "Manual Rectangle". Set the tag, and then you can use it to create objects in your image. You can use the same tag for multiple tools. For instance, you can use an automated cell finding tool and then add more cells using the manual tool, and they will be all treated the same for downstream analysis.
+
+### Segment-Anything semi-automated object finding, AKA "God Mode"
+
+Segment-Anything is a new method for finding objects in images. It is a semi-automated tool that allows you to find objects in your images by either clicking on them or drawing a bounding box around them. To use it, click on "Add New Tool" and choose "ViT-B" under "Segment Anything Model". Options include:
+
+- **Simplification**: The simplification parameter controls how much the segmentation is smoothed out. Smoother annotations are faster to run computations on and navigate.
+- **Turbo mode**: The turbo mode allows you to rapidly segment without having to manually "accept" each segment.
+
+Segment Anything works by first encoding the image to enable it to find the objects. This will take a few seconds to compute when you move to a new area. Every time you move the image, you will need to re-encode the image; if you want to avoid this, click the "lock" icon at the bottom left of the image to prevent the image from moving around.
+
+Once encoded, just move your mouse over the image and it will outline what the object would be if you were to shift-click. Shift-click to make the object! Sometimes, it will give you better results if you define a box around the object you want to find. Just shift-click and drag to make a box, and it will segment that region.
+
+{% hint style="info" %}
+Segment Anything "sees" what you see in the image. Adjust the contrast and zoom to make objects visible and of a size that is around 5-15% of the size of the image for best results.
+{% endhint %}
+
+### Edit objects
+
+You can edit objects by using the Annotation Edits -> Blob edit tool. With that tool, you can just drag on your object and it will "slice" it into a new object. Whatever line you draw will define a new outline for that segment of the object. That allows you to both remove and add areas to the objects without having to use separate brush and eraser tools.
+
+### Automated cell finding
+
+We have a number of automated cell finding and connection tools that take advantage of the latest deep learning methods.
+
+
+
 ## Connecting objects
 
 In many cases, you may want to connect objects together, for instance, the same cell through a time lapse video, or spots to a nucleus. These connections can be made manually using connection tools such as Lasso connect or also automated connection algorithms such as Connect to Nearest. Connections can also be deleted manually. These connections can also sometimes be made when a property is computed to show you what objects were used in the computation.
