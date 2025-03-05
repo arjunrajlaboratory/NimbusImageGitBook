@@ -1,5 +1,7 @@
 ---
-description: How to use Snapshots
+description: >-
+  How to use Snapshots to "bookmark" and download image and movies from your
+  data
 ---
 
 # Snapshots
