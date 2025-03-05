@@ -70,7 +70,43 @@ In many cases, you may want to connect objects together, for instance, the same 
 
 ## Quantifying properties
 
-Ultimately, most researchers want to extract numbers from their image data. These could correspond to fluorescent intensity across cells, or number of cells per colony, or density of filaments per region. NimbusImage allows you to make these computations easily by defining **properties**. A property (think: area) can be associated with an object and listed and exported for plotting and analysis. You can easily compute a lot of different properties using NimbusImage out of the box because of the flexibility that its tagging and connection system allows. For instance, if you want to find the count the number of spots connected to the basement membrane, that is easy to do with just a few clicks. To define a property, use this pane, choose the tag you wish to compute a property on, and then follow the prompts to create a property worker. Running the worker will compute the property over your entire dataset. These properties can also be listed in the Object Browser, making it easy to see what objects have what values for various properties.
+Ultimately, most researchers want to extract numbers from their image data. These could correspond to fluorescent intensity across cells, or number of cells per colony, or density of filaments per region. NimbusImage allows you to make these computations easily by defining **properties**. A property (think: area) can be associated with an object and listed and exported for plotting and analysis. You can easily compute a lot of different properties using NimbusImage out of the box because of the flexibility that its tagging and connection system allows. For instance, if you want to find the count the number of spots connected to the basement membrane, that is easy to do with just a few clicks.
+
+First, click on Object List, then, in "Properties", click the blue "Measure Objects" button:
+
+<div align="left"><figure><img src="../.gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure></div>
+
+That brings up the Property window:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Choose the tag of the object you want to quantify:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Then choose the Algorithm, like "Blob metrics". It will bring up a list of options:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (4).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Click "Create Property" and it will create and run the property worker. When done, it will look like this:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (5).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+When you close the Property panel, it will open up the Properties pane. Click on "nucleus Blob metrics", then click on the Area checkbox:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (7).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Now your property will show up in the property list:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (8).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+If you push "t", it will show the values in the image itself:
+
+<div align="left"><figure><img src="../.gitbook/assets/image (9).png" alt="" width="375"><figcaption><p>After pushing "t", you can see the values on the image itself</p></figcaption></figure></div>
+
+These values can be exported into a CSV under "Objects" -> Actions -> Export CSV
+
+<div align="left"><figure><img src="../.gitbook/assets/image (12).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 ### Blob metrics (area, perimeter, etc.)
 
@@ -78,15 +114,15 @@ The Blob Metrics property worker calculates a comprehensive set of morphological
 
 #### Available metrics:
 
-- **Area**: The total area enclosed by the object (in square pixels or physical units)
-- **Perimeter**: The length of the object's boundary (in pixels or physical units)
-- **Centroid**: The geometric center (x,y coordinates) of the object
-- **Elongation**: Measures how stretched out the object is (value between 0-1, where 1 is maximally elongated)
-- **Convexity**: Ratio of the object's area to the area of its convex hull (measures how convex vs. concave the shape is)
-- **Solidity**: Ratio of the object's perimeter to the perimeter of its convex hull
-- **Rectangularity**: How well the object fits within its minimum bounding rectangle
-- **Circularity**: How closely the object resembles a perfect circle (4π × Area/Perimeter²)
-- **Eccentricity**: Measures how much the object deviates from being circular (value between 0-1, where 0 is a circle)
+* **Area**: The total area enclosed by the object (in square pixels or physical units)
+* **Perimeter**: The length of the object's boundary (in pixels or physical units)
+* **Centroid**: The geometric center (x,y coordinates) of the object
+* **Elongation**: Measures how stretched out the object is (value between 0-1, where 1 is maximally elongated)
+* **Convexity**: Ratio of the object's area to the area of its convex hull (measures how convex vs. concave the shape is)
+* **Solidity**: Ratio of the object's perimeter to the perimeter of its convex hull
+* **Rectangularity**: How well the object fits within its minimum bounding rectangle
+* **Circularity**: How closely the object resembles a perfect circle (4π × Area/Perimeter²)
+* **Eccentricity**: Measures how much the object deviates from being circular (value between 0-1, where 0 is a circle)
 
 #### How to use:
 
@@ -102,7 +138,8 @@ The Blob Metrics property worker calculates a comprehensive set of morphological
 When the "Use physical units" option is enabled, all measurements will be converted from pixels to the selected physical unit (μm, mm, m, or nm) based on the pixel size metadata in your image. This allows for consistent measurements across datasets with different magnifications or resolutions.
 
 This property is useful for:
-- Measuring and comparing cell or organelle sizes
-- Analyzing shape changes in response to treatments
-- Quantifying morphological differences between cell types
-- Correlating shape features with biological function
+
+* Measuring and comparing cell or organelle sizes
+* Analyzing shape changes in response to treatments
+* Quantifying morphological differences between cell types
+* Correlating shape features with biological function

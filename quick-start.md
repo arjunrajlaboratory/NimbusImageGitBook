@@ -31,11 +31,11 @@ You can drag and drop your data directly onto the drop zones to load it into Nim
 * "Quick upload" works for most files and will automatically run the various steps using defaults.
 * If you have a more complex file structure or need to do rearrange variables, click "Advanced upload".
 
-<div align="left"><figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/image (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 ## View your data
 
-<figure><img src=".gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
 The image viewer should be pretty intuitive to navigate. Press `tab` to reveal some keyboard shortcuts and features.
 
@@ -43,17 +43,17 @@ The image viewer should be pretty intuitive to navigate. Press `tab` to reveal s
 
 Click `+` next to "Toolset" to bring up a menu. You can customize your own interface!
 
-<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 For instance, makee a blob tool and draw some blobs like this:
 
-<figure><img src=".gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Analyze those objects
 
 Click "Measure objects" to measure, for instance, "Blob metrics":
 
-<figure><img src=".gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 Then click the play button to compute:\
 ![](<.gitbook/assets/image (14).png>)\

@@ -25,7 +25,7 @@ Drag the red rectangle to cover the area of interest. The pixel-precise location
 
 ### Image Download Options
 
-<div align="left"><figure><img src="../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>Downloading options</p></figcaption></figure></div>
+<div align="left"><figure><img src="../.gitbook/assets/image (13).png" alt="" width="375"><figcaption><p>Downloading options</p></figcaption></figure></div>
 
 There are multiple ways in which you can download Snapshot images for use in a publication or presentation.
 
