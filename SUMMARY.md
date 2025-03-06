@@ -11,5 +11,6 @@
 * [File formats](documentation/file-formats.md)
 * [Viewing your image dataset](documentation/viewing-your-data.md)
 * [Analyzing image data with objects, connections, and properties](documentation/analyzing-image-data-with-objects-connections-and-properties.md)
+* [Image processing](documentation/image-processing.md)
 * [Snapshots](documentation/snapshots.md)
 * [Time lapse mode](documentation/time-lapse-mode.md)
