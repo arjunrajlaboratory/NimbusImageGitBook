@@ -13,7 +13,7 @@ A _dataset_ is the set of images that you want to visualize and analyze at once.
 5. Large images in 4 channels from a 12 well plate stored across multiple TIFF files.
 6. Time lapse image data across a set of files.
 
-A dataset can be from a single file (such as a multidimensional .nd2 file) or could be spread across multiple files. The dataset will also store all objects and snapshots that you make as you analyze your data.
+A dataset can be from a single file (such as a multidimensional .nd2 file) or could be spread across multiple files. The dataset will also store all objects and snapshots that you make as you analyze your data. To learn more about file formats, see [File formats](../documentation/file-formats.md).
 
 {% hint style="info" %}
 Datasets are stored on the server as a folder that contains (often multiple) files.
