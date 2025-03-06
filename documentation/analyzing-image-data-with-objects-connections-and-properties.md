@@ -400,7 +400,7 @@ In many cases, you may want to connect objects together, for instance, the same 
 
 Connections form the foundation for many powerful analyses in NimbusImage, enabling you to quantify relationships between objects and trace structures across time.
 
-### Manual connection tools
+### Manual connection tools: click and lasso connect
 
 NimbusImage provides several intuitive tools for manually creating and removing connections between objects:
 
@@ -457,7 +457,7 @@ This is particularly helpful when you need to clear all connections in a region 
 
 NimbusImage provides powerful automated tools that can establish connections between objects based on various criteria, saving you considerable time compared to manual connections.
 
-#### Connect to nearest
+### Connect to nearest
 
 The **Connect to nearest** tool automatically connects objects based on spatial proximity:
 
@@ -488,7 +488,7 @@ This tool is particularly useful for:
 
 Let me update the documentation section on the "Connect timelapse" tool with more detailed information based on the code you've provided:
 
-#### Connect timelapse
+### Connect timelapse
 
 The **Connect timelapse** tool specializes in automatically tracking objects across sequential time points:
 
