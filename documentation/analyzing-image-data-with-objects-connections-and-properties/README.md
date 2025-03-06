@@ -18,6 +18,12 @@ Analysis in NimbusImage is a little bit different than in other tools. The key c
 **Tags are critical for organizing your analysis.** Objects should all have tags, which allow you to label, say, cells vs. nuclei, or spots for GAPDH mRNA or EEF2 mRNA. It helps you know what things represent.
 {% endhint %}
 
+Learn more about these concepts in the following sections:
+
+* [Tools for making objects](./tools-for-making-objects.md)
+* [Tools for connecting objects](./tools-for-connecting-objects.md)
+* [Measuring object properties](./measuring-object-properties.md)
+
 NimbusImage is designed for scaling, so these tools will work for many thousands of objects.
 
 ## Example flows
@@ -48,8 +54,3 @@ Here's a couple examples of a workflow to make these concepts more concrete.
 4. Create a property to store all the tree information.
 5. Export the tree information in a CSV for downstream analysis in Python/R.
 
-Learn more about these concepts in the following sections:
-
-* [Tools for making objects](./tools-for-making-objects.md)
-* [Tools for connecting objects](./tools-for-connecting-objects.md)
-* [Measuring object properties](./measuring-object-properties.md)
