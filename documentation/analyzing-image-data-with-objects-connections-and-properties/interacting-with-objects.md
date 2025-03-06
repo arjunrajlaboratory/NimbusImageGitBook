@@ -75,14 +75,3 @@ From the Properties panel, you can:
 {% hint style="info" %}
 Press "t" while viewing your image to show property values directly on the objects themselves, making it easy to visualize measurements in context.
 {% endhint %}
-
-## Export and analysis
-
-After refining your objects and measuring their properties, you can export this data for further analysis:
-
-1. Open the Annotation List
-2. Click "MORE ACTIONS" 
-3. Select "Export CSV"
-4. Choose which properties to include in the export
-
-This gives you a CSV file with all your objects, their locations, and measured properties, ready for further analysis in Excel, Python, R, or other tools.
