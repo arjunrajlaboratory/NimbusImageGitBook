@@ -52,7 +52,7 @@ Here's a couple examples of a workflow to make these concepts more concrete.
 
 The way to create and edit objects is through the use of **tools**. Tools are defined by the user and are customized (via tags) to flexible organization of the results without a lot of clicking. There are two general categories of tools, manual and automated.
 
-<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 **Manual tools.** Manual tools are often based on a primitive type, like a point, line, or blob, and is customized with tags and other features. For instance, you might make a tool for circling cells in your image. You would choose a manual blob creation tool, name it "Nucleus" and add the tag \[nucleus]. You could also add a hotkey. That tool gets added to your interface and you can use it to circle cells at any time.
 
@@ -530,12 +530,12 @@ This tool is perfect for:
 **Best practices:**
 
 * Start with a small max distance (10-20 pixels) and increase if needed
-* Use the "Connect across gaps" feature when you have intermittently missing objects. These can be later fixed manually using [Time lapse mode](documentation/time-lapse-mode.md)
+* Use the "Connect across gaps" feature when you have intermittently missing objects. These can be later fixed manually using [Time lapse mode](../documentation/time-lapse-mode.md)
 * When tracking dividing cells, use this tool first, then manually correct division events
 * Review tracks in Time lapse mode to identify and fix any tracking errors
 * For very dense or challenging datasets, consider tracking a subset of objects first
 
-After running the Connect timelapse tool, you can use the Time lapse mode (discussed in the [Time lapse mode](documentation/time-lapse-mode.md) section) to visualize, review, and manually correct the resulting tracks.
+After running the Connect timelapse tool, you can use the Time lapse mode (discussed in the [Time lapse mode](../documentation/time-lapse-mode.md) section) to visualize, review, and manually correct the resulting tracks.
 
 ## Quantifying properties
 
@@ -543,39 +543,39 @@ Ultimately, most researchers want to extract numbers from their image data. Thes
 
 First, click on Object List, then, in "Properties", click the blue "Measure Objects" button:
 
-<div align="left"><figure><img src="../.gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 That brings up the Property window:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Choose the tag of the object you want to quantify:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Then choose the Algorithm, like "Blob metrics". It will bring up a list of options:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (4).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (4).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Click "Create Property" and it will create and run the property worker. When done, it will look like this:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (5).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (5).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 When you close the Property panel, it will open up the Properties pane. Click on "nucleus Blob metrics", then click on the Area checkbox:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (7).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (7).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Now your property will show up in the property list:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (8).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (8).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 If you push "t", it will show the values in the image itself:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (9).png" alt="" width="375"><figcaption><p>After pushing "t", you can see the values on the image itself</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (9).png" alt="" width="375"><figcaption><p>After pushing "t", you can see the values on the image itself</p></figcaption></figure></div>
 
 These values can be exported into a CSV under "Objects" -> Actions -> Export CSV
 
-<div align="left"><figure><img src="../.gitbook/assets/image (12).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (12).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 ### Blob metrics (area, perimeter, etc.)
 
