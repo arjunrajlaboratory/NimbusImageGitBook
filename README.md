@@ -2,12 +2,12 @@
 description: >-
   NimbusImage is an open source image analysis platform for researchers in the
   life sciences
-cover: .gitbook/assets/FlimageImage2.jpg
+cover: .gitbook/assets/Untitled5.jpg
 coverY: 0
 layout:
   cover:
     visible: true
-    size: hero
+    size: full
   title:
     visible: true
   description:
