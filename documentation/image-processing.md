@@ -9,8 +9,8 @@ NimbusImage supports a number of these image processing techniques and we are pl
 The image processing workflow in NimbusImage follows these steps:
 
 1. **Select "ADD NEW TOOL"** from the Toolset panel
-2. **Choose a processing tool** (such as "Crop")
-3. **Configure the tool parameters** as needed after clicking on the tool
+2. **Choose a processing tool** (such as "Crop") and create the tool
+3. **Configure the tool parameters** as needed in the worker panel that appears after clicking on the tool
 4. **Run the worker process** to apply the selected tool to your image
 5. **Review results** a new dropdown appears just below the dataset navigator that allows you to switch between the orignal and processed images
 
