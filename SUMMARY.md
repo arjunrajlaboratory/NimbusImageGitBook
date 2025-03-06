@@ -14,3 +14,4 @@
 * [Image processing](documentation/image-processing.md)
 * [Snapshots](documentation/snapshots.md)
 * [Time lapse mode](documentation/time-lapse-mode.md)
+* [Interacting with objects](documentation/interacting-with-objects.md)

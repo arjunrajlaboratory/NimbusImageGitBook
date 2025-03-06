@@ -52,6 +52,8 @@ Here's a couple examples of a workflow to make these concepts more concrete.
 
 The way to create and edit objects is through the use of **tools**. Tools are defined by the user and are customized (via tags) to flexible organization of the results without a lot of clicking. There are two general categories of tools, manual and automated.
 
+<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+
 **Manual tools.** Manual tools are often based on a primitive type, like a point, line, or blob, and is customized with tags and other features. For instance, you might make a tool for circling cells in your image. You would choose a manual blob creation tool, name it "Nucleus" and add the tag \[nucleus]. You could also add a hotkey. That tool gets added to your interface and you can use it to circle cells at any time.
 
 **Automated tools.** NimbusImage has been designed to allow the use of automated algorithms for finding things like cells and points in your images, often using the latest deep learning methods. For instance, you can set up an automated tool to use Cellpose to find cells within your images. These tools often have specific parameters that you can use to obtain optimal results.
@@ -415,6 +417,7 @@ The **Click connect** tool allows you to create connections between objects by s
 This tool is ideal for precisely connecting specific objects, like linking individual RNA spots to their corresponding cells or connecting organelles to their parent structures.
 
 **Configuration options:**
+
 * **Parent Annotation Tags**: Filter which types of objects can be selected as parents
 * **Child Annotation Tags**: Filter which types of objects can be selected as children
 * **Filter by layer**: Optionally restrict selections to objects on specific layers
@@ -427,13 +430,14 @@ The **Lasso connect** tool allows you to quickly connect multiple objects at onc
 2. NimbusImage will automatically establish connections between the selected objects
 
 This is particularly useful for:
+
 * Connecting multiple spots to a cell at once
 * Connecting sequential points in a time-lapse track
 * Creating connections between groups of related objects
 
 In time-lapse mode, the Lasso connect tool will intelligently connect objects sequentially by time point, making it extremely valuable for track creation and repair.
 
-#### Click disconnect 
+#### Click disconnect
 
 The **Click disconnect** tool allows you to remove individual connections:
 
@@ -451,7 +455,6 @@ The **Lasso disconnect** tool allows you to quickly remove multiple connections 
 2. All connections between objects within the lasso will be removed
 
 This is particularly helpful when you need to clear all connections in a region and rebuild them correctly.
-
 
 ### Automated connection tools
 
@@ -481,6 +484,7 @@ The **Connect to nearest** tool automatically connects objects based on spatial 
 * **Connect up to N children**: Limit the number of children that can connect to each parent
 
 This tool is particularly useful for:
+
 * Connecting RNA spots to their nearest nucleus
 * Assigning cells to their closest blood vessel
 * Connecting subcellular structures to their parent cells
@@ -517,6 +521,7 @@ This is especially valuable for cell tracking, particle movement analysis, and o
 4. All connections are automatically tagged with "Time lapse connection" for easy identification
 
 This tool is perfect for:
+
 * Automatically generating cell lineage trees
 * Tracking particle movement over time
 * Analyzing cell migration patterns
