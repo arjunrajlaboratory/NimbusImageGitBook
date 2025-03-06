@@ -532,9 +532,6 @@ This tool is perfect for:
 
 After running the Connect timelapse tool, you can use the Time lapse mode (discussed in the [Time lapse mode](documentation/time-lapse-mode.md) section) to visualize, review, and manually correct the resulting tracks.
 
-
-
-
 ## Quantifying properties
 
 Ultimately, most researchers want to extract numbers from their image data. These could correspond to fluorescent intensity across cells, or number of cells per colony, or density of filaments per region. NimbusImage allows you to make these computations easily by defining **properties**. A property (think: area) can be associated with an object and listed and exported for plotting and analysis. You can easily compute a lot of different properties using NimbusImage out of the box because of the flexibility that its tagging and connection system allows. For instance, if you want to find the count the number of spots connected to the basement membrane, that is easy to do with just a few clicks.
