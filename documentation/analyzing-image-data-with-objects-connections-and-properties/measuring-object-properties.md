@@ -4,23 +4,23 @@ Ultimately, most researchers want to extract numbers from their image data. Thes
 
 First, click on Object List, then, in "Properties", click the blue "Measure Objects" button:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 That brings up the Property window:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Choose the tag of the object you want to quantify:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (3) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Then choose the Algorithm, like "Blob metrics". It will bring up a list of options:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (4).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (4) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Click "Create Property" and it will create and run the property worker. When done, it will look like this:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (5).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (5) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 When you close the Property panel, it will open up the Properties pane. Click on "nucleus Blob metrics", then click on the Area checkbox:
 
