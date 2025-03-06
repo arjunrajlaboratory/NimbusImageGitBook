@@ -13,3 +13,7 @@ NimbusImage has a document management system that allows you to manage your data
 <div align="left"><figure><img src="../../.gitbook/assets/image (1).png" alt="" width="282"><figcaption></figcaption></figure></div>
 
 <div align="left"><figure><img src="../../.gitbook/assets/image (3).png" alt="" width="128"><figcaption></figcaption></figure></div>
+
+
+
+<div align="left"><figure><img src="../../.gitbook/assets/image (30).png" alt="" width="335"><figcaption></figcaption></figure></div>
