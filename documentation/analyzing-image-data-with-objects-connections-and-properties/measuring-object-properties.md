@@ -4,11 +4,11 @@ Ultimately, most researchers want to extract numbers from their image data. Thes
 
 First, click on Object List, then, in "Properties", click the blue "Measure Objects" button:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 That brings up the Property window:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 Choose the tag of the object you want to quantify:
 

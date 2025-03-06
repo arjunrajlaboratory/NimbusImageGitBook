@@ -53,7 +53,7 @@ NimbusImage provides specific locations for storing your datasets and files:
 * **Public folder**: Accessible to everyone using the system
 * **Team folder**: (NimbusImage.com specific) Shared only with members of your team
 
-<div align="left"><figure><img src="../../.gitbook/assets/image.png" alt="" width="260"><figcaption><p>Private and public folders</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (2).png" alt="" width="260"><figcaption><p>Private and public folders</p></figcaption></figure></div>
 
 {% hint style="info" %}
 By default, Quick Upload will place your dataset in your Private folder. This ensures your data remains private until you choose to share it.
@@ -110,7 +110,7 @@ If you're using NimbusImage.com and are part of a team, you can access team-spec
 3. Select your team name
 4. Upload or create datasets in this location to share only with team members
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1).png" alt="" width="282"><figcaption><p>Selected items actions menu</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="282"><figcaption><p>Selected items actions menu</p></figcaption></figure></div>
 
 <div align="left"><figure><img src="../../.gitbook/assets/image (3).png" alt="" width="128"><figcaption><p>File action menu</p></figcaption></figure></div>
 
