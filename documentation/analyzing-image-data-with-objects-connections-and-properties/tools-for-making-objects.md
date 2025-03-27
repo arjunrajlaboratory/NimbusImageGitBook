@@ -16,6 +16,10 @@ Manual blob/point/line/rectangle tools are the most basic tools in NimbusImage. 
 
 Segment-Anything is a new method for finding objects in images. It is a semi-automated tool that allows you to find objects in your images by either clicking on them or drawing a bounding box around them. To use it, click on "Add New Tool" and choose "ViT-B" under "Segment Anything Model". Options include:
 
+{% hint style="info" %}
+If you use Segment Anything Model (SAM) in your research, please cite the [relevant papers](/citations.md#segment-anything-model-sam).
+{% endhint %}
+
 * **Simplification**: The simplification parameter controls how much the segmentation is smoothed out. Smoother annotations are faster to run computations on and navigate.
 * **Turbo mode**: The turbo mode allows you to rapidly segment without having to manually "accept" each segment.
 
@@ -38,6 +42,10 @@ We have a number of automated tools for finding and connecting objects (cells, s
 ### Cellpose for automated cell finding
 
 Cellpose is a deep learning-based tool for automatically finding and segmenting cells in microscopy images. It has been trained on a large collection of diverse cell images, making it highly effective for many cell types without requiring additional training. Cellpose is a powerful starting point for cell segmentation, allowing you to quickly generate cell outlines that can be refined with NimbusImage's interactive tools.
+
+{% hint style="info" %}
+If you use Cellpose in your research, please cite the [relevant papers](/citations.md#cellpose).
+{% endhint %}
 
 {% hint style="info" %}
 Note that NimbusImage also allows for retraining of the Cellpose models to (often greatly) enhance performance for your specific dataset.
@@ -180,6 +188,10 @@ The integration between NimbusImage and Cellpose makes it easy to create special
 ### Piscis for automated spot finding
 
 Piscis is a deep learning-based tool for automatically finding and segmenting spots in microscopy images. It has been trained on a large collection of diverse spot images, making it highly effective for many spot types without requiring additional training. Piscis is a powerful starting point for spot segmentation, allowing you to quickly generate spot outlines that can be refined with NimbusImage's interactive tools. It can be retrained on your own data as well, which can often give you great results if the default models don't work well for your data.
+
+{% hint style="info" %}
+If you use Piscis in your research, please cite the [relevant paper](/citations.md#piscis).
+{% endhint %}
 
 > **Key tip**: If you're getting too many or too few spots, try different models first before adjusting other parameters. The built-in models vary in sensitivity, and selecting the right one is usually more effective than tweaking threshold values.
 
