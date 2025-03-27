@@ -4,6 +4,7 @@
 * [Quick start](quick-start.md)
 * [Vignettes](vignettes.md)
 * [Installation](installation.md)
+* [Citations](citations.md)
 
 ## Documentation
 
