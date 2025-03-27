@@ -68,3 +68,35 @@ Here is the paper:
 
 Niu, Z., O'Farrell, A., Li, J., Reffsin, S., Jain, N., Dardani, I., Goyal, Y., & Raj, A. (2025). [Piscis: a novel loss estimator of the F1 score enables accurate spot detection in fluorescence microscopy images via deep learning.](https://doi.org/10.1101/2024.01.31.578123) _bioRxiv_, 2024.01.31.578123.
 
+
+## Packages
+
+### Girder
+
+Girder is a free and open source web-based data management platform developed by Kitware. It provides a flexible framework for storing, managing, and sharing various types of data, including large scientific and medical images.
+
+Here is the GitHub repository:  
+[https://github.com/girder/girder](https://github.com/girder/girder)
+
+### Large Image
+
+Large Image is a collection of Python modules developed and maintained by the Data & Analytics group at Kitware for processing large geospatial and medical images. It provides capabilities for tile serving, support for a wide variety of image formats, and efficient methods for accessing regions of large images.
+
+Here is the GitHub repository:  
+[https://github.com/girder/large_image](https://github.com/girder/large_image)
+
+### GeoJS
+
+GeoJS is a JavaScript library for visualizing geospatial data in a browser, developed by Kitware and OpenGeoscience. It aims to bridge the gap between GIS, scientific visualization, and information visualization, providing high-performance visualization and interactive data exploration of scientific and geospatial location-aware datasets.
+
+Here is the GitHub repository:  
+[https://github.com/OpenGeoscience/geojs](https://github.com/OpenGeoscience/geojs)
+
+### DeepTile
+
+DeepTile is a large image tiling and stitching library developed by the Arjun Raj Laboratory. It provides a standardized workflow for splitting large images into tiles of a specified size, processing tiles using regular Python functions, and stitching the processed tiles. DeepTile is especially useful for scaling Python functions and deep learning algorithms to arbitrarily large input image sizes.
+
+Here is the GitHub repository:  
+[https://github.com/arjunrajlaboratory/DeepTile](https://github.com/arjunrajlaboratory/DeepTile)
+
+
