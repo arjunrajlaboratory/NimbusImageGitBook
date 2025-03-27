@@ -68,8 +68,3 @@ Here is the paper:
 
 Niu, Z., O'Farrell, A., Li, J., Reffsin, S., Jain, N., Dardani, I., Goyal, Y., & Raj, A. (2025). [Piscis: a novel loss estimator of the F1 score enables accurate spot detection in fluorescence microscopy images via deep learning.](https://doi.org/10.1101/2024.01.31.578123) _bioRxiv_, 2024.01.31.578123.
 
-\
-
-
-
-
