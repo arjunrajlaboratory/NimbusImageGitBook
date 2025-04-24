@@ -27,79 +27,100 @@ To install the backend, first you need to install Docker.
 
 **Now install the backend using Docker:**
 
-* Pull the NimbusImage repository to install Girder:
+* Pull the NimbusImage repository:
 
+```sh
+git clone https://github.com/arjunrajlaboratory/NimbusImage.git
+cd NimbusImage/
 ```
-git clone https://github.com/kitware/UPennContrast
-cd UPennContrast/
+
+* Start docker images for the backend:
+
+```sh
 docker compose build
 docker compose up -d
 ```
 
-* Pull the worker repository to install workers:
+You should now be able to see the backend at [http://localhost:8080](https://localhost:8080). You can login with login "admin" and password "password". **We strongly recommend changing those defaults ASAP!**
 
-```
+## Installing the workers
+
+Go to a **new directory** (NOT the `NimbusImage` directory) and run the following:
+
+```sh
 git clone https://github.com/arjunrajlab/ImageAnalysisProject
+cd ImageAnalysisProject/
 chmod +x build_machine_learning_workers.sh
 chmod +x build_workers.sh
 ./build_machine_learning_workers.sh
 ./build_workers.sh
 ```
 
-You should now be able to see the backend at [http://localhost:8080](https://localhost:8080). You can login with login "admin" and password "password". **We strongly recommend changing those defaults ASAP!**
+The machine learning workers will run on CPU on Linux if a GPU is not available, although will run much more slowly.
 
 ## Installing the front end
 
 To install the frontend, you need to:
 
 1. Install [node.js](https://nodejs.org/en/download/package-manager/current).
-2.  Pull the repository (if you haven't already):
+2. Install [pnpm](https://pnpm.io/installation):
+   ```sh
+   npm i -g pnpm
+   ```
+3. Pull the repository (if you haven't already done so for the backend):
 
+    ```sh
+    git clone https://github.com/arjunrajlaboratory/NimbusImage.git
+    cd NimbusImage/
     ```
-    git clone https://github.com/kitware/UPennContrast
-    cd UPennContrast/
-    ```
-3.  Run the following commands:
+4. Install node modules:
 
+    ```sh
+    pnpm install
     ```
-    npm install
-    npm run emscripten-build
+5. Compile C++ code to wasm:
+    ```sh
+    pnpm emscripten-build
     ```
-4.  If you are on Linux, you may need to run:
+6.  If you are on Linux, you may need to run:
 
-    ```
+    ```sh
     cat /proc/sys/fs/inotify/max_user_watches
     sudo sysctl fs.inotify.max_user_watches=1000000
     sudo sysctl -p
     ```
-5.  Copy in the models for Segment Anything (optional):
+7.  Copy in the models for Segment Anything (optional):
 
-    ```
-    smkdir -p UPennContrast/public/onnx-models/sam/vit_b
-    cd UPennContrast/public/onnx-models/sam/vit_b
+    ```sh
+    mkdir -p public/onnx-models/sam/vit_b
+    cd public/onnx-models/sam/vit_b
     wget "https://huggingface.co/rajlab/sam_vit_b/resolve/main/decoder.onnx" -O decoder.onnx
     wget "https://huggingface.co/rajlab/sam_vit_b/resolve/main/encoder.onnx" -O encoder.onnx
+    cd ../../../.. # Go back to the NimbusImage root directory
     ```
-6. Now start up the server:
+8. Now start up the server:
    1.  If you want to run the development build:
 
+       ```sh
+       pnpm run dev
        ```
-       npm run dev
-       ```
+       You should see output indicating the server is running, likely on `http://localhost:5173`.
    2.  If you want to run for production:
 
+       ```sh
+       pnpm build
+       pnpm run serve
        ```
-       npm run build
-       npm run serve
-       ```
-7. You should see a bunch of things, including somewhere "localhost:8081" or "localhost:5173"
-8. Go to http://localhost:8081 or http://localhost:5173 and you should see the website! Be sure to set your Girder domain to http://localhost:8080 when you are logging in:
+       You should see output indicating the server is running, likely on `http://localhost:4173`.
+9. Go to the relevant localhost URL (`http://localhost:5173` for dev, `http://localhost:4173` for prod) and you should see the website!
 
 ## Sign in (if you are running your own server)
 
-Navigate to a NimbusImage server like [nimbusimage.org](https://nimbusimage.org/). Use your login credentials from above as follows:
+IMPORTANT: By default, an admin user will be created with the login `admin` and the password `password`. You can use these credentials to initially log into the system.
 
-1. **In the "Girder domain" field, enter the domain associated with your account.** This will probably be `https://nimbusimage.org/girder`.
-2. **Enter your username and password.** Note that this username and password is associated with the Girder domain above.
+1. Navigate to your running NimbusImage frontend (e.g., `http://localhost:5173`).
+2. **In the "Girder domain" field, enter the domain associated with your backend.** If running locally, this will be `http://localhost:8080`.
+3. **Enter the username (`admin`) and password (`password`).**
+4. **For security, it is critical to add a new admin user in Girder and then remove the original `admin` user.** To do this, go to `http://localhost:8080`, sign into Girder using the default credentials, then go to the `Users` tab on the left to manage users.
 
-<figure><img src=".gitbook/assets/image (21).png" alt="" width="365"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (21).png" alt="" width="365"><figcaption>Make sure to set the Girder domain to your backend server, e.g., http://localhost:8080</figcaption></figure>
