@@ -41,6 +41,55 @@ You can edit objects by using the Annotation Edits -> Blob edit tool. With that 
 
 We have a number of automated tools for finding and connecting objects (cells, spots, etc.) that take advantage of the latest deep learning methods.
 
+### Cellpose-SAM for versatile cell segmentation
+
+Cellpose-SAM combines the power of Cellpose with the Segment Anything Model (SAM) to offer a versatile approach to cell segmentation. It simplifies the input process by allowing users to specify up to three input channels, making it adaptable for various segmentation scenarios, from nuclei-only to full RGB images.
+
+{% hint style="info" %}
+If you use Cellpose-SAM in your research, please ensure you cite the relevant papers for both [Cellpose](../../citations.md#cellpose) and the [Segment Anything Model (SAM)](../../citations.md#segment-anything-model-sam).
+{% endhint %}
+
+#### How Cellpose-SAM works
+
+Cellpose-SAM processes images by taking input from up to three configurable channel "slots":
+
+*   **Single Channel Input:**
+    *   To segment nuclei, provide the nuclear stain channel to Slot 1.
+    *   To segment cell boundaries, provide the cytoplasm/membrane channel to Slot 1.
+*   **Dual Channel Input:** For improved cell boundary segmentation, you can provide the cytoplasm/membrane channel to Slot 1 and the nuclear channel to Slot 2.
+*   **Triple Channel Input (RGB):** To segment cells in an RGB image, map the Red, Green, and Blue channels to Slots 1, 2, and 3 respectively.
+
+The model then uses this information to perform segmentation.
+
+#### Available models
+
+Currently, the primary model available is:
+
+*   **cellpose-sam**: This is the base model and should be suitable for most general-purpose cell segmentation tasks.
+
+#### Key parameters
+
+*   **Model**: Selects the segmentation model. Defaults to `cellpose-sam`.
+*   **Channel for Slot 1**: **Required.** The primary channel for segmentation. Select the source channel for the model's first input. If multiple are selected, only the first will be used.
+*   **Channel for Slot 2**: (Optional) The secondary channel, often used for nuclear information when segmenting cytoplasm. If multiple are selected, only the first will be used.
+*   **Channel for Slot 3**: (Optional) The tertiary channel, typically used for the blue channel in RGB images. If multiple are selected, only the first will be used.
+*   **Diameter**: The approximate diameter of the cells in pixels. While important for original Cellpose, Cellpose-SAM is less sensitive to this parameter. A value around **30 pixels** often works well as a starting point, but can be adjusted (0-200 pixels, default 10).
+*   **Smoothing**: Controls the simplification of the generated polygons (0-10, default 0.7). Higher values create smoother outlines. A value of 0.7 is a good default.
+*   **Padding**: Expands (positive values) or contracts (negative values) the final polygons in pixels (-20 to 20 pixels, default 0).
+*   **Tile Size**: The size of image tiles (in pixels) for processing (0-2048, default 1024). Larger tiles require more memory.
+*   **Tile Overlap**: The fractional overlap between adjacent tiles (0-1, default 0.1). Ensure this overlap is larger than your largest cells (e.g., for 1024px tiles with 0.1 overlap, objects should be <102px).
+
+#### Best practices
+
+1.  **Channel Selection**:
+    *   For nuclei: Use your nuclear stain in Slot 1.
+    *   For cell boundaries: Use your cytoplasm/membrane channel in Slot 1. Consider adding a nuclear channel to Slot 2 for refinement.
+    *   For RGB images: Map R, G, B to Slots 1, 2, and 3.
+2.  **Diameter Setting**: Start with a diameter around 30 pixels. Adjust if necessary, but exact precision is less critical than with standard Cellpose.
+3.  **Review Results**: Always visually inspect segmentation and adjust parameters if needed.
+4.  **Post-process**: Utilize NimbusImage's manual editing tools to correct any segmentation errors.
+
+
 ### Cellpose for automated cell finding
 
 Cellpose is a deep learning-based tool for automatically finding and segmenting cells in microscopy images. It has been trained on a large collection of diverse cell images, making it highly effective for many cell types without requiring additional training. Cellpose is a powerful starting point for cell segmentation, allowing you to quickly generate cell outlines that can be refined with NimbusImage's interactive tools.
@@ -104,6 +153,7 @@ NimbusImage includes several pre-trained Cellpose models:
 
 ### Cellpose Training
 
+(Currently for Cellpose 3.0 only; Cellpose-SAM training coming soon!)
 NimbusImage offers the ability to train custom Cellpose models directly within the platform using your own annotated data. This feature allows you to create specialized segmentation models tailored to your specific cell types or imaging conditions. Custom models will often provide greatly improved performance for your specific dataset, even if your cells look pretty "normal", and especially if they don't!
 
 #### Training data preparation

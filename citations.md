@@ -18,7 +18,7 @@ We recommend including text along the following lines in your papers:
 
 ### Cellpose
 
-Cellpose works like magic for cell segmentation and is the product of extensive research and development by Carsen Stringer. They have a series of three papers on the topic, and we generally recommending citing all three. The first one describes the Cellpose algorithm, the second introduces retraining, and the third introduces image restoration and new, highly accurate models.
+Cellpose works like magic for cell segmentation and is the product of extensive research and development by Carsen Stringer. They have a series of three papers on the topic, and we generally recommending citing all three. The first one describes the Cellpose algorithm, the second introduces retraining, and the third introduces image restoration and new, highly accurate models. The fourth paper is a preprint for Cellpose-SAM, which combines Cellpose with the Segment Anything Model (SAM) to enable versatile cell segmentation.
 
 Here is the GitHub repository:\
 [https://github.com/MouseLand/cellpose](https://github.com/MouseLand/cellpose)
@@ -29,7 +29,9 @@ Here are the papers:\
 \
 Pachitariu, M. & Stringer, C. (2022). [Cellpose 2.0: how to train your own model.](https://www.nature.com/articles/s41592-022-01663-4) _Nature methods_, 1-8.\
 \
-Stringer, C. & Pachitariu, M. (2025). [Cellpose3: one-click image restoration for improved segmentation.](https://www.nature.com/articles/s41592-025-02595-5) _Nature Methods_.
+Stringer, C. & Pachitariu, M. (2025). [Cellpose3: one-click image restoration for improved segmentation.](https://www.nature.com/articles/s41592-025-02595-5) _Nature Methods_.\
+\
+Pachitariu, M., Rariden, M., & Stringer, C. (2025). [Cellpose-SAM: superhuman generalization for cellular segmentation.](https://doi.org/10.1101/2025.04.28.651001) _bioRxiv_ 2025.04.28.651001.
 
 ### StarDist
 
