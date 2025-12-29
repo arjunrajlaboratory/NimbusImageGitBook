@@ -26,18 +26,17 @@ Group plans are available for teams! First the administrator should sign up, the
 
 ## Drop in your data into the file drop zone
 
-You can drag and drop your data directly onto the drop zones to load it into NimbusImage. The "Create Dataset" dialog provides options for both quick and advanced upload:
+You can drag and drop your data directly onto the drop zone to load it into NimbusImage:
 
-* **Quick upload** works for most files and will automatically run the various steps using defaults.
-* **Advanced upload** gives you more control if you have a complex file structure or need to rearrange variables.
+<div align="left"><figure><img src=".gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure></div>
 
-Before uploading, you'll need to specify where to store your dataset (Private, Public, or Team folder).
+That brings up this dialog:
 
-<div align="left"><figure><img src=".gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 ## View your data
 
-<figure><img src=".gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 The image viewer should be pretty intuitive to navigate. Press `tab` to reveal some keyboard shortcuts and features.
 
@@ -45,24 +44,25 @@ The image viewer should be pretty intuitive to navigate. Press `tab` to reveal s
 
 Click `+` next to "Toolset" to bring up a menu. You can customize your own interface!
 
-<figure><img src=".gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-For instance, makee a blob tool and draw some blobs like this:
+For instance, make a blob tool and draw some blobs like this:
 
-<figure><img src=".gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 ## Analyze those objects
 
-Click "Measure objects" to measure, for instance, "Blob metrics":
+Click "Object List" to bring up the object panel:
 
-<figure><img src=".gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-Then click the play button to compute:\
-![](<.gitbook/assets/image (14).png>)\
-And then use the "Object list" to find your new data:\
-![](<.gitbook/assets/image (15).png>)
+Then click on "Measure Objects" to bring up the measurement panel:
 
+<figure><img src=".gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
+Then click "Create Property" to create and compute the property, and check the value (here, Area) in the list below:
+
+<div align="left"><figure><img src=".gitbook/assets/image (8).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 ## Make a Snapshot
 
@@ -76,6 +76,3 @@ Use Snapshots to take a visual bookmark of your data to capture and document tha
 
 Export your data to a CSV file, ready to import to Excel, R, Python, or whatever analysis tool you like!\
 ![](<.gitbook/assets/image (17).png>)
-
-
-

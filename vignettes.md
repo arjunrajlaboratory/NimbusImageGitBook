@@ -2,17 +2,6 @@
 description: >-
   Here are a few examples of common use cases for NimbusImage to give you a
   sense of how to use it.
-layout:
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
 ---
 
 # Vignettes

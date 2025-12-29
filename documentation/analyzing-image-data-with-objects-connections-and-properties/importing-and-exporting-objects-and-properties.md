@@ -29,7 +29,7 @@ The resulting CSV file contains:
 * Object tags and attributes
 * All selected property values
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt="" width="563"><figcaption><p>The CSV export dialog allows you to customize exactly which properties to include and how to handle missing values</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="563"><figcaption><p>The CSV export dialog allows you to customize exactly which properties to include and how to handle missing values</p></figcaption></figure>
 
 {% hint style="info" %}
 We recommend using the empty string option for undefined values, because it is generally recognized by most analysis software.
@@ -50,7 +50,7 @@ The JSON export provides a comprehensive record of all annotation data:
 5. Enter a filename
 6. Click "EXPORT SELECTED ITEMS"
 
-<figure><img src="../../.gitbook/assets/image.png" alt="" width="563"><figcaption><p>The JSON export dialog lets you select exactly which components of your analysis to include</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9).png" alt="" width="563"><figcaption><p>The JSON export dialog lets you select exactly which components of your analysis to include</p></figcaption></figure>
 
 The exported JSON file contains:
 
