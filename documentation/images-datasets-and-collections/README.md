@@ -39,9 +39,9 @@ In order to form a collection, the datasets must be _compatible_ in the sense th
 
 There are two ways to upload a dataset.
 
-**Quick start:** Just drop in your data on the home page and NimbusImage will automatically parse your data, pick some default options, and bring you to the viewer! Note that behind the scenes, NimbusImage makes a collection for your dataset.
+**Quick Import:** Just drop in your data on the home page and NimbusImage will automatically parse your data, pick some default options, and bring you to the viewer! Note that behind the scenes, NimbusImage makes a collection for your dataset.
 
-**Advanced upload:** For more control over how your image files are parsed into datasets and organized into collections, use Advanced Upload.
+**Advanced Import:** For more control over how your image files are parsed into datasets and organized into collections, use Advanced Upload.
 
 First, upload files, name the dataset, and choose the location for the dataset files to be stored.
 

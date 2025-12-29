@@ -4,7 +4,7 @@
 
 NimbusImage provides a powerful file management system that helps you organize your datasets, collections, and other files. The interface is designed to be intuitive while giving you full control over your data organization.
 
-<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>NimbusImage dataset manager interface</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 ## The landing screen
 
@@ -82,12 +82,12 @@ You can perform several operations on your files and datasets:
 
 ### Working with multiple files
 
-<figure><img src="../../.gitbook/assets/Untitled8.jpg" alt=""><figcaption><p>Actions on multiple items</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 
 To operate on multiple files at once:
 
 1. Select the checkboxes next to the files
-2. Click "SELECTED ITEMS ACTIONS"
+2. Click "ACTIONS"
 3. Choose the operation you want to perform
 
 ### Individual file options
