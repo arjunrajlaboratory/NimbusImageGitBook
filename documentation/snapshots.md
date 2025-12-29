@@ -21,6 +21,16 @@ Drag the red rectangle to cover the area of interest. The pixel-precise location
 1. **Set frame to current viewport.** If you've zoomed into a place you like, then click this button and the frame of the Snapshot will be set to precisely the region you zoomed to.
 2. **Set frame to maximum.** This button will reset the frame to contain the entire image in the view.
 
+## Selecting multiple Snapshots
+
+You can select multiple snapshots using checkboxes next to each snapshot in your snapshot list. This makes it easy to:
+
+* Download images for multiple snapshots at once
+* Delete multiple snapshots simultaneously
+* Organize and manage your snapshot collection efficiently
+
+Simply check the boxes next to the snapshots you want to work with, then choose the appropriate action from the available options.
+
 ## Downloading Images and Movies
 
 ### Image Download Options

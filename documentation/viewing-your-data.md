@@ -26,3 +26,22 @@ Another useful feature is layer grouping, which allows you to put together multi
 To use this feature, just drag the layers to a "drop zone" to combine:![](<../.gitbook/assets/image (8) (1).png>)
 
 You can add multiple layers to the group. Drag layers out of the group to undo the grouping.
+
+## Label display options
+
+NimbusImage allows you to customize how labels are displayed in your image viewer. You can toggle between:
+
+* **Text labels**: Display descriptive labels such as "Well A1", "Position 3", etc.
+* **Numeric identifiers**: Display simple numeric IDs for a cleaner view
+
+This toggle helps you choose between more informative labels and a less cluttered display depending on your needs.
+
+## Custom channel color preferences
+
+You can set default channel color preferences in your user profile. These custom color settings:
+
+* Automatically apply to new datasets you create or upload
+* Can be overridden on a per-dataset basis if you want different colors for a specific dataset
+* Help maintain consistency across your analyses
+
+This feature is especially useful if you work with the same types of channels regularly and want them to always appear in your preferred colors.

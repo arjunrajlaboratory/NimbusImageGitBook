@@ -26,10 +26,12 @@ Group plans are available for teams! First the administrator should sign up, the
 
 ## Drop in your data into the file drop zone
 
-You can drag and drop your data directly onto the drop zones to load it into NimbusImage; just follow the prompts.
+You can drag and drop your data directly onto the drop zones to load it into NimbusImage. The "Create Dataset" dialog provides options for both quick and advanced upload:
 
-* "Quick upload" works for most files and will automatically run the various steps using defaults.
-* If you have a more complex file structure or need to do rearrange variables, click "Advanced upload".
+* **Quick upload** works for most files and will automatically run the various steps using defaults.
+* **Advanced upload** gives you more control if you have a complex file structure or need to rearrange variables.
+
+Before uploading, you'll need to specify where to store your dataset (Private, Public, or Team folder).
 
 <div align="left"><figure><img src=".gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 

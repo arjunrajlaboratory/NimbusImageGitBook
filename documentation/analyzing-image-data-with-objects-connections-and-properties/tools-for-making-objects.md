@@ -229,7 +229,7 @@ Unless you have a specific reason to change these, leave them at the default val
 
 #### Advanced usage
 
-Your custom Cellpose models are saved in a `.cellpose` directory. You can:
+Your custom Cellpose models are saved in a `.cellpose` directory at the root of your Private or Public folder. You can:
 
 * Manually add models trained offline to this directory
 * Share models between team members by copying model files
@@ -401,5 +401,12 @@ After training, test your model by:
 1. Using the standard Piscis tool with your new model
 2. Comparing results against manual annotations in regions not used for training
 3. Adjusting the Scale parameter slightly if needed for fine-tuning
+
+#### Model storage
+
+Your custom Piscis models are saved in a `.piscis` directory at the root of your Private or Public folder. Once training completes, the model files are automatically stored in this location and will appear in the Piscis tool's model dropdown menu for future use. You can:
+
+* Manually add models trained offline to this directory
+* Share models between team members by copying model files
 
 Custom-trained Piscis models often dramatically improve spot detection accuracy for specialized applications, saving significant time in your image analysis workflow.

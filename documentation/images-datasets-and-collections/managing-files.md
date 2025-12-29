@@ -21,7 +21,7 @@ The file navigator shows your current location. Any datasets you upload will be 
 
 ## Uploading datasets
 
-NimbusImage offers two ways to upload your image data:
+NimbusImage provides a unified "Create Dataset" dialog that offers both quick and advanced upload options. Before uploading, you'll need to specify where to store your dataset (Private, Public, or Team folder).
 
 ### Quick Upload
 
@@ -99,6 +99,44 @@ Each file or dataset has its own options menu (three dots) with specific actions
 
 {% hint style="warning" %}
 Dataset folders contain system files that NimbusImage uses to render and analyze your data. It's best not to directly modify these files unless you know exactly what you're doing.
+{% endhint %}
+
+## Sharing datasets and collections
+
+NimbusImage allows you to share datasets and collections with other users for collaboration. This is useful when working with colleagues or sharing data with collaborators.
+
+### How to share
+
+To share a dataset or collection:
+
+1. Click the sharing icon next to the dataset or collection you want to share
+2. Enter the email address of the recipient's NimbusImage account
+3. Choose the access level (Read or Write)
+4. Click to confirm sharing
+
+### Access levels
+
+When sharing, you can grant two types of access:
+
+* **Read access**: The recipient can view the dataset and any annotations, but cannot make changes
+* **Write access**: The recipient can view and modify annotations and analysis
+
+### Important considerations
+
+{% hint style="warning" %}
+To share a dataset, you must also share its parent collection so the recipient can view it properly. Without sharing the parent collection, the recipient won't be able to access the shared dataset.
+{% endhint %}
+
+### What happens when you share
+
+Once you share a dataset or collection:
+
+* The shared content automatically appears in the recipient's file navigator
+* Any collaborative changes remain visible across all authorized users
+* You can revoke access at any time through the sharing settings
+
+{% hint style="info" %}
+Sharing is a powerful way to collaborate on analysis while maintaining control over who can access and modify your data.
 {% endhint %}
 
 ## Team collaboration (NimbusImage.com only)
