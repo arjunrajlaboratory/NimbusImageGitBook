@@ -103,23 +103,43 @@ Dataset folders contain system files that NimbusImage uses to render and analyze
 
 ## Sharing datasets and collections
 
-NimbusImage allows you to share datasets and collections with other users for collaboration. This is useful when working with colleagues or sharing data with collaborators.
+NimbusImage provides flexible sharing options that allow you to share datasets and collections with specific users or make them publicly accessible to anyone.
 
-### How to share
+### How to share with specific users
 
-To share a dataset or collection:
+To share a dataset or collection with specific users:
 
 1. Click the sharing icon next to the dataset or collection you want to share
 2. Enter the email address of the recipient's NimbusImage account
-3. Choose the access level (Read or Write)
+3. Choose the access level (Read or Edit)
 4. Click to confirm sharing
+
+The sharing dialog shows a real-time table of all users who currently have access, their permission levels, and allows you to modify or remove access as needed.
 
 ### Access levels
 
 When sharing, you can grant two types of access:
 
 * **Read access**: The recipient can view the dataset and any annotations, but cannot make changes
-* **Write access**: The recipient can view and modify annotations and analysis
+* **Edit access**: The recipient can view and modify annotations and analysis
+
+{% hint style="info" %}
+Dataset owners always retain full access and cannot be removed from the access list.
+{% endhint %}
+
+### Making a dataset public
+
+You can make a dataset publicly accessible so that **anyone with the link can view it, even without a NimbusImage account**. This is useful for sharing data with the broader community or for publications.
+
+To make a dataset public:
+
+1. Open the sharing dialog for the dataset
+2. Toggle the "Public" checkbox
+3. The dataset is now accessible to anyone with the direct link
+
+{% hint style="warning" %}
+Public datasets are viewable by anyone with the link. They will have read-only access—only users you've explicitly granted Edit access can modify the data.
+{% endhint %}
 
 ### Important considerations
 
@@ -134,6 +154,7 @@ Once you share a dataset or collection:
 * The shared content automatically appears in the recipient's file navigator
 * Any collaborative changes remain visible across all authorized users
 * You can revoke access at any time through the sharing settings
+* For public datasets, anyone with the link can view the data immediately
 
 {% hint style="info" %}
 Sharing is a powerful way to collaborate on analysis while maintaining control over who can access and modify your data.
