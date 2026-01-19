@@ -1,0 +1,5 @@
+# Ignore local settings
+settings.local.json
+
+# Track everything else (commands, docs, etc.)
+!commands/
