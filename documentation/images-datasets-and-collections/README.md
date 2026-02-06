@@ -1,6 +1,8 @@
 # Images, datasets, and collections
 
-Imaging data in NimbusImage is organized into _datasets_ and _collections._
+Imaging data in NimbusImage is organized into _datasets,_ _collections_, and _projects._
+
+<div align="left"><figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure></div>
 
 ## Datasets
 
@@ -40,10 +42,11 @@ In order to form a collection, the datasets must be _compatible_ in the sense th
 A _project_ is a way to group datasets and collections together for coordinated management and sharing. Projects are particularly useful for organizing data associated with a publication or a complete study.
 
 Key features of projects:
-- Group multiple datasets and collections into a single organizational unit
-- Add publication metadata including title, description, license, keywords, authors, and DOI
-- Prepare datasets for future export to repositories like Zenodo
-- Track project status (draft, exporting, exported)
+
+* Group multiple datasets and collections into a single organizational unit
+* Add publication metadata including title, description, license, keywords, authors, and DOI
+* Prepare datasets for future export to repositories like Zenodo
+* Track project status (draft, exporting, exported)
 
 Projects exist as organizational containers that reference your datasets and collections—the underlying data stays where it is, but projects give you a unified way to manage and eventually share a complete body of work.
 
@@ -59,8 +62,8 @@ There are two ways to upload a dataset.
 
 NimbusImage supports batch uploading, which allows you to upload multiple files at once and create a collection containing one dataset per file. This is useful when you have many separate image files that you want to organize together.
 
-- **Quick Import:** Drop multiple files at once, and each file will become its own dataset, all organized into a single collection with default settings.
-- **Advanced Import:** Upload multiple files and configure them as a batch. You set the dimension configuration (variables, compositing, etc.) once on the first dataset, and NimbusImage applies those same settings to all subsequent datasets in the batch. This saves time when you have many files with the same structure.
+* **Quick Import:** Drop multiple files at once, and each file will become its own dataset, all organized into a single collection with default settings.
+* **Advanced Import:** Upload multiple files and configure them as a batch. You set the dimension configuration (variables, compositing, etc.) once on the first dataset, and NimbusImage applies those same settings to all subsequent datasets in the batch. This saves time when you have many files with the same structure.
 
 First, upload files, name the dataset, and choose the location for the dataset files to be stored.
 

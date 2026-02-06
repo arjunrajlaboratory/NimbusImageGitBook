@@ -169,7 +169,7 @@ If you're using NimbusImage.com and are part of a team, you can access team-spec
 3. Select your team name
 4. Upload or create datasets in this location to share only with team members
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="282"><figcaption><p>Selected items actions menu</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="" width="282"><figcaption><p>Selected items actions menu</p></figcaption></figure></div>
 
 <div align="left"><figure><img src="../../.gitbook/assets/image (3) (1).png" alt="" width="128"><figcaption><p>File action menu</p></figcaption></figure></div>
 

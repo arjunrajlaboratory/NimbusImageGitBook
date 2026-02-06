@@ -28,11 +28,11 @@ Group plans are available for teams! First the administrator should sign up, the
 
 You can drag and drop your data directly onto the drop zone to load it into NimbusImage:
 
-<div align="left"><figure><img src=".gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 That brings up this dialog:
 
-<div align="left"><figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/image (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 ## View your data
 
