@@ -1,0 +1,3 @@
+# Files excluded from GitBook build
+CLAUDE.md
+.DS_Store
