@@ -8,6 +8,28 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 ## February 2026
 
+### Circle and ellipse annotation tools
+
+Draw circular and elliptical regions on your images. The circle tool inscribes a circle within your drag area, while the ellipse tool fills the full bounding box. Both are measured like other polygon-based objects.
+
+### Combine annotations tool
+
+Merge two polygon annotations into one by clicking them in sequence. Works with overlapping or nearby polygons, with a configurable tolerance for how close shapes need to be. Connections from the merged annotation are automatically preserved.
+
+### Batch annotation computation
+
+Apply automated annotation computations across all datasets in a collection at once. A progress bar tracks each dataset, and you can cancel the batch at any time.
+
+**SAM model options** — Choose between SAM1 (ViT-B), SAM2 Base+, and SAM2 Large for AI-assisted segmentation, giving you more control over speed vs. quality.
+
+**MP4 movie export** — Export snapshot movies as MP4 in addition to WebM, with broader browser compatibility including Safari.
+
+**Bulk collection export** — Export annotations for every dataset in a collection as individual JSON files with a single click.
+
+**Upload dialog help** — An info button in the upload dialog explains what datasets, batch mode, and collections are.
+
+**Dataset statistics** — The dataset info page now shows counts for annotations, connections, properties, and property values.
+
 **Upload configuration redesign** — The multi-file dataset configuration view now uses a visual badge and slot layout, making it easier to see and assign variables to dimensions like XY, Z, Time, and Channel.
 
 **Filename variable highlighting** — When uploading multi-file datasets, an interactive preview highlights which parts of your filenames correspond to which dimensions, with color-coded segments and a legend.
