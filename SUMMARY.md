@@ -2,6 +2,7 @@
 
 * [NimbusImage](README.md)
 * [Quick start](quick-start.md)
+* [New features](new-features.md)
 * [Vignettes](vignettes.md)
 * [Installation](installation.md)
 * [Citations](citations.md)
