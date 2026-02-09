@@ -1,7 +1,3 @@
----
-description: Stay up to date with the latest additions to NimbusImage
----
-
 # New features
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
@@ -64,7 +60,7 @@ The tool creation dialog now groups tools by category with color-coded sections,
 
 #### Bug fixes
 
-- Fixed login requiring a double click.
+* Fixed login requiring a double click.
 
 ## December 2025
 
@@ -82,4 +78,4 @@ The home page now has a single unified upload button, a tabbed interface for rec
 
 #### Bug fixes
 
-- Fixed the unroll checkbox disappearing when selected.
+* Fixed the unroll checkbox disappearing when selected.
