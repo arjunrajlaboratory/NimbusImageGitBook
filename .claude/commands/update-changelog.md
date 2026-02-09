@@ -1,6 +1,9 @@
 # Update Changelog
 
-Populate the **New features** page (`new-features.md`) with user-facing changes from recently merged PRs in the NimbusImage application repo.
+Populate the **New features** page (`new-features.md`) with user-facing changes from recently merged PRs in the NimbusImage repos:
+
+- **arjunrajlaboratory/NimbusImage** — the main web application (frontend + backend)
+- **arjunrajlaboratory/ImageAnalysisProject** — image analysis workers (deconvolution, spot detection, segmentation, etc.)
 
 ## Arguments
 
@@ -38,11 +41,17 @@ Scan the contents of `new-features.md` for existing entries. Look at the `###` h
 
 ### 4. Fetch merged PRs
 
+Fetch from both repos and combine the results:
+
 ```bash
 gh pr list --repo arjunrajlaboratory/NimbusImage --state merged --limit 100 --json number,title,body,mergedAt,labels --jq '[.[] | select(.mergedAt > "CUTOFF_DATE")]'
 ```
 
-Replace `CUTOFF_DATE` with the ISO date from step 3.
+```bash
+gh pr list --repo arjunrajlaboratory/ImageAnalysisProject --state merged --limit 100 --json number,title,body,mergedAt,labels --jq '[.[] | select(.mergedAt > "CUTOFF_DATE")]'
+```
+
+Replace `CUTOFF_DATE` with the ISO date from step 3. Combine the results from both repos for classification. Keep track of which repo each PR came from for context during classification.
 
 ### 5. Filter out PRs not yet deployed
 
@@ -67,6 +76,7 @@ First, determine whether the PR affects what users see or do:
 - New features, tools, UI elements, or workflows
 - Redesigns or significant UX improvements
 - New export/import capabilities
+- New or improved analysis workers (these are user-facing since users run them through the NimbusImage UI)
 - Bug fixes that users would have noticed
 - Performance improvements users would feel
 
@@ -74,6 +84,7 @@ First, determine whether the PR affects what users see or do:
 - Titles containing: "Refactor", "Fix lint", "Update dependencies", "CI", "CD", "Bump", "Chore", "Internal", "Cleanup"
 - Code refactoring, dependency updates, CI/CD changes, linting fixes, test infrastructure, developer tooling, internal config changes
 - Admin-only features (e.g., Girder links for admins)
+- Worker infrastructure changes that don't add new capabilities (e.g., base image refactors, dependency pins)
 - PRs with labels like `internal`, `dependencies`, `ci`
 
 #### Type & significance: Major, minor, or bug fix
