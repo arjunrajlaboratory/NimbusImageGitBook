@@ -34,6 +34,12 @@ Apply automated annotation computations across all datasets in a collection at o
 
 **Large dataset exports** — CSV and JSON exports now handle large datasets (tens of thousands of annotations) without browser memory issues.
 
+**CondensateNet large image support** — The CondensateNet segmentation worker can now process large images by automatically tiling them, stitching objects across tile boundaries.
+
+#### Bug fixes
+
+* Fixed CondensateNet segmentation failing on images with non-standard dimensions.
+
 ## January 2026
 
 ### Projects
