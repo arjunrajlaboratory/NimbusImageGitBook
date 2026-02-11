@@ -33,7 +33,8 @@ Read `SUMMARY.md` to understand the current doc structure, then determine placem
 
 | Content Type | Location | Action |
 |---|---|---|
-| New image processing tool | `documentation/image-processing.md` | Add new `##` section |
+| New image processing tool (transforms images: crop, blur, deconvolution, etc.) | `documentation/image-processing.md` | Add new `##` section |
+| New automated segmentation/detection tool (creates objects: Cellpose, Piscis, CondensateNet, etc.) | `documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md` | Add new `###` under "Automated object finding and connection" |
 | New object/annotation feature | `documentation/analyzing-image-data-with-objects-connections-and-properties/` | Add to relevant subpage |
 | New file format support | `documentation/images-datasets-and-collections/file-formats.md` | Add to existing page |
 | New viewer feature | `documentation/viewing-your-data.md` | Add new section |
@@ -118,9 +119,14 @@ The major areas of documentation and what belongs in each:
 - Import/export of annotations and measurements
 
 **Image Processing** (`documentation/image-processing.md`)
-- Processing tools: Crop, Registration, Histogram Matching, Gaussian Blur, Deconvolution
+- Processing tools that transform images: Crop, Registration, Histogram Matching, Gaussian Blur, Deconvolution
 - Each tool follows the How to use / Parameters / Technical details pattern
-- New workers/tools from ImageAnalysisProject belong here
+- Only for tools whose output is a processed image (shown in the "Original image" vs processed dropdown)
+
+**Tools for Making Objects** (`documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md`)
+- Automated segmentation/detection tools that create annotations: Cellpose, Cellpose-SAM, Piscis, CondensateNet
+- Also covers manual tools (blob, point, line, rectangle) and Segment Anything
+- Key distinction: if a worker from ImageAnalysisProject creates objects/annotations, it goes here; if it produces a processed image, it goes in image-processing.md
 
 **Snapshots** (`documentation/snapshots.md`)
 - Bookmarked views with specific visualization settings
