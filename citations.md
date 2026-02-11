@@ -80,6 +80,17 @@ Here is the GitHub repository:
 
 Raj Lab. (2024). CondensateNet: Deep Learning for Biomolecular Condensate Segmentation. GitHub. [https://github.com/arjunrajlaboratory/condensatenet](https://github.com/arjunrajlaboratory/condensatenet)
 
+### Deconwolf
+
+Deconwolf is an open-source 3D deconvolution engine that uses the Richardson-Lucy algorithm with a theoretically generated Born-Wolf point spread function (PSF) to sharpen fluorescence microscopy images. NimbusImage uses deconwolf to provide GPU-accelerated deconvolution of Z-stacks directly within the platform.
+
+Here is the GitHub repository:
+[https://github.com/elgw/deconwolf](https://github.com/elgw/deconwolf)
+
+Here is the paper:
+
+Wernersson, E. (2024). [deconwolf — Large deconvolution with GPU or CPU.](https://doi.org/10.1016/j.softx.2024.101747) _SoftwareX_, 27, 101747.
+
 ## Packages
 
 ### Girder

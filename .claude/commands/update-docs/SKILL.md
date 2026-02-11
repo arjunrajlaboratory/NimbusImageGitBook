@@ -87,6 +87,30 @@ Explain how it works at a level useful to users, not implementation internals.
 - New pages in subdirectories: add as indented `* [Title](path)` under parent
 - New top-level pages: add under the `## Documentation` group
 
+### Step 3b: Update Citations (if applicable)
+
+If the documented tool or algorithm has an associated **academic paper or software citation**, add it to `citations.md`. This applies to any tool that wraps or integrates third-party algorithms (e.g., Cellpose, Piscis, Deconwolf).
+
+1. Read `citations.md` to understand the existing structure
+2. Add a new `###` subsection under the `## Citations` heading (for algorithms/tools) or `## Packages` heading (for infrastructure/library dependencies)
+3. Follow the existing pattern:
+   ```
+   ### Tool Name
+
+   Brief description of what the tool does and its relevance to NimbusImage.
+
+   Here is the GitHub repository:
+   [https://github.com/...](https://github.com/...)
+
+   Here is the paper:
+
+   Author(s). (Year). [Title.](https://doi.org/...) _Journal_, Volume, Pages.
+   ```
+4. Include DOI links when available
+5. If there are multiple papers (like Cellpose), list them all with a brief note about what each covers
+
+**When to skip:** If the tool is entirely custom-built by the NimbusImage team with no external algorithm dependency, or if the citation already exists.
+
 ### Step 4: Create Branch and PR
 
 1. Create a descriptive branch: `git checkout -b add-<feature>-docs`
