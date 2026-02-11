@@ -71,6 +71,15 @@ Here is the paper:
 Niu, Z., O'Farrell, A., Li, J., Reffsin, S., Jain, N., Dardani, I., Goyal, Y., & Raj, A. (2025). [Piscis: a novel loss estimator of the F1 score enables accurate spot detection in fluorescence microscopy images via deep learning.](https://doi.org/10.1101/2024.01.31.578123) _bioRxiv_, 2024.01.31.578123.
 
 
+### CondensateNet
+
+CondensateNet is a deep learning model developed by the Raj Lab for segmenting biomolecular condensates in brightfield microscopy images. It uses a Feature Pyramid Network (FPN) architecture with an EfficientNet encoder to detect and segment condensates.
+
+Here is the GitHub repository:
+[https://github.com/arjunrajlaboratory/condensatenet](https://github.com/arjunrajlaboratory/condensatenet)
+
+Raj Lab. (2024). CondensateNet: Deep Learning for Biomolecular Condensate Segmentation. GitHub. [https://github.com/arjunrajlaboratory/condensatenet](https://github.com/arjunrajlaboratory/condensatenet)
+
 ## Packages
 
 ### Girder

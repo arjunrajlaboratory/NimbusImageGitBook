@@ -410,3 +410,45 @@ Your custom Piscis models are saved in a `.piscis` directory at the root of your
 * Share models between team members by copying model files
 
 Custom-trained Piscis models often dramatically improve spot detection accuracy for specialized applications, saving significant time in your image analysis workflow.
+
+### CondensateNet for automated condensate segmentation
+
+CondensateNet is a deep learning-based tool for automatically detecting and segmenting biomolecular condensates in brightfield microscopy images. It uses a Feature Pyramid Network (FPN) architecture with an EfficientNet encoder to identify condensates and create polygon annotations for each one, which you can then analyze using NimbusImage's object properties and tagging features.
+
+{% hint style="info" %}
+If you use CondensateNet in your research, please cite the [relevant paper](../../citations.md#condensatenet).
+{% endhint %}
+
+#### How CondensateNet works
+
+CondensateNet processes brightfield images through a three-stage pipeline:
+
+1. **Preprocessing**: Normalizes the input image
+2. **Inference**: Runs the FPN model to produce probability masks and flow fields
+3. **Post-processing**: Converts predictions to instance segmentation using watershed-based methods, outputting polygon annotations for each detected condensate
+
+#### Key parameters
+
+* **Probability Threshold**: Minimum confidence score for a detection to be included (0–1, default: 0.15). Lower values detect more condensates, including faint ones; higher values detect only high-confidence condensates.
+* **Min Size**: Minimum condensate size in pixels (default: 15). Objects smaller than this are discarded.
+* **Max Size**: Maximum condensate size in pixels (default: 600). Objects larger than this are discarded.
+* **Smoothing**: Polygon simplification tolerance (default: 0.3). Higher values produce simpler polygon outlines with fewer vertices.
+* **Padding**: Expand or shrink detected polygons in pixels (default: 0). Positive values dilate outlines; negative values erode them.
+
+#### Advanced parameters for large images
+
+* **Tile Size**: Size of tiles for processing large images in pixels (default: 1024). Smaller tiles use less memory but may miss large objects.
+* **Tile Overlap**: Fraction of overlap between adjacent tiles (0–1, default: 0.1). Objects spanning tile boundaries are stitched together using the overlap region.
+* **Important**: Ensure your objects are smaller than the overlap region. For example, with a tile size of 1024 and overlap of 0.1, objects should be less than approximately 102 pixels in their longest dimension for correct stitching.
+
+#### Batch processing
+
+* Use the **Batch XY**, **Batch Z**, and **Batch Time** fields to specify ranges for processing multiple positions, Z-slices, or time points (format: "1-3, 5-8"). Defaults to the current tile.
+
+#### Best practices
+
+1. **Adjust the probability threshold** as your primary tuning parameter — start with the default of 0.15 and increase if you see too many false positives or decrease if you're missing condensates
+2. **Use Min/Max Size** to filter out noise (small detections) or non-condensate objects (large detections)
+3. **Use larger tile sizes** (1024 recommended) for consistent detection — smaller tiles can cause detection differences due to per-tile intensity normalization
+4. **Review results visually**: Always inspect the segmentation and refine parameters if needed
+5. **Post-process as needed**: Use NimbusImage's manual editing tools to correct any segmentation errors
