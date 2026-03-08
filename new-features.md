@@ -2,6 +2,24 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## March 2026
+
+### Few-shot segmentation with SAM
+
+Use a few example annotations to automatically find and segment similar objects across your image. Two model options are available: SAM1 (ViT-H) for higher quality results and SAM2 (Base+) for faster processing.
+
+**Side panels push content** — The object list, snapshots, and settings panels now push the image viewport to the side instead of overlaying it, so you can see your image and panel contents at the same time. Panels also stay open when interacting with the image.
+
+#### Bug fixes
+
+* Fixed CSV export where selecting individual properties to export would check or uncheck all properties at once.
+* Fixed layer and annotation renaming showing "\[object Event]" instead of the typed name.
+* Fixed worker tool settings being lost when closing and reopening the tool panel.
+* Fixed the collection name label overlapping the input text on the dataset info page.
+* Fixed tooltips on dataset info collection buttons rendering as a narrow vertical stripe.
+* Fixed upload progress bar stuck at "0 B / 0 B".
+* Fixed login form not appearing on the home page.
+
 ## February 2026
 
 ### Circle and ellipse annotation tools
@@ -15,6 +33,12 @@ Merge two polygon annotations into one by clicking them in sequence. Works with 
 ### Batch annotation computation
 
 Apply automated annotation computations across all datasets in a collection at once. A progress bar tracks each dataset, and you can cancel the batch at any time.
+
+### Project sharing
+
+Share entire projects with other users and control their access level. When you share a project, permissions automatically propagate to all datasets, collections, and views within it. Making a project public also makes all its contents publicly accessible.
+
+**Sharing status indicators** — See at a glance who has access to your datasets and configurations, with color-coded badges showing read, write, and admin access levels.
 
 **SAM model options** — Choose between SAM1 (ViT-B), SAM2 Base+, and SAM2 Large for AI-assisted segmentation, giving you more control over speed vs. quality.
 
@@ -62,6 +86,12 @@ Manage who has access to your datasets in real time. See current users, change p
 
 The tool creation dialog now groups tools by category with color-coded sections, descriptions for each tool, and a featured tools section at the top.
 
+### Deconwolf deconvolution
+
+Deconvolve 3D fluorescence microscopy Z-stacks using the Richardson-Lucy algorithm. Supports GPU acceleration for faster processing, with automatic CPU fallback. Optical parameters can be auto-extracted from ND2 metadata, and large images are automatically tiled to fit in memory.
+
+**Piscis PyTorch update** — The Piscis spot detection workers have been updated to the official v1.0.0 release with a PyTorch backend. The default detection threshold is now 0.5 (previously 1.0) for improved sensitivity.
+
 **Dimension slider step arrows** — Use up/down arrow buttons next to XY, Z, and Time sliders to step through values one at a time.
 
 #### Bug fixes
@@ -69,6 +99,10 @@ The tool creation dialog now groups tools by category with color-coded sections,
 * Fixed login requiring a double click.
 
 ## December 2025
+
+### CondensateNet automated condensate segmentation
+
+Automatically detect and segment biomolecular condensates in fluorescence microscopy images using the CondensateNet deep learning model.
 
 **Improved upload dialog** — The upload dialog now includes a name picker and location picker, with duplicate name checking.
 
