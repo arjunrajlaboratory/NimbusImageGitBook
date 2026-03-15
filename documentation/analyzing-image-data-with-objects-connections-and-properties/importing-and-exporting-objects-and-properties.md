@@ -4,12 +4,13 @@ NimbusImage provides flexible options for exporting your analysis data, allowing
 
 ## Exporting data for analysis
 
-After completing your image analysis in NimbusImage, you can export your data in two primary formats:
+After completing your image analysis in NimbusImage, you can export your data in several formats:
 
 1. **CSV format** - For spreadsheet analysis in tools like Excel, R, or Python
-2. **JSON format** - For complete data backup or transfer between datasets
+2. **TSV format** - Tab-separated values, useful when property names contain commas
+3. **JSON format** - For complete data backup or transfer between datasets
 
-### Exporting properties as CSV
+### Exporting properties as CSV or TSV
 
 CSV export is ideal for statistical analysis and data visualization in external tools:
 
@@ -17,22 +18,27 @@ CSV export is ideal for statistical analysis and data visualization in external 
 2. Click "ACTIONS"
 3. Select "Export CSV"
 4. Configure your export options:
+   * **File Format**: Choose between CSV (comma-separated) and TSV (tab-separated). CSV is the default.
    * **Property Export Options**: Choose to export all properties, only listed properties, or select specific properties
    * **Undefined Value Handling**: Decide how to represent missing values (Empty string, NA, or NaN)
 5. Review the preview of columns that will be included
 6. Enter a filename
 7. Click "DOWNLOAD"
 
-The resulting CSV file contains:
+The resulting file contains:
 
 * Object identifiers and metadata (Id, Channel, XYZ coordinates, Time)
 * Object tags and attributes
 * All selected property values
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="563"><figcaption><p>The CSV export dialog allows you to customize exactly which properties to include and how to handle missing values</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="563"><figcaption><p>The export dialog allows you to customize the file format, which properties to include, and how to handle missing values</p></figcaption></figure>
 
 {% hint style="info" %}
 We recommend using the empty string option for undefined values, because it is generally recognized by most analysis software.
+{% endhint %}
+
+{% hint style="info" %}
+If your property names contain commas (from older tag-based naming), the export dialog will display a warning recommending TSV format. TSV avoids column misalignment issues that commas in property names can cause in CSV files. Property names with commas are automatically quoted in CSV exports, but TSV is the more reliable option.
 {% endhint %}
 
 ### Exporting complete annotation data as JSON
