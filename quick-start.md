@@ -76,3 +76,7 @@ Use Snapshots to take a visual bookmark of your data to capture and document tha
 
 Export your data to a CSV file, ready to import to Excel, R, Python, or whatever analysis tool you like!\
 ![](<.gitbook/assets/image (17).png>)
+
+## Questions and support
+
+Have a question or need help? Post on the [Image.sc forum](https://forum.image.sc/) using the tag `#nimbusimage`. It's the best place to get help from the community and the development team.
