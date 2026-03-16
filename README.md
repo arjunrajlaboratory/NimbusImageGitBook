@@ -26,6 +26,10 @@ NimbusImage has a slightly different approach to image analysis than other tools
 
 NimbusImage has been developed by the lab of Arjun Raj at the University of Pennsylvania, a Professor in the Department of Bioengineering and the Department of Genetics (major contributions from William Niu) in collaboration with [Kitware](https://www.kitware.com/), a company whose mission is to make open-source platforms for science; Kitware is the maker of [ITK](https://itk.org/) and [Girder](https://github.com/girder/girder).
 
+### Questions and support
+
+Have a question about NimbusImage? We encourage you to post on the [Image.sc forum](https://forum.image.sc/) using the tag `#nimbusimage`. Image.sc is the community forum for scientific image analysis, and it's the best place to get help, share tips, and connect with other users.
+
 <br>
 
 <br>
