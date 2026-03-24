@@ -129,16 +129,39 @@ Dataset owners always retain full access and cannot be removed from the access l
 
 ### Making a dataset public
 
-You can make a dataset publicly accessible so that **anyone with the link can view it, even without a NimbusImage account**. This is useful for sharing data with the broader community or for publications.
+You can make a dataset publicly accessible so that **anyone with the link can view it, even without a NimbusImage account**. This is useful for sharing data with collaborators who don't have accounts, for publications, or for sharing with the broader community.
 
 To make a dataset public:
 
-1. Open the sharing dialog for the dataset
-2. Toggle the "Public" checkbox
-3. The dataset is now accessible to anyone with the direct link
+1. **Open the dataset** in the viewer
+2. **Click the Share button** (the `<` icon next to the dataset name) to open the Share Dataset dialog
+
+<div align="left"><figure><img src="../../.gitbook/assets/image2.png" alt="" width="350"><figcaption><p>The Share button next to the dataset name</p></figcaption></figure></div>
+
+3. **Check the "Make Public" checkbox** — labeled "Make Public (read-only access for everyone)"
+
+<div align="left"><figure><img src="../../.gitbook/assets/image1.png" alt="" width="500"><figcaption><p>The Share Dataset dialog with the Make Public option</p></figcaption></figure></div>
+
+4. **Copy the URL** from your browser's address bar — this is the shareable link
+
+To share the dataset, simply send this URL to anyone. When they open it, they will be able to view the dataset directly in the NimbusImage viewer without needing to log in or create an account.
+
+{% hint style="info" %}
+The shareable link is the same URL you see when viewing the dataset (the datasetView route). There is no separate "share link" to generate — just copy the URL from your browser and send it.
+{% endhint %}
+
+#### What public viewers can see and do
+
+Public viewers have **read-only access** to the dataset. They can:
+
+* View the image data, navigate through Z-stacks, positions, and channels
+* See any existing annotations (objects, connections, and properties)
+* View snapshots
+
+Public viewers **cannot** modify annotations, run analysis tools, or change any settings. Only users you have explicitly granted Edit access can make changes.
 
 {% hint style="warning" %}
-Public datasets are viewable by anyone with the link. They will have read-only access—only users you've explicitly granted Edit access can modify the data.
+Making a dataset public means anyone with the link can view it. You can revoke public access at any time by unchecking "Make Public" in the sharing dialog.
 {% endhint %}
 
 ### Important considerations
