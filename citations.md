@@ -2,6 +2,12 @@
 
 NimbusImage depends on countless contributions from scientists and engineers around the world. If you use NimbusImage, we recommend you cite the NimbusImage paper as well as the relevant papers for the underlying tools to recognize these efforts.
 
+## NimbusImage
+
+If you use NimbusImage, please cite:
+
+Niu, Z., Bruyère, T., Manthey, D., Li, J., O'Farrell, A., & Raj, A. (2026). [NimbusImage: a cloud-computing platform for image analysis.](https://doi.org/10.1038/s41592-025-02942-6) _Nature Methods, 23_(1), 6-8. PMID: 41266644.
+
 ## How to acknowledge NimbusImage and related software
 
 We recommend including text along the following lines in your papers:
@@ -13,12 +19,6 @@ We recommend including text along the following lines in your papers:
 > [https://www.nimbusimage.com/](https://www.nimbusimage.com/)
 >
 > We used the Cellpose and Cellpose retrain tools (2-5) to detect cells and the Piscis and Piscis retrain tools (6) to detect mRNA spots. We connected each mRNA spot to the nearest cell using the "Connect to nearest tool" as described in the NimbusImage documentation.
-
-## NimbusImage
-
-If you use NimbusImage, please cite:
-
-Niu, Z., Bruyère, T., Manthey, D., Li, J., O'Farrell, A., & Raj, A. (2026). [NimbusImage: a cloud-computing platform for image analysis.](https://doi.org/10.1038/s41592-025-02942-6) _Nature Methods, 23_(1), 6-8. PMID: 41266644.
 
 ## Citations
 
@@ -33,11 +33,11 @@ Here are the papers:\
 \
 1\. Stringer, C., Wang, T., Michaelos, M., & Pachitariu, M. (2021). [Cellpose: a generalist algorithm for cellular segmentation.](https://www.nature.com/articles/s41592-020-01018-x) _Nature methods, 18_(1), 100-106.\
 \
-Pachitariu, M. & Stringer, C. (2022). [Cellpose 2.0: how to train your own model.](https://www.nature.com/articles/s41592-022-01663-4) _Nature methods_, 1-8.\
+2\. Pachitariu, M. & Stringer, C. (2022). [Cellpose 2.0: how to train your own model.](https://www.nature.com/articles/s41592-022-01663-4) _Nature methods_, 1-8.\
 \
-Stringer, C. & Pachitariu, M. (2025). [Cellpose3: one-click image restoration for improved segmentation.](https://www.nature.com/articles/s41592-025-02595-5) _Nature Methods_.\
+3\. Stringer, C. & Pachitariu, M. (2025). [Cellpose3: one-click image restoration for improved segmentation.](https://www.nature.com/articles/s41592-025-02595-5) _Nature Methods_.\
 \
-Pachitariu, M., Rariden, M., & Stringer, C. (2025). [Cellpose-SAM: superhuman generalization for cellular segmentation.](https://doi.org/10.1101/2025.04.28.651001) _bioRxiv_ 2025.04.28.651001.
+4\. Pachitariu, M., Rariden, M., & Stringer, C. (2025). [Cellpose-SAM: superhuman generalization for cellular segmentation.](https://doi.org/10.1101/2025.04.28.651001) _bioRxiv_ 2025.04.28.651001.
 
 ### StarDist
 
@@ -74,7 +74,7 @@ Here is the GitHub repository:
 
 Here is the paper:  
 
-Niu, Z., O'Farrell, A., Li, J., Reffsin, S., Jain, N., Dardani, I., Goyal, Y., & Raj, A. (2025). [Piscis: a novel loss estimator of the F1 score enables accurate spot detection in fluorescence microscopy images via deep learning.](https://doi.org/10.1101/2024.01.31.578123) _bioRxiv_, 2024.01.31.578123.
+Niu, Z., O'Farrell, A., Li, J., Reffsin, S., Jain, N., Dardani, I., Goyal, Y., & Raj, A. (2025). [Piscis: A loss estimator of the F1 score enables accurate spot detection in fluorescence microscopy images via deep learning.](https://doi.org/10.1016/j.cels.2025.101448) _Cell Systems, 16_(11), 101448. PMID: 41265398.
 
 
 ### CondensateNet
