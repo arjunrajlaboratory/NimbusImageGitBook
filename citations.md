@@ -1,18 +1,24 @@
 # Citations
 
-NimbusImage depends on countless contributions from scientists and engineers around the world. If you use NimbusImage, we recommend you cite the relevant papers to recognize these efforts. We also hope to publish a paper soon that you can cite for the use of NimbusImage itself.
+NimbusImage depends on countless contributions from scientists and engineers around the world. If you use NimbusImage, we recommend you cite the NimbusImage paper as well as the relevant papers for the underlying tools to recognize these efforts.
 
 ## How to acknowledge NimbusImage and related software
 
 We recommend including text along the following lines in your papers:
 
-> We analyzed our image datasets using the NimbusImage platform, which is available here:\
+> We analyzed our image datasets using the NimbusImage platform (1), which is available here:\
 > [https://github.com/arjunrajlaboratory/NimbusImage/](https://github.com/arjunrajlaboratory/NimbusImage/)\
 > and hosted here:
 >
 > [https://www.nimbusimage.com/](https://www.nimbusimage.com/)
 >
-> We used the Cellpose and Cellpose retrain tools (1-3) to detect cells and the Piscis and Piscis retrain tools (4) to detect mRNA spots. We connected each mRNA spot to the nearest cell using the "Connect to nearest tool" as described in the NimbusImage documentation.
+> We used the Cellpose and Cellpose retrain tools (2-5) to detect cells and the Piscis and Piscis retrain tools (6) to detect mRNA spots. We connected each mRNA spot to the nearest cell using the "Connect to nearest tool" as described in the NimbusImage documentation.
+
+## NimbusImage
+
+If you use NimbusImage, please cite:
+
+Niu, Z., Bruyère, T., Manthey, D., Li, J., O'Farrell, A., & Raj, A. (2026). [NimbusImage: a cloud-computing platform for image analysis.](https://doi.org/10.1038/s41592-025-02942-6) _Nature Methods, 23_(1), 6-8. PMID: 41266644.
 
 ## Citations
 
