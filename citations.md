@@ -95,7 +95,7 @@ Here is the GitHub repository:
 
 Here is the paper:
 
-Wernersson, E. (2024). [deconwolf — Large deconvolution with GPU or CPU.](https://doi.org/10.1016/j.softx.2024.101747) _SoftwareX_, 27, 101747.
+Wernersson, E., Gelali, E., Girelli, G., et al. (2024). [Deconwolf enables high-performance deconvolution of widefield fluorescence microscopy images.](https://doi.org/10.1038/s41592-024-02294-7) _Nature Methods, 21_, 1245–1256.
 
 ## Packages
 
