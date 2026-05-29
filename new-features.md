@@ -2,17 +2,68 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## May 2026
+
+**"Mine only" dataset filter** — Filter the Recent Datasets list on the home page to show only datasets you own.
+
+**Fine slider adjustment** — Hold Shift while dragging the XY, Z, or Time slider to scrub through values more precisely.
+
+**Single-file bulk export** — Bulk JSON export now downloads all datasets together as one ZIP archive, requiring just a single save dialog.
+
+**Collection navigator for import** — A streamlined navigator makes it easier to find and select a compatible collection when adding a dataset to an existing one.
+
+**Move files in the file manager** — The Move action opens a location chooser again, letting you reorganize files and folders.
+
+**Improved viewer responsiveness** — Reduced rendering overhead on the image canvas for smoother interactions.
+
+#### Bug fixes
+
+* Fixed memory leaks when switching between datasets.
+* Fixed checkboxes that could not be selected in some tool configuration panels.
+* Fixed drag-and-drop uploads not working on the dataset drop zone.
+* Fixed worker progress bar text being clipped.
+
+## April 2026
+
+### Publish projects to Zenodo
+
+Archive an entire project—image files, annotations, and metadata—directly to Zenodo for a permanent, citable DOI, helping you meet data-sharing and archiving requirements. Configure a Zenodo API token, upload your project as a draft, review it on Zenodo, then publish to mint a DOI. You can upload new versions later while keeping a single citable identifier.
+
+### Refreshed interface
+
+NimbusImage has a refreshed look built on a new dark theme with layered surfaces and updated typography, along with a new light theme.
+
+**Full-screen file browser** — Expand the Browse panel to fill the page, hiding the upload and recents panels so you can navigate large folder structures more easily. Your preference is remembered.
+
+**Copy link button** — Copy a shareable link to a dataset or other resource with a single click.
+
+#### Bug fixes
+
+* Fixed a server error that could occur when importing certain datasets.
+* Fixed recent datasets not refreshing on the home page after changes.
+* Fixed multi-file uploads misreading filenames that don't use a separator between variables.
+
 ## March 2026
 
 ### Few-shot segmentation with SAM
 
 Use a few example annotations to automatically find and segment similar objects across your image. Two model options are available: SAM1 (ViT-H) for higher quality results and SAM2 (Base+) for faster processing.
 
+### Python API for programmatic access
+
+Access NimbusImage from Python with the new `nimbusimage` package. Connect to a dataset and work with its images, annotations, connections, properties, and exports in code—useful for scripting custom analysis and automating workflows.
+
 **TSV export support** — Export your annotation data as tab-separated values (TSV) in addition to CSV. A format toggle in the export dialog lets you switch between CSV and TSV. TSV is recommended when property names contain commas, and the dialog will warn you when this is the case.
 
 **Increased batch dataset limit** — Automated annotation workers can now be applied to up to 50 datasets in a collection at once, up from 10.
 
 **Side panels push content** — The object list, snapshots, and settings panels now push the image viewport to the side instead of overlaying it, so you can see your image and panel contents at the same time. Panels also stay open when interacting with the image.
+
+**Bulk CSV export** — Export annotations for every dataset in a collection as CSV files in one step, alongside the existing bulk JSON export.
+
+**Faster annotation rendering** — Performance improvements to annotation drawing, store operations, and drag-select make working with many objects more responsive.
+
+**CondensateNet model versions** — Choose between CondensateNet model versions (including a new default) from a dropdown when running the condensate segmentation worker.
 
 #### Bug fixes
 
@@ -24,6 +75,7 @@ Use a few example annotations to automatically find and segment similar objects 
 * Fixed tooltips on dataset info collection buttons rendering as a narrow vertical stripe.
 * Fixed upload progress bar stuck at "0 B / 0 B".
 * Fixed login form not appearing on the home page.
+* Fixed an occasional race condition that could cause annotation data to load incorrectly.
 
 ## February 2026
 
