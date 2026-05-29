@@ -47,6 +47,10 @@ Your token is stored encrypted on the NimbusImage server—it is never exposed i
 
 ## Step 3: Upload the project
 
+Once a token is configured, the **Zenodo Publication** card shows a green confirmation and an **Upload to Zenodo** button.
+
+<figure><img src="../../.gitbook/assets/zenodo-publication-card.png" alt="The Zenodo Publication card showing a configured token, a Change Token button, and the Upload to Zenodo button"><figcaption></figcaption></figure>
+
 1. Make sure your project's publication metadata is filled in—**title, description, license, keywords, and authors**. NimbusImage maps these fields onto the Zenodo record.
 2. On the **Zenodo Publication** card, click **Upload to Zenodo**.
 3. A progress bar tracks the upload. Large projects can take several minutes; you can navigate away and come back, and the upload will continue in the background.
