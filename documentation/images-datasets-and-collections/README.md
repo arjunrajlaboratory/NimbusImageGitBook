@@ -45,10 +45,12 @@ Key features of projects:
 
 * Group multiple datasets and collections into a single organizational unit
 * Add publication metadata including title, description, license, keywords, authors, and DOI
-* Prepare datasets for future export to repositories like Zenodo
+* Publish an entire project—image files, annotations, and metadata—directly to [Zenodo](publishing-to-zenodo.md) for permanent archiving with a citable DOI
 * Track project status (draft, exporting, exported)
 
 Projects exist as organizational containers that reference your datasets and collections—the underlying data stays where it is, but projects give you a unified way to manage and eventually share a complete body of work.
+
+When you're ready to archive and share a project, see [Publishing to Zenodo](publishing-to-zenodo.md).
 
 ## Uploading a dataset
 
