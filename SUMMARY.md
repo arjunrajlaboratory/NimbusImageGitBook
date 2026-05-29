@@ -12,6 +12,7 @@
 * [Images, datasets, and collections](documentation/images-datasets-and-collections/README.md)
   * [File formats](documentation/images-datasets-and-collections/file-formats.md)
   * [Managing files](documentation/images-datasets-and-collections/managing-files.md)
+  * [Publishing to Zenodo](documentation/images-datasets-and-collections/publishing-to-zenodo.md)
 * [Viewing your image dataset](documentation/viewing-your-data.md)
 * [Analyzing image data with objects, connections, and properties](documentation/analyzing-image-data-with-objects-connections-and-properties/README.md)
   * [Tools for making objects](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md)
