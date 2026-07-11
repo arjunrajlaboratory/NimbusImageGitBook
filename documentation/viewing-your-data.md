@@ -50,7 +50,7 @@ This feature is especially useful if you work with the same types of channels re
 
 In addition to the standard 2D viewer, NimbusImage can render your dataset as an interactive 3D volume directly in your browser. This is useful for exploring Z-stacks and for viewing time lapses as volumes. Toggle between the 2D and 3D views using the control in the top app bar.
 
-<figure><img src="../.gitbook/assets/3d-volume-visualization.png" alt=""><figcaption><p>The 3D volume view, with the scaled bounding box and orientation controls along the bottom</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/3d-volume-visualization.png" alt=""><figcaption><p>A time lapse rendered in 3D with Time mapped to the depth axis: each green streak is a nucleus tracing its path (a "worldline") over time. The scaled bounding box and 3D controls run along the edges.</p></figcaption></figure>
 
 ### Volume rendering
 
