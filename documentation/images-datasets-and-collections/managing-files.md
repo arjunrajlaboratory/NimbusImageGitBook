@@ -43,6 +43,15 @@ If you need more control over how your data is organized and processed, use Adva
 * Specify collection placement
 * Adjust transcoding settings
 
+### Uploading a folder
+
+You can upload an entire folder at once instead of selecting files individually:
+
+* **Drag and drop a folder** onto the upload area. Every file inside is collected, including files in nested subfolders.
+* **Click "Upload a folder"** (or "Select a folder instead") to open a folder picker.
+
+All of the folder's files are flattened into the dataset — the subfolder structure itself isn't preserved — which matches how NimbusImage builds a multi-file dataset. Files are added in natural, numeric-aware name order, so image sequences like `frame1`, `frame2`, … `frame10` are ordered correctly.
+
 ## File organization
 
 ### Storage locations

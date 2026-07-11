@@ -120,6 +120,13 @@ GeoJS is a JavaScript library for visualizing geospatial data in a browser, deve
 Here is the GitHub repository:  
 [https://github.com/OpenGeoscience/geojs](https://github.com/OpenGeoscience/geojs)
 
+### VTK.js
+
+VTK.js is an open-source JavaScript library for scientific visualization in the browser, developed by Kitware. NimbusImage uses VTK.js to power its interactive 3D volume visualization, rendering multi-channel volumes and 3D segmentations directly in the browser.
+
+Here is the GitHub repository:  
+[https://github.com/Kitware/vtk-js](https://github.com/Kitware/vtk-js)
+
 ### DeepTile
 
 DeepTile is a large image tiling and stitching library developed by the Arjun Raj Laboratory. It provides a standardized workflow for splitting large images into tiles of a specified size, processing tiles using regular Python functions, and stitching the processed tiles. DeepTile is especially useful for scaling Python functions and deep learning algorithms to arbitrarily large input image sizes.

@@ -8,6 +8,10 @@ The way to create and edit objects is through the use of **tools**. Tools are de
 
 **Automated tools.** NimbusImage has been designed to allow the use of automated algorithms for finding things like cells and points in your images, often using the latest deep learning methods. For instance, you can set up an automated tool to use Cellpose to find cells within your images. These tools often have specific parameters that you can use to obtain optimal results.
 
+## AI-suggested tools
+
+When you open a freshly created collection that doesn't have any tools yet, NimbusImage can suggest a starting set of tools for you. It looks at your image and its channel names and proposes relevant tools — for example, Cellpose-SAM for nuclei, a manual blob tool for cells, or Piscis for spots — in a floating panel. Review the suggestions and click to add the ones you want. You can always add, remove, or reconfigure tools yourself afterward.
+
 ## Manual blob/point/line/rectangle tools
 
 Manual blob/point/line/rectangle tools are the most basic tools in NimbusImage. Set it up by clicking on "Add New Tool" and choosing "Manual Blob", "Manual Point", "Manual Line", or "Manual Rectangle". Set the tag, and then you can use it to create objects in your image. You can use the same tag for multiple tools. For instance, you can use an automated cell finding tool and then add more cells using the manual tool, and they will be all treated the same for downstream analysis.
@@ -32,6 +36,34 @@ Once encoded, just move your mouse over the image and it will outline what the o
 {% hint style="info" %}
 Segment Anything "sees" what you see in the image. Adjust the contrast and zoom to make objects visible and of a size that is around 5-15% of the size of the image for best results.
 {% endhint %}
+
+## Segment similar objects (experimental)
+
+The "Segment similar objects" tool lets you mark a few example objects and then automatically find and segment other, similar objects across the current view. It's designed for cases where objects share a consistent appearance but would be tedious to click one by one.
+
+{% hint style="warning" %}
+This tool is **experimental** and currently requires **Google Chrome with WebGPU** support. It operates on the current viewport only.
+{% endhint %}
+
+### How to use
+
+1. **Add the "Segment similar objects" tool** from the tool menu.
+2. **Mark a few examples** using whichever selection method you prefer:
+   * **SAM click**: Click on an example object (Segment Anything outlines it).
+   * **SAM box**: Drag a box around an example object.
+   * **Freehand circle**: Circle an example object by hand.
+3. **Choose how to find matches**:
+   * **SAM similarity**: Scores candidate regions by how similar they are to your examples in the Segment Anything model's feature space.
+   * **Classifier**: Trains a lightweight random-forest classifier, in your browser, on the example objects.
+   * **SAM → Classifier**: Runs SAM similarity first, then trains the classifier on everything SAM found, combining both approaches.
+4. **Review the putative results.** Matches appear as outlines, and an info panel shows how many were found.
+5. **Accept** to commit the results in bulk. Accepted objects are deduplicated against any annotations that already exist.
+
+{% hint style="info" %}
+Because both propagation methods draw on the same set of examples, you can mix and match how you select examples with how they're applied — for instance, select with SAM clicks but propagate with the classifier.
+{% endhint %}
+
+Plain dragging pans the image as usual; hold Shift to select, matching the behavior of the Segment Anything tool.
 
 ## Edit objects
 
