@@ -2,6 +2,46 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## July 2026
+
+### Line scan intensity profiles
+
+Draw a line across your image and see a live plot of raw pixel intensity along it, with one trace per channel — without creating any stored annotations. Choose freehand mode (drag) or segment mode (two clicks), and optionally restrict the plot to a single channel. Useful for inspecting signal profiles, comparing channels, and locating edges and peaks.
+
+### Segment similar objects (experimental)
+
+Mark a few example objects and automatically find similar ones across the current view. Pick examples with a SAM click, a SAM box, or a freehand circle, then propagate them using SAM-embedding similarity, an in-browser random-forest classifier, or a chained "SAM → Classifier" mode. Putative matches appear as outlines that you can accept in bulk. This tool is experimental and currently requires Google Chrome with WebGPU.
+
+**Folder upload** — Upload an entire folder at once. Drag a folder onto the upload area (nested subfolders included) or click "Upload a folder" to pick one; all of its files are collected into the dataset.
+
+**AI-suggested tools** — When you open a freshly created, empty collection, NimbusImage can suggest a starting set of analysis tools based on your image and its channel names (for example, Cellpose-SAM for nuclei or Piscis for spots). Accept the ones you want with a click.
+
+**Improved 3D annotation rendering** — Segmentations in the 3D viewer now render as smooth, shaded surfaces lofted across Z-slices, points appear as spheres, and an opacity slider lets you see the volume data through the surfaces.
+
+**Faster AI segmentation** — Segment Anything (SAM) model loading and image encoding are noticeably faster.
+
+**Consistent workspace design** — The refreshed dataset-view design language now extends across the rest of the app.
+
+#### Bug fixes
+
+* Fixed a race condition that could cause the Segment Anything model to fail to initialize.
+
+## June 2026
+
+### 3D volume visualization
+
+View your dataset as an interactive 3D volume, rendered directly in your browser. Toggle between the 2D and 3D views from the top app bar. Each channel is volume-rendered using its existing color and contrast, with a choice of Composite or Maximum Intensity Projection (MIP) blend modes. Polygon segmentations appear as 3D objects colored by tag or by a computed property, and you can map either Z or Time to the depth axis — turning a time lapse into a volume where moving objects trace out continuous paths ("worldlines"). Orientation aids include an XYZ gizmo and an optional scaled bounding box with tick labels. Large images are automatically downsampled to stay within memory and GPU limits.
+
+**More robust Python API** — The `nimbusimage` Python package now retries transient server errors, offers a stable cursor for iterating annotations safely while deleting them, validates conflicting compute arguments, and reports clearer permission errors when a job's session has expired.
+
+#### Bug fixes
+
+* Fixed polygon and line annotation outlines not rendering on all Z-slices.
+* Fixed downloaded snapshots using an incorrect scale bar size.
+* Fixed snapshot ZIP downloads nesting files inside extra folders.
+* Fixed stale snapshot selections persisting after the underlying data changed.
+* Fixed a duplicate filename when downloading an image together with its annotations.
+
 ## May 2026
 
 **"Mine only" dataset filter** — Filter the Recent Datasets list on the home page to show only datasets you own.
@@ -16,12 +56,18 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 **Improved viewer responsiveness** — Reduced rendering overhead on the image canvas for smoother interactions.
 
+**Modular dataset workspace** — The dataset view has been refreshed into a modular workspace: your image fills the screen as the focus, while the Navigator, Layers, Tools, and other panels become floating, translucent palettes you can toggle and rearrange. Worker tools now open in a dialog that keeps the image visible behind it.
+
+**Stay logged in across reloads** — Reloading the page no longer returns you to the login screen; your session now persists reliably.
+
 #### Bug fixes
 
 * Fixed memory leaks when switching between datasets.
 * Fixed checkboxes that could not be selected in some tool configuration panels.
 * Fixed drag-and-drop uploads not working on the dataset drop zone.
 * Fixed worker progress bar text being clipped.
+* Fixed live notifications (such as job progress updates) stopping after a short period of inactivity.
+* Fixed a crash when opening the log for a job that had no arguments.
 
 ## April 2026
 
