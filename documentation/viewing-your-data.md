@@ -50,6 +50,8 @@ This feature is especially useful if you work with the same types of channels re
 
 In addition to the standard 2D viewer, NimbusImage can render your dataset as an interactive 3D volume directly in your browser. This is useful for exploring Z-stacks and for viewing time lapses as volumes. Toggle between the 2D and 3D views using the control in the top app bar.
 
+<figure><img src="../.gitbook/assets/3d-volume-visualization.png" alt=""><figcaption><p>A time lapse rendered in 3D with Time mapped to the depth axis: each green streak is a nucleus tracing its path (a "worldline") over time. The scaled bounding box and 3D controls run along the edges.</p></figcaption></figure>
+
 ### Volume rendering
 
 Each layer is volume-rendered using the same color and contrast settings you use in the 2D viewer. Two blend modes are available:
@@ -86,6 +88,8 @@ Polygon annotations are rendered as 3D objects within the volume, colored either
 ## Line scan intensity profiles
 
 The line scan tool lets you draw a line across your image and immediately see a plot of raw pixel intensity along that line, without creating any stored annotations. This is handy for inspecting signal profiles, comparing channels, checking for colocalization, or locating edges and peaks.
+
+<figure><img src="../.gitbook/assets/line-scan-panel.png" alt=""><figcaption><p>A freehand line scan across several cells, with the live intensity profile for each channel shown at the bottom right</p></figcaption></figure>
 
 ### How to use
 

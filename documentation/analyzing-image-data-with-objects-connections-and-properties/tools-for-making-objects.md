@@ -45,19 +45,22 @@ The "Segment similar objects" tool lets you mark a few example objects and then 
 This tool is **experimental** and currently requires **Google Chrome with WebGPU** support. It operates on the current viewport only.
 {% endhint %}
 
+<figure><img src="../../.gitbook/assets/segment-similar-objects.png" alt=""><figcaption><p>The Segment similar objects panel, with controls for how examples are selected and how matches are found</p></figcaption></figure>
+
 ### How to use
 
-1. **Add the "Segment similar objects" tool** from the tool menu.
-2. **Mark a few examples** using whichever selection method you prefer:
-   * **SAM click**: Click on an example object (Segment Anything outlines it).
-   * **SAM box**: Drag a box around an example object.
-   * **Freehand circle**: Circle an example object by hand.
-3. **Choose how to find matches**:
-   * **SAM similarity**: Scores candidate regions by how similar they are to your examples in the Segment Anything model's feature space.
+1. **Add the "Segment similar objects" tool** from the tool menu. A control panel appears at the bottom right of the viewer.
+2. **Choose how to select examples** under **Select by**:
+   * **Click (SAM)**: Shift-click an example object and Segment Anything outlines it.
+   * **Box (SAM)**: Shift-drag a box around an example object.
+   * **Circle**: Circle an example object by hand.
+3. **Choose how to find matches** under **Find with**:
+   * **SAM**: Scores candidate regions by how similar they are to your examples in the Segment Anything model's feature space.
    * **Classifier**: Trains a lightweight random-forest classifier, in your browser, on the example objects.
-   * **SAM → Classifier**: Runs SAM similarity first, then trains the classifier on everything SAM found, combining both approaches.
-4. **Review the putative results.** Matches appear as outlines, and an info panel shows how many were found.
-5. **Accept** to commit the results in bulk. Accepted objects are deduplicated against any annotations that already exist.
+   * **SAM→Classifier**: Runs SAM first, then trains the classifier on everything SAM found, combining both approaches.
+4. **Mark a few examples.** Shift-click (or shift-drag/circle) the objects you want to match; shift-right-click marks background to exclude. The panel tracks how many examples and putative objects you currently have.
+5. **Review the putative results.** Matches appear as outlines across the current view.
+6. **Accept** to commit the results in bulk. Accepted objects are deduplicated against any annotations that already exist.
 
 {% hint style="info" %}
 Because both propagation methods draw on the same set of examples, you can mix and match how you select examples with how they're applied — for instance, select with SAM clicks but propagate with the classifier.
