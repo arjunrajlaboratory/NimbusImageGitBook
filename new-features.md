@@ -4,6 +4,10 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 ## July 2026
 
+### Visualize millions of annotations
+
+NimbusImage now stays responsive on very large annotation datasets — hundreds of thousands, or even millions, of objects (validated on spatial datasets with over 700,000 annotations). Annotations load lazily: lightweight "stubs" load first, and full shapes are fetched on demand for whatever is in your viewport, with the rest shown as dots. The object list switches to server-side filtering, sorting, and pagination for large datasets so it stays fast. This happens automatically, and power users can tune the behavior under **Settings → "Advanced settings for large numbers of annotations."** See [Working with large annotation datasets](documentation/analyzing-image-data-with-objects-connections-and-properties/large-annotation-datasets.md).
+
 ### Line scan intensity profiles
 
 Draw a line across your image and see a live plot of raw pixel intensity along it, with one trace per channel — without creating any stored annotations. Choose freehand mode (drag) or segment mode (two clicks), and optionally restrict the plot to a single channel. Useful for inspecting signal profiles, comparing channels, and locating edges and peaks.
