@@ -2,7 +2,7 @@
 
 The way to create and edit objects is through the use of **tools**. Tools are defined by the user and are customized (via tags) to flexible organization of the results without a lot of clicking. There are two general categories of tools, manual and automated.
 
-<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/add-tool-dialog.png" alt=""><figcaption><p>The "Add new tool" dialog, where tools are organized by category (manual object tools, Segment Anything, connections, line scans, and more)</p></figcaption></figure>
 
 **Manual tools.** Manual tools are often based on a primitive type, like a point, line, or blob, and is customized with tags and other features. For instance, you might make a tool for circling cells in your image. You would choose a manual blob creation tool, name it "Nucleus" and add the tag \[nucleus]. You could also add a hotkey. That tool gets added to your interface and you can use it to circle cells at any time.
 
@@ -11,6 +11,8 @@ The way to create and edit objects is through the use of **tools**. Tools are de
 ## AI-suggested tools
 
 When you open a freshly created collection that doesn't have any tools yet, NimbusImage can suggest a starting set of tools for you. It looks at your image and its channel names and proposes relevant tools — for example, Cellpose-SAM for nuclei, a manual blob tool for cells, or Piscis for spots — in a floating panel. Review the suggestions and click to add the ones you want. You can always add, remove, or reconfigure tools yourself afterward.
+
+<figure><img src="../../.gitbook/assets/ai-suggested-tools.png" alt=""><figcaption><p>The "Suggested tools" panel proposes tools based on your image — here, H&E Deconvolution and a Blob tool for a histology slide</p></figcaption></figure>
 
 ## Manual blob/point/line/rectangle tools
 

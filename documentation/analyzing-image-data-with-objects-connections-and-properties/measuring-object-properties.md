@@ -2,41 +2,23 @@
 
 Ultimately, most researchers want to extract numbers from their image data. These could correspond to fluorescent intensity across cells, or number of cells per colony, or density of filaments per region. NimbusImage allows you to make these computations easily by defining **properties**. A property (think: area) can be associated with an object and listed and exported for plotting and analysis. You can easily compute a lot of different properties using NimbusImage out of the box because of the flexibility that its tagging and connection system allows. For instance, if you want to find the count the number of spots connected to the basement membrane, that is easy to do with just a few clicks.
 
-First, click on Object List, then, in "Properties", click the blue "Measure Objects" button:
+First, open the **Object List** and click the blue **"Measure objects"** button. This brings up the Measure objects panel:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<figure><img src="../../.gitbook/assets/measure-objects-dialog.png" alt=""><figcaption><p>Create new properties on the left; the properties already computed for your objects are listed on the right</p></figcaption></figure>
 
-That brings up the Property window:
+In the **Create New Property** section, choose the **tag** of the objects you want to quantify (for example, `nucleus`) — or select a shape — and click **"Create Property"**. NimbusImage runs the appropriate property worker, and when it finishes the new measurements appear under **Object Properties** on the right (here, "nucleus Blob metrics", "nucleus Blob intensity measurements", and "nucleus Blob annulus intensity").
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+To display specific values, click **"Show in annotation list…"**, expand the property (e.g. "nucleus Blob metrics"), and check the metrics you want, such as **Area**:
 
-Choose the tag of the object you want to quantify:
+<div align="left"><figure><img src="../../.gitbook/assets/property-select-area.png" alt="" width="563"><figcaption><p>Choose which computed metrics to show in the annotation list</p></figcaption></figure></div>
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+The selected property now shows up as a column in the annotation list:
 
-Then choose the Algorithm, like "Blob metrics". It will bring up a list of options:
+<div align="left"><figure><img src="../../.gitbook/assets/property-list.png" alt="" width="563"><figcaption><p>The Area property listed alongside each object</p></figcaption></figure></div>
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+You can also press **"t"** while viewing the image to overlay the property values directly on the objects. When you're ready to analyze the numbers elsewhere, export them to a CSV (or TSV) from the **Import / export data** menu → **Export CSV**:
 
-Click "Create Property" and it will create and run the property worker. When done, it will look like this:
-
-<div align="left"><figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
-
-When you close the Property panel, it will open up the Properties pane. Click on "nucleus Blob metrics", then click on the Area checkbox:
-
-<div align="left"><figure><img src="../../.gitbook/assets/image (7) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
-
-Now your property will show up in the property list:
-
-<div align="left"><figure><img src="../../.gitbook/assets/image (8) (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
-
-If you push "t", it will show the values in the image itself:
-
-<div align="left"><figure><img src="../../.gitbook/assets/image (9) (1).png" alt="" width="375"><figcaption><p>After pushing "t", you can see the values on the image itself</p></figcaption></figure></div>
-
-These values can be exported into a CSV under "Objects" -> Actions -> Export CSV
-
-<div align="left"><figure><img src="../../.gitbook/assets/image (12).png" alt="" width="375"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/export-csv-dialog.png" alt="" width="500"><figcaption><p>The CSV export dialog lets you choose scope, format, which properties to include, and how to handle missing values</p></figcaption></figure></div>
 
 ## Blob metrics (area, perimeter, etc.)
 

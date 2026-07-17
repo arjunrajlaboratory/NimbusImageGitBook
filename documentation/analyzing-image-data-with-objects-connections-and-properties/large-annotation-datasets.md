@@ -2,6 +2,8 @@
 
 NimbusImage can visualize very large annotation datasets — hundreds of thousands, or even millions, of objects — while staying responsive. This is especially useful for spatial data (for example, Xenium datasets with hundreds of thousands of cells).
 
+<figure><img src="../../.gitbook/assets/large-annotations-view.png" alt=""><figcaption><p>A Xenium H&#x26;E slide with nearly 709,000 cell annotations. The indicator at the top ("Showing 15,900 of 708,780 in view") reflects the lazy-loading described below — only a subset is drawn at a time to keep navigation smooth.</p></figcaption></figure>
+
 {% hint style="info" %}
 This works automatically. You don't need to turn anything on: NimbusImage detects when a dataset is large and switches to the lazy-loading behavior described below. Smaller datasets behave exactly as before, loading every object fully at every zoom level.
 {% endhint %}

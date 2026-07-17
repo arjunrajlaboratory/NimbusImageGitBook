@@ -26,7 +26,7 @@ The selection tool is particularly useful for cleaning up results from automated
 
 The Object Browser provides powerful tools for managing which objects are visible in your view:
 
-<figure><img src="../../.gitbook/assets/image (33).png" alt="" width="563"><figcaption><p>Object browser shows options for showing and hiding particular tags</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/filters-panel.png" alt="" width="563"><figcaption><p>The Filters panel shows options for showing and hiding particular tags, plus property-value and advanced filters</p></figcaption></figure>
 
 Key features include:
 
@@ -49,7 +49,7 @@ These filters can be combined to precisely target objects meeting multiple crite
 
 The Annotation List provides a detailed tabular view of all objects in your dataset:
 
-<figure><img src="../../.gitbook/assets/image (34).png" alt="" width="563"><figcaption><p>The annotation list shows all your objects</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/annotation-list.png" alt="" width="563"><figcaption><p>The annotation list shows all your objects</p></figcaption></figure>
 
 The list offers several useful features:
 
@@ -67,7 +67,7 @@ For very large datasets (hundreds of thousands of objects or more), NimbusImage 
 
 Properties allow you to measure features of your objects. These measurements can be displayed alongside your objects and used for filtering:
 
-<figure><img src="../../.gitbook/assets/image (36).png" alt="" width="563"><figcaption><p>Properties panel showing available measurements for nucleus objects</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/measure-objects-dialog.png" alt=""><figcaption><p>The Measure objects panel: create new properties on the left, and manage the properties already computed for your objects on the right</p></figcaption></figure>
 
 From the Properties panel, you can:
 

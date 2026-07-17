@@ -4,7 +4,7 @@
 
 NimbusImage provides a powerful file management system that helps you organize your datasets, collections, and other files. The interface is designed to be intuitive while giving you full control over your data organization.
 
-<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/landing-screen.png" alt=""><figcaption></figcaption></figure>
 
 ## The landing screen
 
@@ -43,6 +43,8 @@ If you need more control over how your data is organized and processed, use Adva
 * Specify collection placement
 * Adjust transcoding settings
 
+<figure><img src="../../.gitbook/assets/advanced-upload.png" alt=""><figcaption><p>The Advanced Import screen, where you can review the selected files, name the dataset, choose a location, and add more files or a whole folder before importing</p></figcaption></figure>
+
 ### Uploading a folder
 
 You can upload an entire folder at once instead of selecting files individually:
@@ -62,7 +64,7 @@ NimbusImage provides specific locations for storing your datasets and files:
 * **Public folder**: Accessible to everyone using the system
 * **Team folder**: (NimbusImage.com specific) Shared only with members of your team
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (2) (1).png" alt="" width="260"><figcaption><p>Private and public folders</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/private-public-folders.png" alt="" width="260"><figcaption><p>Private and public folders</p></figcaption></figure></div>
 
 {% hint style="info" %}
 By default, Quick Upload will place your dataset in your Private folder. This ensures your data remains private until you choose to share it.
@@ -82,7 +84,7 @@ To organize your datasets, you can create folders within these storage locations
 
 You can perform several operations on your files and datasets:
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (30).png" alt="" width="335"><figcaption><p>Actions on files and datasets</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/file-action-menu.png" alt="" width="335"><figcaption><p>Actions on files and datasets</p></figcaption></figure></div>
 
 * **Move**: Relocate files to a different folder
 * **Delete**: Remove files or datasets
@@ -91,7 +93,7 @@ You can perform several operations on your files and datasets:
 
 ### Working with multiple files
 
-<figure><img src="../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/multiselect-files.png" alt=""><figcaption></figcaption></figure>
 
 To operate on multiple files at once:
 
@@ -203,7 +205,7 @@ If you're using NimbusImage.com and are part of a team, you can access team-spec
 
 <div align="left"><figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="" width="282"><figcaption><p>Selected items actions menu</p></figcaption></figure></div>
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (3) (1).png" alt="" width="128"><figcaption><p>File action menu</p></figcaption></figure></div>
+<div align="left"><figure><img src="../../.gitbook/assets/file-action-menu.png" alt="" width="128"><figcaption><p>File action menu</p></figcaption></figure></div>
 
 {% hint style="info" %}
 Team folders provide a convenient way to collaborate on datasets while keeping them separate from your personal files and fully public content.
