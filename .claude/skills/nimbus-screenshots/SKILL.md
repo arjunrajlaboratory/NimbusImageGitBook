@@ -1,3 +1,16 @@
+---
+name: nimbus-screenshots
+description: >
+  Capture documentation screenshots of the NimbusImage app using the
+  chrome-devtools MCP — it renders the WebGL viewer, is authenticated to the
+  local dev server, and writes retina PNGs you crop and commit to .gitbook/assets.
+  Use when taking, refreshing, or updating screenshots of the NimbusImage
+  interface for the GitBook docs.
+when_to_use: |
+  Trigger phrases: "take screenshots", "refresh screenshots", "update the
+  screenshots", "screenshot the NimbusImage UI", "capture the interface".
+---
+
 # NimbusImage Screenshot Automation (chrome-devtools MCP)
 
 Take documentation screenshots of NimbusImage using the **chrome-devtools MCP**

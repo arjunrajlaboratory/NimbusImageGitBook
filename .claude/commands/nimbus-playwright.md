@@ -2,7 +2,7 @@
 
 > **Recommended:** For NimbusImage the viewer renders images with WebGL, which
 > screenshots as black unless a real, focused browser window paints it. Use the
-> **chrome-devtools MCP** workflow in [`nimbus-screenshots.md`](nimbus-screenshots.md)
+> **chrome-devtools MCP** workflow in the [`nimbus-screenshots`](../skills/nimbus-screenshots/SKILL.md) skill
 > — it renders WebGL, is authenticated to `localhost:5173`, and writes real
 > retina PNG files. A fresh Playwright context (below) is **not logged in**, so
 > datasets won't load. The highlighting / arrow / crop snippets below are still
