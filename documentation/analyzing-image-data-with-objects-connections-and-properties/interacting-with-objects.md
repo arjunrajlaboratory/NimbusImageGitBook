@@ -59,6 +59,10 @@ The list offers several useful features:
 * **Bulk actions** - Select multiple objects using the checkboxes and perform actions like deletion or tagging
 * **Pagination** - For datasets with many objects, navigate through pages with the pagination controls
 
+{% hint style="info" %}
+For very large datasets (hundreds of thousands of objects or more), NimbusImage loads annotations lazily and handles the list on the server so everything stays responsive. See [Working with large annotation datasets](large-annotation-datasets.md).
+{% endhint %}
+
 ## Working with properties
 
 Properties allow you to measure features of your objects. These measurements can be displayed alongside your objects and used for filtering:

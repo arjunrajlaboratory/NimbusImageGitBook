@@ -19,6 +19,7 @@
   * [Tools for connecting objects](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-connecting-objects.md)
   * [Measuring object properties](documentation/analyzing-image-data-with-objects-connections-and-properties/measuring-object-properties.md)
   * [Interacting with objects](documentation/analyzing-image-data-with-objects-connections-and-properties/interacting-with-objects.md)
+  * [Working with large annotation datasets](documentation/analyzing-image-data-with-objects-connections-and-properties/large-annotation-datasets.md)
   * [Importing and exporting objects and properties](documentation/analyzing-image-data-with-objects-connections-and-properties/importing-and-exporting-objects-and-properties.md)
 * [Image processing](documentation/image-processing.md)
 * [Snapshots](documentation/snapshots.md)
