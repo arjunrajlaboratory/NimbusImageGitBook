@@ -4,7 +4,7 @@ One of the main advantages of working in NimbusImage is the ability to directly 
 
 ## Selecting and manipulating objects
 
-<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption><p>Image with a bunch of green blob objects</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/blobs-on-image.png" alt=""><figcaption><p>Green blob objects drawn on an image</p></figcaption></figure>
 
 To interact with objects in your dataset:
 

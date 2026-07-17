@@ -48,7 +48,7 @@ Click **"Add new tool"** in the Tools panel to bring up the tool menu. You can c
 
 For instance, make a blob tool and draw some blobs like this:
 
-<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/blobs-on-image.png" alt=""><figcaption></figcaption></figure>
 
 ## Analyze those objects
 
@@ -68,7 +68,7 @@ Then click "Create Property" to create and compute the property, and check the v
 
 **Use Snapshots** to take a visual bookmark of your data to capture and document that perfect picture for your paper or talk.
 
-<figure><img src=".gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/snapshot-frame.png" alt=""><figcaption><p>Drag the red frame to bookmark a region as a Snapshot</p></figcaption></figure>
 
 Use Snapshots to take a visual bookmark of your data to capture and document that perfect picture for your paper or talk.
 
