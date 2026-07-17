@@ -1,5 +1,13 @@
 # NimbusImage Screenshot Automation
 
+> **Recommended:** For NimbusImage the viewer renders images with WebGL, which
+> screenshots as black unless a real, focused browser window paints it. Use the
+> **chrome-devtools MCP** workflow in [`nimbus-screenshots.md`](nimbus-screenshots.md)
+> — it renders WebGL, is authenticated to `localhost:5173`, and writes real
+> retina PNG files. A fresh Playwright context (below) is **not logged in**, so
+> datasets won't load. The highlighting / arrow / crop snippets below are still
+> useful and tool-agnostic.
+
 Take screenshots of NimbusImage for documentation using Playwright MCP.
 
 ## Usage
