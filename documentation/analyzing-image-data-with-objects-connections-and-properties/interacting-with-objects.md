@@ -16,7 +16,7 @@ To interact with objects in your dataset:
   * **Color selected** - Apply custom colors to the selected objects
   * **Copy selected IDs** - Copy the object IDs to clipboard for reference
 
-<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption><p>Shift-drag allows you to select objects, revealing a popup menu to allow deletion, tagging, coloring, and identification by ID</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/selection-popup.png" alt=""><figcaption><p>Shift-drag allows you to select objects, revealing a popup menu to allow deletion, tagging, coloring, and identification by ID</p></figcaption></figure>
 
 {% hint style="info" %}
 The selection tool is particularly useful for cleaning up results from automated segmentation. You can quickly remove falsely identified objects or select groups of objects to apply a consistent tag.
