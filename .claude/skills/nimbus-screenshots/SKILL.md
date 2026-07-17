@@ -8,7 +8,8 @@ description: >
   interface for the GitBook docs.
 when_to_use: |
   Trigger phrases: "take screenshots", "refresh screenshots", "update the
-  screenshots", "screenshot the NimbusImage UI", "capture the interface".
+  screenshots", "the screenshots are stale/out of date", "audit the doc images",
+  "screenshot the NimbusImage UI", "capture the interface".
 ---
 
 # NimbusImage Screenshot Automation (chrome-devtools MCP)
@@ -17,6 +18,22 @@ Take documentation screenshots of NimbusImage using the **chrome-devtools MCP**
 (`mcp__plugin_chrome-devtools-mcp_chrome-devtools__*`). This is the recommended
 approach for NimbusImage because the viewer renders images with **WebGL**, which
 needs a real, visible browser window to paint.
+
+## Two modes
+
+- **Capture a screenshot** (one or a few shots) — use the mechanics below.
+- **Refresh stale screenshots across the docs** (systematic audit → recapture →
+  swap → verify → PR) — follow [`references/refresh-workflow.md`](references/refresh-workflow.md),
+  which uses these mechanics for each shot.
+
+Before any docs PR that touches images, run the reference checker:
+
+```bash
+python3 ${CLAUDE_SKILL_DIR}/scripts/check_doc_images.py   # 0 broken refs; also lists orphans
+```
+
+(`${CLAUDE_SKILL_DIR}` resolves to this skill's directory; or use the literal path
+`.claude/skills/nimbus-screenshots/scripts/check_doc_images.py` from the repo root.)
 
 ## Why chrome-devtools MCP (and not claude-in-chrome)
 
