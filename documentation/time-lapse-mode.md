@@ -10,14 +10,12 @@ Time lapse mode in NimbusImage provides powerful capabilities for tracking and a
 
 When working with time lapse datasets, the Time lapse mode option automatically becomes available in the interface:
 
-<div align="left"><figure><img src="../.gitbook/assets/image (22).png" alt="" width="314"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../.gitbook/assets/timelapse-mode-panel.png" alt="" width="314"><figcaption></figcaption></figure></div>
 
 1. Look for the "Time lapse mode" checkbox in the variable navigation panel
 2. Check the box to enable tracking visualization and special time lapse features
 
-When enabled, Time lapse mode shows additional options:
-
-<div align="left"><figure><img src="../.gitbook/assets/image (23).png" alt="" width="314"><figcaption></figcaption></figure></div>
+When enabled, Time lapse mode reveals additional options in the same panel (shown above): a **Track window** slider, a **Tags** filter, a **Show labels** toggle, and a **Delete all timelapse connections** button.
 
 ## Understanding tracks and connections
 
@@ -26,6 +24,8 @@ In Time lapse mode, objects are connected across time points to form "tracks" th
 ### Visualizing tracks
 
 Tracks appear as connected lines between objects across different time points:
+
+<figure><img src="../.gitbook/assets/timelapse-tracks.png" alt=""><figcaption><p>Two tracked cells at the current time point ("Curr T=9"), each linked back through earlier frames to its start ("T=1")</p></figcaption></figure>
 
 Key features of track visualization:
 

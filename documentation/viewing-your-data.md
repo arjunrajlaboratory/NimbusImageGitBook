@@ -8,7 +8,7 @@ Once your images are loaded into NimbusImage, you can interact with it through t
 * **"Unrolling" of variables** to show montages
 *   **Overview "minimap".** Drag around the square to navigate; shift-click-drag to directly go to a location.
 
-    <figure><img src="../.gitbook/assets/image (6) (1) (1) (1).png" alt="" width="156"><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/viewer-minimap.png" alt="" width="156"><figcaption></figcaption></figure>
 * **Dynamic scale bar.** Click the scale bar to adjust pixel sizes and other settings.
 * **Zoom in and out of large images.** Scroll wheel zooms, just like Google Maps.
 * **Flexible layer settings.** See below for more information about layers.
@@ -23,9 +23,11 @@ Understanding layers can help unlock more flexibility in how you visualize your 
 
 Another useful feature is layer grouping, which allows you to put together multiple layers into a single grouped layer. For instance, if you have a couple fluorescence channels that you always want to show together, you can group them.
 
-To use this feature, just drag the layers to a "drop zone" to combine:![](<../.gitbook/assets/image (8) (1) (1).png>)
+To create a group, click **"Make layer group…"** at the top of the Layers panel, check the layers you want to combine, and click **Create group**:
 
-You can add multiple layers to the group. Drag layers out of the group to undo the grouping.
+<figure><img src="../.gitbook/assets/viewer-layer-grouping.png" alt=""><figcaption></figcaption></figure>
+
+You can group any number of layers together, and ungroup them later from the group's menu.
 
 ## Label display options
 

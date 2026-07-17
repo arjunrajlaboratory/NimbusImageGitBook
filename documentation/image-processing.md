@@ -14,9 +14,9 @@ The image processing workflow in NimbusImage follows these steps:
 4. **Run the worker process** to apply the selected tool to your image
 5. **Review results** a new dropdown appears just below the dataset navigator that allows you to switch between the orignal and processed images
 
-<div align="left"><figure><img src="../.gitbook/assets/image (26).png" alt="" width="311"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../.gitbook/assets/image-processing-crop.png" alt=""><figcaption><p>A processing tool's worker panel (here, Crop) where you configure parameters and click Compute</p></figcaption></figure></div>
 
-<div align="left"><figure><img src="../.gitbook/assets/image (27).png" alt="" width="314"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src="../.gitbook/assets/image-processing-select-image.png" alt="" width="314"><figcaption><p>After processing, a "Select Image" dropdown lets you switch between the original and the processed images</p></figcaption></figure></div>
 
 ## Crop
 

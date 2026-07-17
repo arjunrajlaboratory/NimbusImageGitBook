@@ -1,3 +1,11 @@
+---
+name: update-changelog
+description: >
+  Populate the New features page (new-features.md) with user-facing changes from
+  recently merged PRs in the NimbusImage app and ImageAnalysisProject repos. Use
+  when updating the changelog or the "New features" page.
+---
+
 # Update Changelog
 
 Populate the **New features** page (`new-features.md`) with user-facing changes from recently merged PRs in the NimbusImage repos:

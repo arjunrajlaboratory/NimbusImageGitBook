@@ -14,16 +14,16 @@ After completing your image analysis in NimbusImage, you can export your data in
 
 CSV export is ideal for statistical analysis and data visualization in external tools:
 
-1. Open the Object Browser
-2. Click "ACTIONS"
-3. Select "Export CSV"
-4. Configure your export options:
+1. Open the **Import / export data** menu in the top toolbar
+2. Select **"Export CSV"**
+3. Configure your export options:
+   * **Scope**: Export the current dataset only, or all datasets in the collection
+   * **Annotations to Export**: All, filtered, or selected annotations
    * **File Format**: Choose between CSV (comma-separated) and TSV (tab-separated). CSV is the default.
    * **Property Export Options**: Choose to export all properties, only listed properties, or select specific properties
    * **Undefined Value Handling**: Decide how to represent missing values (Empty string, NA, or NaN)
-5. Review the preview of columns that will be included
-6. Enter a filename
-7. Click "DOWNLOAD"
+4. Enter a filename
+5. Click "DOWNLOAD"
 
 The resulting file contains:
 
@@ -31,7 +31,7 @@ The resulting file contains:
 * Object tags and attributes
 * All selected property values
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="563"><figcaption><p>The export dialog allows you to customize the file format, which properties to include, and how to handle missing values</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/export-csv-dialog.png" alt="" width="563"><figcaption><p>The export dialog allows you to customize the file format, which properties to include, and how to handle missing values</p></figcaption></figure>
 
 {% hint style="info" %}
 We recommend using the empty string option for undefined values, because it is generally recognized by most analysis software.
@@ -45,10 +45,9 @@ If your property names contain commas (from older tag-based naming), the export 
 
 The JSON export provides a comprehensive record of all annotation data:
 
-1. Open the Object Browser
-2. Click "ACTIONS"
-3. Select "Export JSON"
-4. Choose what to include:
+1. Open the **Import / export data** menu in the top toolbar
+2. Select **"Export to JSON"**
+3. Choose what to include:
    * Export annotations (objects)
    * Export annotation connections
    * Export properties
@@ -56,7 +55,7 @@ The JSON export provides a comprehensive record of all annotation data:
 5. Enter a filename
 6. Click "EXPORT SELECTED ITEMS"
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt="" width="563"><figcaption><p>The JSON export dialog lets you select exactly which components of your analysis to include</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/export-json-dialog.png" alt="" width="563"><figcaption><p>The JSON export dialog lets you select exactly which components of your analysis to include</p></figcaption></figure>
 
 The exported JSON file contains:
 
@@ -85,8 +84,8 @@ NimbusImage allows you to import previously exported JSON files, making it possi
 To import annotation data:
 
 1. Navigate to the dataset where you want to import annotations
-2. Click "ACTIONS" in the Object Browser
-3. Select "Import JSON"
+2. Open the **Import / export data** menu in the top toolbar
+3. Select **"Import from JSON"**
 4. Select your JSON file
 5. Review the import options
 6. Click "IMPORT"

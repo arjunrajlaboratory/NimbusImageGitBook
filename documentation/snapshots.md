@@ -35,7 +35,7 @@ Simply check the boxes next to the snapshots you want to work with, then choose 
 
 ### Image Download Options
 
-<div align="left"><figure><img src="../.gitbook/assets/image (13).png" alt="" width="375"><figcaption><p>Downloading options</p></figcaption></figure></div>
+<div align="left"><figure><img src="../.gitbook/assets/snapshots-download-options.png" alt="" width="375"><figcaption><p>Downloading options</p></figcaption></figure></div>
 
 There are multiple ways in which you can download Snapshot images for use in a publication or presentation.
 
