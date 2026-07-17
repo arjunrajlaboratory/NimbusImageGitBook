@@ -54,15 +54,15 @@ For instance, make a blob tool and draw some blobs like this:
 
 Click "Object List" to bring up the object panel:
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/annotation-list.png" alt=""><figcaption></figcaption></figure>
 
-Then click on "Measure Objects" to bring up the measurement panel:
+Then click on "Measure objects" to bring up the measurement panel:
 
-<figure><img src=".gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/measure-objects-dialog.png" alt=""><figcaption></figcaption></figure>
 
 Then click "Create Property" to create and compute the property, and check the value (here, Area) in the list below:
 
-<div align="left"><figure><img src=".gitbook/assets/image (8).png" alt="" width="563"><figcaption></figcaption></figure></div>
+<div align="left"><figure><img src=".gitbook/assets/property-list.png" alt="" width="563"><figcaption></figcaption></figure></div>
 
 ## Make a Snapshot
 
