@@ -4,6 +4,18 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 ## July 2026
 
+### Nimbus AI
+
+A conversational AI panel that operates NimbusImage for you. Describe what you want — navigate to a frame, adjust a layer's contrast, create and configure a worker tool, run it, filter objects — and the agent carries it out through the interface, showing each step as a card you can review and revert. It also analyzes your data: ask for summary statistics on a property, or for a histogram, scatter plot, or box plot, and the plot appears directly in the panel. The agent can answer questions about NimbusImage from the built-in help, and replaces the previous Nimbus Chat button. Your conversation persists between sessions.
+
+### Worker pipelines
+
+Chain worker steps into a named, re-runnable sequence — for example Cellpose-SAM → Blob metrics → Blob intensity — and run the whole thing with one click, on a single dataset or every dataset in a collection. Pipelines are saved with your configuration, and a status view tracks each step as it runs.
+
+### Cellpose-SAM retraining
+
+Fine-tune Cellpose-SAM on your own corrected annotations. Tag your ground-truth objects (and optionally the regions to train on), run the retrain worker, and your custom model appears in the Cellpose-SAM Model dropdown for future segmentation runs.
+
 ### Visualize millions of annotations
 
 NimbusImage now stays responsive on very large annotation datasets — hundreds of thousands, or even millions, of objects (validated on spatial datasets with over 700,000 annotations). Annotations load lazily: lightweight "stubs" load first, and full shapes are fetched on demand for whatever is in your viewport, with the rest shown as dots. The object list switches to server-side filtering, sorting, and pagination for large datasets so it stays fast. This happens automatically, and power users can tune the behavior under **Settings → "Advanced settings for large numbers of annotations."** See [Working with large annotation datasets](documentation/analyzing-image-data-with-objects-connections-and-properties/large-annotation-datasets.md).
@@ -26,9 +38,33 @@ Mark a few example objects and automatically find similar ones across the curren
 
 **Consistent workspace design** — The refreshed dataset-view design language now extends across the rest of the app.
 
+**Searchable tool picker** — The tool selection dialog now has a search field that filters by name, description, or category, with tools grouped into "Drawing & interaction tools" and "Automated analysis."
+
+**Storage usage and quota** — Your profile menu shows how much storage you've used against your quota, with a warning as you approach the limit. Operations that fail because of a full quota now say so, instead of appearing to stall.
+
+**More annotation rendering controls** — On large datasets you can now set a minimum number of visible annotations in view, choose whether zooming in reveals more objects or holds a constant density, and reset all rendering settings to their defaults.
+
+**Saved rendering and object-list settings** — Annotation rendering tuning, the property columns shown in the object list, and property filters are now saved with your dataset configuration instead of being lost on reload.
+
+**Filter count badge** — The Filters button shows how many filters are currently active, so hidden objects are never a mystery.
+
+**Unrolled frame labels** — Each cell in an unrolled grid is labeled (e.g. `XY 3`, `Z 2 · Time 7`), and clicking a label rolls the grid back up at that frame.
+
+**Faster large-dataset interactions** — Visibility updates on datasets with hundreds of thousands of objects are substantially faster, the object list switches to server-side pagination sooner, and the minimap no longer re-renders on every frame while scrubbing sliders.
+
+**Cellpose-SAM model update** — Cellpose-SAM now defaults to the newer cpsam\_v2 checkpoint, which produces fewer spurious masks in low-contrast regions. The original model remains selectable for reproducibility.
+
+**Faster worker startup** — Analysis workers start noticeably faster, and opening a worker's settings no longer waits on model loading.
+
+**Refined progress bars** — Progress bars have a lighter, restyled look and sit above the bottom-left button cluster instead of covering the Tools panel.
+
 #### Bug fixes
 
 * Fixed a race condition that could cause the Segment Anything model to fail to initialize.
+* Fixed JSON import failing when the file contained connections.
+* Fixed filters from one dataset carrying over when you opened another.
+* Fixed clicking an object in the image not highlighting its row in the object list on large datasets.
+* Fixed the AI panel reporting a successful save when the change had actually been rejected.
 
 ## June 2026
 
@@ -45,6 +81,9 @@ View your dataset as an interactive 3D volume, rendered directly in your browser
 * Fixed snapshot ZIP downloads nesting files inside extra folders.
 * Fixed stale snapshot selections persisting after the underlying data changed.
 * Fixed a duplicate filename when downloading an image together with its annotations.
+* Fixed segmentation runs failing to upload when a worker produced an empty or split outline — one bad shape no longer fails the entire batch.
+* Fixed the StarDist worker crashing on startup.
+* Fixed the line scan worker crashing on single-channel datasets when "All channels" was selected.
 
 ## May 2026
 
