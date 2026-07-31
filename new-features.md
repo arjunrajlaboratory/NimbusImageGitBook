@@ -4,6 +4,14 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 ## July 2026
 
+### Browse and edit connections
+
+A new Connections tab in the Object Browser shows what's connected to what — as a flat list or grouped by track — with a scope selector for all connections, the current location, your selected objects, or those passing your filters. Delete a single link, an entire track, or everything in scope. "Connect selected" chains the objects you've selected into connections in ascending time order. Connection lines in the viewer are now clickable as well, in both normal and timelapse mode, so you can cut a bad track exactly where you see the problem.
+
+### Timelapse panel with track coloring
+
+Timelapse controls now live in their own palette beside the Navigator instead of stretching it, so turning the mode on no longer pushes Layers and Tools down the screen — and closing the palette turns the mode off. The panel adds a coloring toggle that gives each track its own hue, with a shuffle to re-roll the assignment, or renders every track white when many overlap. A live "N tracks · M links" readout opens the Object Browser straight into the by-track connection view, where each track header shows a color swatch matching the drawn line and a Select action for that track's objects.
+
 ### Nimbus AI
 
 A conversational AI panel that operates NimbusImage for you. Describe what you want — navigate to a frame, adjust a layer's contrast, create and configure a worker tool, run it, filter objects — and the agent carries it out through the interface, showing each step as a card you can review and revert. It also analyzes your data: ask for summary statistics on a property, or for a histogram, scatter plot, or box plot, and the plot appears directly in the panel. The agent can answer questions about NimbusImage from the built-in help, and replaces the previous Nimbus Chat button. Your conversation persists between sessions.
@@ -58,6 +66,8 @@ Mark a few example objects and automatically find similar ones across the curren
 
 **Refined progress bars** — Progress bars have a lighter, restyled look and sit above the bottom-left button cluster instead of covering the Tools panel.
 
+**AI agent waits for jobs** — When the AI panel starts a worker or a property computation, it now waits for the job to finish and continues the workflow with the result, instead of stalling or repeatedly re-checking.
+
 #### Bug fixes
 
 * Fixed a race condition that could cause the Segment Anything model to fail to initialize.
@@ -65,6 +75,9 @@ Mark a few example objects and automatically find similar ones across the curren
 * Fixed filters from one dataset carrying over when you opened another.
 * Fixed clicking an object in the image not highlighting its row in the object list on large datasets.
 * Fixed the AI panel reporting a successful save when the change had actually been rejected.
+* Fixed clicking an object in the Object Browser panning to the wrong tile when a dimension was unrolled.
+* Fixed most connection lines going undrawn on large, lazily loaded datasets until you zoomed in.
+* Fixed track colors that could render near-black or near-white, or that were nearly indistinguishable between neighboring tracks.
 
 ## June 2026
 
