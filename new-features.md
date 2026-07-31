@@ -2,6 +2,26 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## August 2026
+
+### Browse and edit connections
+
+A new Connections tab in the Object Browser shows what's connected to what — as a flat list or grouped by track — with a scope selector for all connections, the current location, your selected objects, or those passing your filters. Delete a single link, an entire track, or everything in scope. "Connect selected" chains the objects you've selected into connections in ascending time order. Connection lines in the viewer are now clickable as well, in both normal and timelapse mode, so you can cut a bad track exactly where you see the problem.
+
+### Timelapse panel with track coloring
+
+Timelapse controls now live in their own palette beside the Navigator instead of stretching it, so turning the mode on no longer pushes Layers and Tools down the screen — and closing the palette turns the mode off. The panel adds a coloring toggle that gives each track its own hue, with a shuffle to re-roll the assignment, or renders every track white when many overlap. A live "N tracks · M links" readout opens the Object Browser straight into the by-track connection view, where each track header shows a color swatch matching the drawn line and a Select action for that track's objects.
+
+**AI agent waits for jobs** — When the AI panel starts a worker or a property computation, it now waits for the job to finish and continues the workflow with the result, instead of stalling or repeatedly re-checking.
+
+**CPU/GPU job routing** — Analysis jobs are dispatched to CPU or GPU machines according to what each worker needs, and opening a tool's parameter form no longer queues behind GPU work.
+
+#### Bug fixes
+
+* Fixed clicking an object in the Object Browser panning to the wrong tile when a dimension was unrolled.
+* Fixed most connection lines going undrawn on large, lazily loaded datasets until you zoomed in.
+* Fixed track colors that could render near-black or near-white, or that were nearly indistinguishable between neighboring tracks.
+
 ## July 2026
 
 ### Nimbus AI
