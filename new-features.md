@@ -2,7 +2,7 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
-## August 2026
+## July 2026
 
 ### Browse and edit connections
 
@@ -11,18 +11,6 @@ A new Connections tab in the Object Browser shows what's connected to what — a
 ### Timelapse panel with track coloring
 
 Timelapse controls now live in their own palette beside the Navigator instead of stretching it, so turning the mode on no longer pushes Layers and Tools down the screen — and closing the palette turns the mode off. The panel adds a coloring toggle that gives each track its own hue, with a shuffle to re-roll the assignment, or renders every track white when many overlap. A live "N tracks · M links" readout opens the Object Browser straight into the by-track connection view, where each track header shows a color swatch matching the drawn line and a Select action for that track's objects.
-
-**AI agent waits for jobs** — When the AI panel starts a worker or a property computation, it now waits for the job to finish and continues the workflow with the result, instead of stalling or repeatedly re-checking.
-
-**CPU/GPU job routing** — Analysis jobs are dispatched to CPU or GPU machines according to what each worker needs, and opening a tool's parameter form no longer queues behind GPU work.
-
-#### Bug fixes
-
-* Fixed clicking an object in the Object Browser panning to the wrong tile when a dimension was unrolled.
-* Fixed most connection lines going undrawn on large, lazily loaded datasets until you zoomed in.
-* Fixed track colors that could render near-black or near-white, or that were nearly indistinguishable between neighboring tracks.
-
-## July 2026
 
 ### Nimbus AI
 
@@ -78,6 +66,8 @@ Mark a few example objects and automatically find similar ones across the curren
 
 **Refined progress bars** — Progress bars have a lighter, restyled look and sit above the bottom-left button cluster instead of covering the Tools panel.
 
+**AI agent waits for jobs** — When the AI panel starts a worker or a property computation, it now waits for the job to finish and continues the workflow with the result, instead of stalling or repeatedly re-checking.
+
 #### Bug fixes
 
 * Fixed a race condition that could cause the Segment Anything model to fail to initialize.
@@ -85,6 +75,9 @@ Mark a few example objects and automatically find similar ones across the curren
 * Fixed filters from one dataset carrying over when you opened another.
 * Fixed clicking an object in the image not highlighting its row in the object list on large datasets.
 * Fixed the AI panel reporting a successful save when the change had actually been rejected.
+* Fixed clicking an object in the Object Browser panning to the wrong tile when a dimension was unrolled.
+* Fixed most connection lines going undrawn on large, lazily loaded datasets until you zoomed in.
+* Fixed track colors that could render near-black or near-white, or that were nearly indistinguishable between neighboring tracks.
 
 ## June 2026
 
