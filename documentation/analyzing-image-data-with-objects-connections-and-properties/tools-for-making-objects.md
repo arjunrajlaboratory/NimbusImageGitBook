@@ -110,7 +110,7 @@ Currently, the primary model available is:
 *   **Channel for Slot 1**: **Required.** The primary channel for segmentation. Select the source channel for the model's first input. If multiple are selected, only the first will be used.
 *   **Channel for Slot 2**: (Optional) The secondary channel, often used for nuclear information when segmenting cytoplasm. If multiple are selected, only the first will be used.
 *   **Channel for Slot 3**: (Optional) The tertiary channel, typically used for the blue channel in RGB images. If multiple are selected, only the first will be used.
-*   **Diameter**: The approximate diameter of the cells in pixels. While important for original Cellpose, Cellpose-SAM is less sensitive to this parameter. A value around **30 pixels** often works well as a starting point, but can be adjusted (0-200 pixels, default 10).
+*   **Diameter**: The object size the image is rescaled to before segmentation (10-200 pixels, default 30). **Leave this at 30 for almost all images** — that is the identity value, meaning the image is segmented at its native resolution, which is how Cellpose-SAM was trained. The image is resized by `30 / Diameter`, so a smaller value enlarges the image and a larger one shrinks it. Change it only if your objects are far outside the size range the model handles well.
 *   **Smoothing**: Controls the simplification of the generated polygons (0-10, default 0.7). Higher values create smoother outlines. A value of 0.7 is a good default.
 *   **Padding**: Expands (positive values) or contracts (negative values) the final polygons in pixels (-20 to 20 pixels, default 0).
 *   **Tile Size**: The size of image tiles (in pixels) for processing (0-2048, default 1024). Larger tiles require more memory.
@@ -324,6 +324,7 @@ The model can work in both 2D (single slice) and 3D (Z-stack) modes, making it f
 * **Batch processing**: Process multiple positions, Z-slices, or time points
   * Use the "Batch XY", "Batch Z", and "Batch Time" fields to specify ranges
   * Format example: "1-3, 5-8" processes positions 1, 2, 3, 5, 6, 7, 8
+  * Enter `all` to process every available position, Z-slice, or time point, without having to know how many there are
   * Note: If using "Z-Stack" mode, the "Batch Z" field is ignored
 
 #### Best practices
@@ -480,7 +481,7 @@ CondensateNet processes brightfield images through a three-stage pipeline:
 
 #### Batch processing
 
-* Use the **Batch XY**, **Batch Z**, and **Batch Time** fields to specify ranges for processing multiple positions, Z-slices, or time points (format: "1-3, 5-8"). Defaults to the current tile.
+* Use the **Batch XY**, **Batch Z**, and **Batch Time** fields to specify ranges for processing multiple positions, Z-slices, or time points (format: "1-3, 5-8", or `all` for every available coordinate). Defaults to the current tile.
 
 #### Best practices
 

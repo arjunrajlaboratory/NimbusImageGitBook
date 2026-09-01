@@ -15,7 +15,9 @@ When working with time lapse datasets, the Time lapse mode option automatically 
 1. Look for the "Time lapse mode" checkbox in the variable navigation panel
 2. Check the box to enable tracking visualization and special time lapse features
 
-When enabled, Time lapse mode reveals additional options in the same panel (shown above): a **Track window** slider, a **Tags** filter, a **Show labels** toggle, and a **Delete all timelapse connections** button.
+The "Time lapse mode" checkbox stays in the Navigator, but the controls themselves now live in their own **Time Lapse** palette next to it, rather than inside the Navigator — so turning the mode on doesn't push the Layers and Tools panels down the screen. Closing the palette turns the mode off.
+
+The panel provides a **Window** slider, a **Tags** filter, a **Labels** toggle, track coloring controls, a live track count, and a **Delete all timelapse connections** button.
 
 ## Understanding tracks and connections
 
@@ -39,7 +41,7 @@ Key features of track visualization:
 
 ### Track window setting
 
-The "Track window" slider controls how many time points before and after the current time point are shown in the track visualization:
+The "Window" slider controls how many time points before and after the current time point are shown in the track visualization:
 
 * Higher values show more of the track's history and future
 * Lower values focus on just the immediate connections
@@ -48,6 +50,28 @@ The "Track window" slider controls how many time points before and after the cur
 The tags field allows you to only do time-lapse analysis on a subset of objects defined by the specified tags.
 
 Delete all timelapse connections will delete all connections made by the "Connect timelapse" tool and also the "Lasso connect".
+
+### Track coloring
+
+Three buttons next to the Labels toggle control how tracks are colored:
+
+* **Give each track its own color** — makes it much easier to follow an individual track through a crowded field
+* **Draw every track in one color** — renders every track white, often the clearer choice when many tracks overlap
+* **Shuffle track colors** — re-rolls the assignment, which helps when two neighboring tracks happen to land on similar hues
+
+### Track count and jumping to the Connections tab
+
+A live **"N tracks · M links"** readout tells you how many tracks are currently drawn — in the panel above, 121 tracks across 9,965 links. The **Show tracks** button beside it opens the Object Browser straight into the [by-track connection view](analyzing-image-data-with-objects-connections-and-properties/tools-for-connecting-objects.md#browsing-and-editing-connections), where each track shows a color swatch matching the line drawn in the viewer, its size ("18 objects · T1–T17 · 68 links"), and **Select** and **Delete track** actions.
+
+This makes the panel and the list two views of the same thing: spot a suspicious track in the image, click through to its row; or filter tracks by length in the list and watch the image narrow to match.
+
+### Filtering which tracks are drawn
+
+The **Track filters** in the Connections tab — bounds on connections per track, objects per track, and duration in time points — apply to the tracks drawn here as well. Setting a minimum duration is an effective way to clear short, spurious fragments out of the view so you can concentrate on the tracks that persist. See [Filtering by track metrics](analyzing-image-data-with-objects-connections-and-properties/tools-for-connecting-objects.md#filtering-by-track-metrics).
+
+{% hint style="info" %}
+Time lapse mode stays responsive on datasets with very large numbers of connections — tens of thousands of links across thousands of objects. Scrubbing through time redraws only the tracks that actually changed rather than rebuilding the whole layer.
+{% endhint %}
 
 ## Creating and editing tracks
 
@@ -89,6 +113,10 @@ Using "Lasso connect", you can just circle (sloppily) all the points in the trac
 
 <div align="left"><figure><img src="../.gitbook/assets/image (25).png" alt="" width="563"><figcaption></figcaption></figure></div>
 
+### Cutting a track where you see the problem
+
+Connection lines drawn in the viewer are clickable, so when a track visibly jumps to the wrong cell you can select that link and delete it directly — no need to find it in a list first. This is usually the fastest way to repair a track that merged two objects at a single frame.
+
 ## Navigating time with tracks
 
 Tracks provide an intuitive way to navigate through time:
@@ -102,7 +130,7 @@ Tracks provide an intuitive way to navigate through time:
 1. **Start with automatic connections** using the Connect timelapse tool
 2. **Review and fix tracks** using the lasso connect tool for any errors
 3. **Use track window setting** to adjust visualization density
-4. **Enable "Show labels"** to see time point information directly on objects
+4. **Enable "Labels"** to see time point information directly on objects
 5. **Create properties** to analyze track information (velocity, displacement, etc.)
 
 ## Exporting time lapse data

@@ -35,9 +35,9 @@ The Crop tool allows you to reduce your image dimensions by selecting only a por
 
 ### Parameters
 
-- **XY Range**: Enter position numbers to retain (format: "1-3, 5-8"). Default is all positions.
-- **Z Range**: Enter Z-slice numbers to retain (format: "1-3, 5-8"). Default is all Z-slices.
-- **Time Range**: Enter time point numbers to retain (format: "1-3, 5-8"). Default is all time points.
+- **XY Range**: Enter position numbers to retain (format: "1-3, 5-8", or `all`). Default is all positions.
+- **Z Range**: Enter Z-slice numbers to retain (format: "1-3, 5-8", or `all`). Default is all Z-slices.
+- **Time Range**: Enter time point numbers to retain (format: "1-3, 5-8", or `all`). Default is all time points.
 - **Crop Rectangle**: Select a tag that identifies a rectangle or polygon annotation to define the crop region.
 
 ### Technical details
@@ -206,3 +206,67 @@ Each Z-stack (grouped by XY position, timepoint, and channel) is deconvolved ind
 **ND2 metadata extraction**: When auto-extraction is enabled, the worker reads pixel size, NA, refractive index, and emission wavelengths from the image's ND2 metadata. Any parameters not found in the metadata fall back to the manually entered values.
 
 For more details on the deconwolf algorithm, see: Wernersson, E. (2024). deconwolf — Large deconvolution with GPU or CPU. *SoftwareX*, 27, 101747.
+
+## Stitch Refinement + Illumination Correction
+
+When you upload a tiled acquisition with **Composite** checked, NimbusImage assembles the individual stage positions into one large image using the stage coordinates recorded by the microscope. Those coordinates are usually close but rarely perfect, so tiled images often show faint seams. Two things cause them: the stage position for each tile can be off by a few pixels, and each raw tile is typically brighter in the middle than at its edges (vignetting), which makes the tile boundaries appear as a grid pattern across the mosaic.
+
+The Stitch Refinement + Illumination Correction tool fixes both problems at once. It goes back to the original raw tiles, measures how neighboring tiles actually overlap, solves for a consistent set of corrected tile positions, and fits a per-channel flat-field model from those same overlaps. The corrected mosaic is uploaded as a **new** image in your dataset — your original image is never modified.
+
+{% hint style="info" %}
+This tool needs the original, unstitched tiles, so it only works on datasets that were composited by NimbusImage from a Nikon .nd2 file. It cannot run on an image that was already stitched before it reached NimbusImage (for instance, one stitched in Nikon Elements), because the overlapping raw tiles it measures no longer exist in such a file.
+{% endhint %}
+
+### Before you start: upload with "Composite" checked
+
+The tool can only run on a dataset that has NimbusImage's compositing geometry. To set that up:
+
+1. **Use Advanced Import** when you upload your .nd2 file, rather than Quick Import.
+2. **Check "Composite"** at the variable-assignment step. This tells NimbusImage to lay the stage positions out side by side into a single large image instead of making them a variable you scroll through. See [Compositing](images-datasets-and-collections/README.md) for more on what this option does.
+3. **Keep the original .nd2 file** in the dataset. The tool re-reads the raw tiles from it, and it will stop with an error if that file has been deleted.
+
+The dataset must be composited from a single .nd2 file; composites assembled from a mix of source files are not supported.
+
+### How to use
+
+1. **Add the tool** by clicking "ADD NEW TOOL" in the Toolset panel and choosing "Stitch Refinement + Illumination Correction" from the Image Processing category
+2. **Choose a refinement channel** — the channel used to align neighboring tiles. A channel with sharp, high-contrast structure works best; the first channel (usually DAPI) is a good default.
+3. **Decide whether to refine positions.** Leave "Refine stitch positions" checked to correct tile placement as well as illumination. Clearing it applies illumination correction only and keeps the original tile positions exactly as they are.
+4. **Pick an illumination algorithm.** The recommended option additionally corrects for small brightness differences between individual tiles.
+5. **Run the worker.** Processing takes a while for large mosaics, since every raw plane in the file is corrected and rewritten.
+6. **Review the result** by selecting the new corrected image from the "Select Image" dropdown just below the dataset navigator.
+
+{% hint style="warning" %}
+Existing objects are **not** moved when tile positions are refined. If your dataset already has annotations, their coordinates can shift by tens of pixels relative to the corrected image. It is best to run this tool before you start annotating.
+{% endhint %}
+
+### Parameters
+
+- **Refine stitch positions**: When checked (default), applies the corrected tile translations. When cleared, overlaps are still measured for the illumination fit, but the original tile positions are kept.
+- **Refinement channel**: The channel used to align neighboring tiles (default: the first channel). Tiles are aligned on a maximum-intensity projection through Z of this channel.
+- **NCC threshold**: The minimum normalized cross-correlation score an adjacent tile pair must reach to be trusted (range: 0.5–1.0, default: 0.5). Lower values keep more dim or low-texture pairs but risk false matches; higher values are stricter but can leave parts of the tile grid disconnected.
+- **Illumination algorithm**: Choose between "Overlap DCT + tile gains (recommended)", which also fits a small per-tile brightness gain, and "Overlap DCT", which fits only the shared flat-field shape.
+- **Output filename**: An optional name for the resulting `.tif`/`.tiff` file. Left blank, the name is derived automatically from the source .nd2.
+
+### Technical details
+
+**Position refinement.** The existing stage geometry is used as a starting point rather than thrown away — the tool never re-derives the stage layout from scratch and never changes the camera's rotation or flip, only the translations. For each adjacent tile pair it builds a maximum-Z reference tile from the refinement channel, then searches around the position the metadata predicts (a coarse ±24 pixel search at 3 pixel steps, followed by a fine ±4 pixel search at 1 pixel steps), scoring each candidate by normalized cross-correlation. Pairs scoring below the NCC threshold are discarded. All the remaining constraints are then solved together, weighted by their NCC scores, with the average coordinate shift held at zero so the mosaic does not drift as a whole. If part of the tile grid ends up disconnected, a conservative global fit is used as a fallback for those tiles.
+
+**Illumination correction.** A smooth flat field is fitted per channel from the aligned raw-tile overlaps: wherever two tiles image the same piece of sample, any brightness difference between them must come from the illumination profile rather than the specimen. The fit uses a low-order (order-5) two-dimensional discrete cosine transform with a robust, outlier-resistant regression, computed at 128×128 and expanded to the full camera dimensions. The recommended algorithm additionally fits a regularized per-position gain, capped to a 1.10-fold range, to absorb small tile-to-tile brightness differences. Every channel is corrected independently, and all time points and Z planes are corrected using the model fitted from the reference Z plane at the first time point.
+
+**Output.** Corrected raw planes are streamed into a lossless pyramidal TIFF — the assembled mosaic is never held in memory, so very large tiled images can be processed. The result is uploaded as a new item in the dataset and appears alongside the original in the "Select Image" dropdown, where it can also be deleted independently if you don't want to keep it.
+
+**Diagnostics.** The job report and the new image's metadata record the predicted and measured offset and NCC score for every tile pair, the number of pairs accepted, the per-pair residuals from the solved fit, the mosaic bounds before and after, and per-channel illumination model diagnostics. A warning appears if the largest residual exceeds 2 pixels, or if the outer edge of the mosaic moves by more than 16 pixels.
+
+### Tuning and troubleshooting
+
+- **Leave the NCC threshold at 0.5** for normal runs. On a well-behaved dataset, essentially every adjacent pair scores far above it.
+- **Raise the threshold** only if the report shows low-scoring pairs with inconsistent offsets, a large residual, or you can still see misregistration in the output. Be aware that raising it too far can disconnect part of the tile grid.
+- **If the job reports that no pairs met the threshold**, the refinement channel probably lacks texture in the overlap regions. Choose a sharper, higher-contrast channel, or lower the threshold back toward 0.5.
+
+### Limitations
+
+- Only composited Nikon .nd2 datasets are supported, and the composite must come from a single .nd2 file.
+- Already-stitched images are rejected before processing, as are datasets whose original .nd2 has been deleted.
+- Only tile translations are refined; all tiles must share a single camera orientation.
+- Existing object coordinates are not migrated to the corrected image.

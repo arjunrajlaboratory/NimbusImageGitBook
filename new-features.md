@@ -2,6 +2,51 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## August 2026
+
+### Analysis plots with lasso gating
+
+A new Analysis panel plots any two computed property values — or a numeric property against a categorical field like tags, shape, or position — and lets you lasso the points you want. The selection becomes a gate that narrows the viewer, the Object Browser, the Connections list, and every export, exactly like a property filter. Plots chain, so a sequence reads as a flow-cytometry-style gating strategy. Gates are saved as the shape you drew rather than a list of objects, so a strategy drawn on one dataset re-resolves correctly on another using the same configuration. Above 50,000 objects, plots become server-computed density heatmaps and gates resolve on the server — exact at any size, validated past 700,000 objects. See [Analysis plots and gating](documentation/analyzing-image-data-with-objects-connections-and-properties/analysis-plots-and-gating.md).
+
+### Filter connections by track length
+
+The Connections tab gains a Track filters menu with minimum and maximum bounds on connections per track, objects per track, and duration in time points — the fastest way to isolate long-lived tracks or surface the short fragments that signal a tracking failure. Filtered-out tracks disappear from the list and from the image, in both normal and time-lapse mode, and an opt-in checkbox extends the hiding to those tracks' objects as well. Metrics are always computed over the whole track, even when you're viewing a fragment of it. The tab also offers a one-click cleanup for "dangling" connections left pointing at deleted objects. See [Tools for connecting objects](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-connecting-objects.md#browsing-and-editing-connections).
+
+### Tracks labeled by their computed track ID
+
+The by-track connection view can now title each track with the `trackId` assigned by the Parent-Child Connection IDs property worker — so a track flagged as `trackId = 42` in an exported CSV is findable as "Track 42" in the panel. Tracks whose connections changed after the property was computed are badged `partial` or `mixed IDs`, which makes those badges a useful way to spot exactly the tracks worth re-reviewing.
+
+### Color objects by property value
+
+Pick a computed property from the annotation list's More Actions menu and every object takes its color from its value, with a legend in the viewer explaining the mapping. Choose a continuous colormap ramp or a categorical palette. Ramps default to the 1st–99th percentile rather than the full extent, so a handful of outliers can't collapse everything else into one indistinguishable color; the legend marks the clipped ends. Works at full dataset scale — coloring 700,000 objects takes about ten seconds.
+
+### Measurements where your objects are
+
+Computed properties no longer hide behind a dialog. A chip strip above the object list shows one chip per property with shown/total counts, a filter box that matches property *and* value names, and a pinned "+ New measurement…" chip. A new Measurements tab sits beside Objects and Connections, listing every property — including ones not yet computed — with per-property Run buttons, value counts, and per-value show/hide.
+
+### Zoomed-out overview for huge annotation sets
+
+Very large annotation datasets now render zoomed-out as a tiled image — as filled footprints or as a density map — instead of as hundreds of thousands of individual shapes, then hand off to real interactive outlines as you zoom in. Region selection and click-to-navigate keep working from the overview.
+
+### The object counter says when a filter is hiding things
+
+The count indicator over the image reports numbers computed after filters and gates, which previously made an active filter indistinguishable from missing data. It now spells this out — "Showing 826 of 826 in view (1 filter applied)" — names the specific constraints on hover, and opens the responsible panels on click.
+
+### Stitch refinement and illumination correction
+
+Clean up the seams in tiled images that NimbusImage composited for you. The new Stitch Refinement + Illumination Correction tool goes back to the original raw tiles, measures how neighboring tiles actually overlap, and solves for a corrected set of tile positions — while fitting a per-channel flat-field model from those same overlaps to remove the vignetting that makes tile boundaries show up as a grid. The corrected mosaic is uploaded as a new image next to your original, which is left untouched. Works on datasets composited from a Nikon .nd2 file. See [Image processing](documentation/image-processing.md).
+
+**Fixes and improvements**
+
+- **Time-lapse scrubbing is much faster** on datasets with many connections. Stepping through time on a 10,000-connection dataset went from 24 to 89 fps; datasets with 50,000+ connections went from roughly 1 second per step to a usable frame rate.
+- **`all` in batch coordinate fields** — type `all` in Batch XY, Batch Z, Batch Time, or the Crop range fields to process every available coordinate without knowing how many there are.
+- **The Cellpose-SAM Diameter parameter is back**, with a corrected default of 30 (the value meaning "segment at native resolution") and a 10–200 range. It now applies to custom models and base models alike; previously it was silently ignored for base checkpoints.
+- **Image-processing workers moved off the shared CPU queue.** Registration, histogram matching, Gaussian blur, rolling ball, crop, and H&E deconvolution jobs no longer block tool parameter forms platform-wide — those forms had been queueing for 16–25 minutes behind long compute jobs.
+- Properties created through the Python package are automatically registered into the dataset's collections, so they're visible instead of silently orphaned.
+- Fixed empty-subset CSV exports, a crash in the children-count worker on empty results, Piscis legacy model loading, and `[object Object]` appearing in the image switcher subtitle.
+- Datasets mixing different pixel data types are now blocked at upload with an explanation, rather than failing confusingly later.
+- Worker jobs, transcoding, and uploads now surface storage quota errors instead of failing opaquely.
+
 ## July 2026
 
 ### Browse and edit connections

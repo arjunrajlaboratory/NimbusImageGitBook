@@ -15,7 +15,7 @@ A _dataset_ is the set of images that you want to visualize and analyze at once.
 5. Large images in 4 channels from a 12 well plate stored across multiple TIFF files.
 6. Time lapse image data across a set of files.
 
-A dataset can be from a single file (such as a multidimensional .nd2 file) or could be spread across multiple files. The dataset will also store all objects and snapshots that you make as you analyze your data. To learn more about file formats, see [File formats](../documentation/file-formats.md).
+A dataset can be from a single file (such as a multidimensional .nd2 file) or could be spread across multiple files. The dataset will also store all objects and snapshots that you make as you analyze your data. To learn more about file formats, see [File formats](file-formats.md).
 
 {% hint style="info" %}
 Datasets are stored on the server as a folder that contains (often multiple) files.
@@ -81,6 +81,8 @@ RFP_s003_t010.tif
 In the above, there could be two channel variables (GFP, RFP), 3 stage positions, and 10 timepoints. **NimbusImage will automatically attempt to read these filename variables and assign them.** In the above, it will assign the variable with "s" to XY position and "t" to time and GFP/RFP to channel. Moreover, sometimes the .tif file itself will have multiple images in it. In that case, that series of images can also be assigned to a variable. **NimbusImage will let you change the variable assignment**, giving you complete flexibility over how all these variables are parsed.
 
 **Compositing:** Sometimes, you want stage position to be a variable you can flip through, like different wells in an image. By default, those will be parsed as different XY positions that can be scrolled through as a variable. However, sometimes you might have images that tile a large field of view, or perhaps you want to visualize all the wells next to each other. In that case, check "Composite", which will put all the data into a single large image using the metadata about the location of the different stage positions.
+
+If you composite a tiled .nd2 acquisition and the seams between tiles are still visible, you can clean them up afterwards with the [Stitch Refinement + Illumination Correction](../image-processing.md) tool, which refines the tile positions and corrects for uneven illumination across each tile. That tool reads the original raw tiles, so keep the original .nd2 file in the dataset if you plan to use it.
 
 **Transcoding into optimized TIFF:** In order to facilitate the ability to navigate large images with high performance, it is important to have a well-optimized file format. We have found that many microscopy formats are unfortunately very inefficient. Hence, we give the option to transcode all the data into a single, well-optimized TIFF file. This transcoding takes some compute time, but results in much better performance in most scenarios, hence it is enabled by default. Some formats, like .nd2, are well optimized from the outset, and so transcoding is not enabled by default for those files.
 
