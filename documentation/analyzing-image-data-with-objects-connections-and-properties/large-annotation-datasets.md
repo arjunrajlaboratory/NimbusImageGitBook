@@ -19,6 +19,24 @@ To stay fast with huge numbers of objects, NimbusImage avoids loading everything
 
 The result is that scrolling, zooming, and panning stay smooth even on datasets that would previously have been too large to open comfortably.
 
+## The zoomed-out overview
+
+When you are zoomed out far enough that individual outlines would be meaningless anyway, NimbusImage can draw the whole annotation set as a tiled image rather than as hundreds of thousands of separate shapes. Two rendering modes are available: **filled footprints**, showing where objects actually are, and **density**, showing how many are packed into each area.
+
+The overview is built once and cached, and its progress appears in the usual progress bar. Zoom in and NimbusImage hands off from the overview to real, interactive outlines for the region you're looking at.
+
+The overview is not just a picture — you can still select regions while zoomed out, and clicking a row in the object list navigates to that object as usual. The overview also honors the same channel and frame rules as the normal view, so it shows the same objects the vector view would.
+
+## Knowing when something is narrowing your view
+
+The indicator over the image ("Showing 15,900 of 708,780 in view") counts objects **after** your filters and analysis gates have been applied. If a filter is active, both numbers can be much smaller than the dataset — which, without explanation, looks indistinguishable from objects having gone missing.
+
+So when anything is narrowing the count, the indicator says so:
+
+> Showing 826 of 826 in view **(1 filter applied)**
+
+Hovering names the specific constraints — for example, "Objects are narrowed by 1 lasso gate on Area × PECAM1; 1 tag filter" — and clicking opens the panels that own them, so you can see or clear the filter that's responsible.
+
 ## The object list for large datasets
 
 The [Annotation List](interacting-with-objects.md#annotation-list) adapts to dataset size:

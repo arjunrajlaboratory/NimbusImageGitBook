@@ -63,6 +63,38 @@ The list offers several useful features:
 For very large datasets (hundreds of thousands of objects or more), NimbusImage loads annotations lazily and handles the list on the server so everything stays responsive. See [Working with large annotation datasets](large-annotation-datasets.md).
 {% endhint %}
 
+## Finding and showing measurements
+
+The Object Browser has three tabs — **Objects**, **Measurements**, and **Connections** — and the first two both give you access to your computed properties without opening a separate dialog.
+
+### The measurements chip strip
+
+Above the object list on the Objects tab, a strip of chips shows one chip per computed property, each with an eye icon and a `shown / total` count. Click a single-value property's chip to toggle its column in the list; click a multi-value property's chip to open a compact checklist of its individual values, with Show all and Hide all.
+
+A filter box in the strip matches both property **and** value names, so typing a gene name or a metric name surfaces it directly and narrows the chips' checklists to the match. A pinned **"+ New measurement…"** chip creates a property without leaving the panel. The strip is capped at about three rows and scrolls beyond that, so a dataset with many properties can't take over the panel.
+
+### The Measurements tab
+
+The Measurements tab lists every property — including ones you haven't computed yet — with value counts, "N shown" badges, per-value show/hide checkboxes, and a **Run** button per property so you can compute one without going through the Measure dialog. Compute errors and warnings appear here as alerts.
+
+## Coloring objects by a property value
+
+Beyond showing measurements as numbers, you can color your objects by them. Use the **Color objects by property** button in the app bar, or the annotation list's **More Actions → Color by Property…**, and pick a computed property — including a nested path such as a per-channel mean. Every object in the dataset then takes its color from its value, and a legend appears in the viewer explaining the mapping.
+
+You can color either way:
+
+* **Continuous** — values map onto a colormap ramp
+* **Categorical** — each distinct value gets its own color from a palette
+
+{% hint style="info" %}
+Continuous ramps span the 1st–99th percentile of your values by default rather than the full minimum-to-maximum extent. Real measurements often have a few extreme outliers, and stretching the ramp across them collapses everything else into one indistinguishable color. The legend still reports the true extent and marks the clipped ends with `≤` and `≥`.
+{% endhint %}
+
+Two things worth knowing:
+
+* Objects created after you apply a coloring, and property values you recompute afterwards, don't re-color automatically. Re-apply the coloring to refresh it.
+* Applying any other coloring — for example, coloring a selection by hand — retires the legend, since it no longer describes what you're looking at.
+
 ## Working with properties
 
 Properties allow you to measure features of your objects. These measurements can be displayed alongside your objects and used for filtering:

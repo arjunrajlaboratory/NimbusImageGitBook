@@ -35,9 +35,9 @@ The Crop tool allows you to reduce your image dimensions by selecting only a por
 
 ### Parameters
 
-- **XY Range**: Enter position numbers to retain (format: "1-3, 5-8"). Default is all positions.
-- **Z Range**: Enter Z-slice numbers to retain (format: "1-3, 5-8"). Default is all Z-slices.
-- **Time Range**: Enter time point numbers to retain (format: "1-3, 5-8"). Default is all time points.
+- **XY Range**: Enter position numbers to retain (format: "1-3, 5-8", or `all`). Default is all positions.
+- **Z Range**: Enter Z-slice numbers to retain (format: "1-3, 5-8", or `all`). Default is all Z-slices.
+- **Time Range**: Enter time point numbers to retain (format: "1-3, 5-8", or `all`). Default is all time points.
 - **Crop Rectangle**: Select a tag that identifies a rectangle or polygon annotation to define the crop region.
 
 ### Technical details
