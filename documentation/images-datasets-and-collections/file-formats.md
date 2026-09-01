@@ -10,6 +10,8 @@ NimbusImage can read most file formats "out of the box", so mostly you will not 
 
 Nikon .nd2 files work essentially out of the box. You can just import them, and the variable assignment should work, and you generally will not need to enable "Transcode to optimized TIFF". If you have a large tiled image, it would be best to stitch the image in Nikon Elements first, if possible. If, however, that is not an option because the file is too large, you can enable "Composite stage positions" and "Transcode to optimized TIFF" and that should be able to do the stitching for you (although that has not been as extensively tested on our end).
 
+If you do let NimbusImage do the stitching and the seams between tiles are visible in the result, the [Stitch Refinement + Illumination Correction](../image-processing.md) tool can refine the tile positions and correct the uneven illumination within each tile. It works only on composited .nd2 datasets and re-reads the original file, so keep the .nd2 in the dataset.
+
 ## Zeiss (.czi)
 
 Zeiss .czi files work out of the box as well. The only difference is that we have found that performance is better when these files are transcoded inot a TIFF, so by default "Transcode to optimized TIFF" is enabled.

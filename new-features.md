@@ -2,6 +2,12 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## August 2026
+
+### Stitch refinement and illumination correction
+
+Clean up the seams in tiled images that NimbusImage composited for you. The new Stitch Refinement + Illumination Correction tool goes back to the original raw tiles, measures how neighboring tiles actually overlap, and solves for a corrected set of tile positions — while fitting a per-channel flat-field model from those same overlaps to remove the vignetting that makes tile boundaries show up as a grid. The corrected mosaic is uploaded as a new image next to your original, which is left untouched. Works on datasets composited from a Nikon .nd2 file. See [Image processing](documentation/image-processing.md).
+
 ## July 2026
 
 ### Browse and edit connections
