@@ -53,6 +53,12 @@ There are multiple ways in which you can download Snapshot images for use in a p
 3. **Download movie for current location.** Creates a movie from the current snapshot location.
 4. **Download screenshot of current viewport.** Allows you to download a "screenshot" of exactly what you see on screen, including all annotations and the scale bar if enabled.
 
+**Download across XY, Time, and Z.** By default a snapshot downloads the single XY position, time point, and Z slice it was saved at. Check any combination of the "Download across" XY, T, and Z boxes to export the same field of view at every value of those dimensions — for example, every Z slice of a stack, or every time point of a movie as separate stills. This works for the current snapshot, all snapshots, or a selection of snapshots. When more than one image results, they download as a single ZIP containing one TIFF per position, channel, and layer, with the coordinates in each filename. Your current viewer location and layer settings are not changed.
+
+{% hint style="info" %}
+TIFF downloads preserve the exact pixel values sent by the server and therefore do not include the scale bar drawn on the canvas. Use PNG or the viewport screenshot if you need the scale bar burned into the image.
+{% endhint %}
+
 ### Scale Bar Options
 
 You can add a scale bar to your exported images by checking the "Add scalebar" option. Click the settings icon next to the scale bar option to customize:

@@ -214,7 +214,7 @@ When you upload a tiled acquisition with **Composite** checked, NimbusImage asse
 The Stitch Refinement + Illumination Correction tool fixes both problems at once. It goes back to the original raw tiles, measures how neighboring tiles actually overlap, solves for a consistent set of corrected tile positions, and fits a per-channel flat-field model from those same overlaps. The corrected mosaic is uploaded as a **new** image in your dataset — your original image is never modified.
 
 {% hint style="info" %}
-This tool needs the original, unstitched tiles, so it only works on datasets that were composited by NimbusImage from a Nikon .nd2 file. It cannot run on an image that was already stitched before it reached NimbusImage (for instance, one stitched in Nikon Elements), because the overlapping raw tiles it measures no longer exist in such a file.
+This tool needs the original, unstitched tiles, so it only works on datasets that were composited by NimbusImage from a Nikon .nd2 file. It cannot run on an image that was already stitched before it reached NimbusImage (for instance, one stitched in Nikon Elements), because the overlapping raw tiles it measures no longer exist in such a file. For images like that, use [Stitched TIFF Illumination Correction](#stitched-tiff-illumination-correction) instead.
 {% endhint %}
 
 ### Before you start: upload with "Composite" checked
@@ -270,3 +270,62 @@ Existing objects are **not** moved when tile positions are refined. If your data
 - Already-stitched images are rejected before processing, as are datasets whose original .nd2 has been deleted.
 - Only tile translations are refined; all tiles must share a single camera orientation.
 - Existing object coordinates are not migrated to the corrected image.
+
+## Stitched TIFF Illumination Correction
+
+If your tiled image was already stitched before it reached NimbusImage — for example, a mosaic exported from Nikon Elements or another stitching program — the raw overlapping tiles that [Stitch Refinement + Illumination Correction](#stitch-refinement--illumination-correction) relies on are gone. The Stitched TIFF Illumination Correction tool is the fallback for that situation. It works only from the pixels in the stitched image: it detects the repeating tile grid, fits an illumination model per channel, and uploads a corrected copy as a **new** image in your dataset. Your original image is never modified.
+
+Because it can't see the true overlaps, this tool can't refine tile positions and has to be more careful about what it corrects. Its default "Automatic" mode fits several candidate correction models, tests each of them on Z planes it didn't fit on, and keeps a correction only if it clearly improves the grid pattern without damaging your data. If nothing passes, the channel is left unchanged and you get a warning saying so. This is deliberately conservative — it will sometimes decline to correct a channel rather than risk altering real biology.
+
+{% hint style="info" %}
+Whenever the original .nd2 is still in your dataset, prefer Stitch Refinement + Illumination Correction. It has access to the raw tile overlaps and produces a better-constrained correction, and it fixes tile placement at the same time.
+{% endhint %}
+
+### How to use
+
+1. **Navigate to a well-focused plane.** The tool fits its models on the XY position, Z plane, and time point you are currently viewing (unless you override them in the parameters), so pick a representative, in-focus plane.
+2. **Add the tool** by clicking "ADD NEW TOOL" in the Toolset panel and choosing "Stitched TIFF Illumination Correction" from the Image Processing category.
+3. **Check the channels to correct.** Each checked channel gets its own independently fitted model; unchecked channels are copied through untouched.
+4. **Leave the algorithm on "Automatic"** unless you have a reason to force a specific model.
+5. **Run the worker.** Automatic mode takes longer than a single algorithm because it fits and evaluates several candidates per channel.
+6. **Review the result** by selecting the new corrected image from the "Select Image" dropdown just below the dataset navigator. Check the job report for any channels that were left unchanged.
+
+{% hint style="warning" %}
+Only the current XY position and time point are corrected (across all Z planes). Other positions and time points are copied to the output unchanged, because their tile grids and brightness offsets can differ. Multi-position or time-lapse datasets need a separate run per position or time point.
+{% endhint %}
+
+### Parameters
+
+- **Channels to correct**: The channels for which correction models are fitted and applied. Each channel is corrected independently; only the grid geometry is shared.
+- **Algorithm**: "Automatic (recommended)" compares every candidate and picks the best one per channel, including leaving the channel unchanged. You can instead force BaSiC, Folded log-gradient, or Split-half affine (see below).
+- **Reference channel mode**: By default the tool scans all channels and uses the one with the clearest tile grid to determine the grid geometry. Switch to manual mode to name the channel yourself.
+- **Reference channel**: The channel used for grid detection when the reference mode is manual (default: the first channel).
+- **Reference XY / Z / Time** (1-based): The plane used for fitting. Left blank, the tool uses the position you are currently viewing. Choose a well-focused Z plane.
+- **BaSiC darkfield**: When forcing the BaSiC algorithm, choose whether to include an additive dark-field term. Automatic mode always evaluates both settings.
+- **Per-tile gain correction**: Off by default. An experimental option that also corrects whole-tile brightness differences for the BaSiC and Folded log-gradient models. Because a tile that is genuinely brighter (more cells, more signal) looks the same as a tile with a gain error, this can absorb real biological differences — enable it with care.
+- **Punctate channels for spot metric**: Channels containing spot-like signal (for example, RNA FISH). For these channels, Automatic mode additionally checks that detected spot counts are uniform across the tile grid. Leave empty for diffuse signal.
+- **Output type**: "Float32 (recommended)" keeps the corrected values exactly. "Preserve source dtype" writes the original integer type instead, and fails if more than a negligible fraction of pixels would be clipped.
+- **Validate every corrected plane**: On by default. Re-checks each output plane for damage to object intensities, fine detail, and numeric range, not just the held-out planes used for selection.
+- **Minimum / Maximum tile pitch**: The range of tile sizes, in pixels, the grid detector will consider (default: 150–1400 px). Adjust only if your tiles fall outside this range.
+
+### Technical details
+
+**Grid detection.** The tool looks for a repeating brightness pattern in each image axis to find the physical tile pitch and the seam positions between tiles. Each axis must contain at least four full tile periods for detection to work. In automatic reference mode, every channel is analysed and the dominant pitch shared across channels is used, taken from the channel where it is measured most cleanly.
+
+**Candidate algorithms.**
+
+- **BaSiC** resamples complete tile-to-tile intervals onto a common tile coordinate and fits a multiplicative flat-field (and optionally an additive dark-field) using the BaSiCPy implementation, then expands the result across the mosaic using the measured seam positions. Both darkfield settings are tried in Automatic mode.
+- **Folded log-gradient** combines the gradients of log intensity across all tiles, integrates the resulting periodic gradient field with a Fourier-domain Poisson solve, and expands the result over the mosaic. It is useful for dense or saturated channels where the background is dominated by signal.
+- **Split-half affine** estimates separable multiplicative and additive curves along each axis, keeping each spatial frequency only in proportion to how reproducibly it appears in two independent halves of the tiles. It is the most conservative candidate.
+- **Identity** — leaving the channel unchanged — is always a candidate and is the baseline every correction must beat.
+
+**Automatic selection.** Models are fitted on the reference Z plane and scored on held-out Z planes (the first, middle, and last planes, excluding the one used for fitting). Scores measure the residual grid pattern: within-tile brightness falloff, modulation at the tile frequency, position-dependent background, background dynamic range, and tile-to-tile scatter. A correction replaces the unchanged image only if it improves the aggregate score by more than 5% *and* improves every held-out plane; ties go to the simpler model. Candidates are rejected outright if they reorder object intensities (Spearman rank below 0.98), lose fine detail (high-frequency power below 90% of the original), push any real object's intensity to zero, or produce non-finite or newly non-positive pixels. Because selection needs at least one Z plane it didn't fit on, Automatic mode leaves single-Z datasets unchanged; you can still force a specific algorithm on those, accepting that it is fitted and applied on the same plane.
+
+**Output.** The corrected image is uploaded to your dataset with channel names, pixel size, and magnification carried over from the source. Its metadata records the requested and selected algorithm per channel, the full candidate scores and rejection reasons, the reference coordinates and held-out planes, the measured pitch and seam positions, and the worker version.
+
+### Limitations
+
+- Requires a stitched mosaic with a regular, repeating tile pattern; irregular or single-tile images cannot be processed.
+- Tile positions are not refined — only illumination is corrected.
+- Only the reference XY position and time point are corrected; other positions and time points are passed through unchanged.
+- Automatic mode needs at least two Z planes.
