@@ -8,7 +8,15 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 The Stitch Refinement tool added in August needs the original raw .nd2 tiles. The new Stitched TIFF Illumination Correction tool covers the other case: a mosaic that was stitched before it reached NimbusImage. Working only from the pixels in the stitched image, it detects the tile grid and fits a per-channel illumination model. Its default Automatic mode tries several candidate corrections (BaSiC, a folded log-gradient model, and a conservative split-half fit), scores each on Z planes it didn't fit on, and keeps a correction only when it clearly reduces the grid pattern without reordering object intensities or losing fine detail — otherwise the channel is left untouched with a warning. The corrected mosaic is uploaded as a new image beside the original. See [Image processing](documentation/image-processing.md#stitched-tiff-illumination-correction).
 
+### Download snapshot crops across XY, time, and Z
+
+Snapshot downloads used to give you one image at the location the snapshot was saved. The Snapshots panel now has independent "Download across" XY, T, and Z checkboxes, so you can export the same field of view at every Z slice, every time point, or every position — for the current snapshot, all snapshots, or just the ones you've selected. Multiple images arrive as a single ZIP with one TIFF per position, channel, and layer, each named with its coordinates. Your viewer location and layer settings stay put. See [Snapshots](documentation/snapshots.md#image-download-options).
+
+**Nimbus AI knows the newer features** — The AI assistant can now color your objects by any computed property on request (with a confirmation before it recolors the dataset), explain why objects are colored the way they are, and guide you to the Measurements tab, the object counter's filter notice, track filters, track ID labels, and dangling-connection cleanup.
+
 **Configure datasets through the REST API** — A new `POST /api/v1/dataset/{folderId}/multi_source` endpoint turns a folder of uploaded image files into a fully configured dataset, with the same filename parsing, variable assignment, compositing, and RGB-splitting options as the Advanced Import UI. A `dryRun` option returns the computed configuration without writing anything, so scripted upload pipelines no longer need the browser.
+
+**Tidier Snapshots panel** — The frame and Save buttons in the Snapshots panel are now a compact, evenly spaced stack aligned with the coordinate fields.
 
 ## August 2026
 
