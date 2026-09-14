@@ -97,6 +97,17 @@ Here is the paper:
 
 Wernersson, E., Gelali, E., Girelli, G., et al. (2024). [Deconwolf enables high-performance deconvolution of widefield fluorescence microscopy images.](https://doi.org/10.1038/s41592-024-02294-7) _Nature Methods, 21_, 1245–1256.
 
+### BaSiC
+
+BaSiC is a shading-correction method that estimates a multiplicative flat-field and an optional additive dark-field from a stack of images using low-rank and sparse decomposition. NimbusImage's Stitched TIFF Illumination Correction tool uses the BaSiCPy implementation as one of its candidate correction models.
+
+Here is the GitHub repository:
+[https://github.com/peng-lab/BaSiCPy](https://github.com/peng-lab/BaSiCPy)
+
+Here is the paper:
+
+Peng, T., Thorn, K., Schroeder, T., et al. (2017). [A BaSiC tool for background and shading correction of optical microscopy images.](https://doi.org/10.1038/ncomms14836) _Nature Communications, 8_, 14836.
+
 ## Packages
 
 ### Girder

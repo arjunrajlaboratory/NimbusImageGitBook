@@ -2,6 +2,14 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## September 2026
+
+### Illumination correction for already-stitched images
+
+The Stitch Refinement tool added in August needs the original raw .nd2 tiles. The new Stitched TIFF Illumination Correction tool covers the other case: a mosaic that was stitched before it reached NimbusImage. Working only from the pixels in the stitched image, it detects the tile grid and fits a per-channel illumination model. Its default Automatic mode tries several candidate corrections (BaSiC, a folded log-gradient model, and a conservative split-half fit), scores each on Z planes it didn't fit on, and keeps a correction only when it clearly reduces the grid pattern without reordering object intensities or losing fine detail — otherwise the channel is left untouched with a warning. The corrected mosaic is uploaded as a new image beside the original. See [Image processing](documentation/image-processing.md#stitched-tiff-illumination-correction).
+
+**Configure datasets through the REST API** — A new `POST /api/v1/dataset/{folderId}/multi_source` endpoint turns a folder of uploaded image files into a fully configured dataset, with the same filename parsing, variable assignment, compositing, and RGB-splitting options as the Advanced Import UI. A `dryRun` option returns the computed configuration without writing anything, so scripted upload pipelines no longer need the browser.
+
 ## August 2026
 
 ### Analysis plots with lasso gating
