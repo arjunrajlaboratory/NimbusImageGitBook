@@ -14,6 +14,22 @@ When you open a freshly created collection that doesn't have any tools yet, Nimb
 
 <figure><img src="../../.gitbook/assets/ai-suggested-tools.png" alt=""><figcaption><p>The "Suggested tools" panel proposes tools based on your image — here, H&E Deconvolution and a Blob tool for a histology slide</p></figcaption></figure>
 
+## Organizing your tools
+
+Hover over a tool in the Tools palette to reveal three controls:
+
+- **Pin**: Moves the tool into a **Pinned** section at the top of the palette, above *Annotation tools* and *Analysis tools*. Click again to unpin it. Pin the handful of tools you use most so they're always within reach.
+- **Edit**: Opens the tool's settings.
+- **Drag grip**: Drag to reorder tools within their section. Each section is ordered independently, so a tool can't be dragged into a different section.
+
+Pins and ordering are saved with the collection's configuration, so they apply to every dataset in the collection and for everyone who opens it — just like the tools themselves.
+
+When an automated tool's settings menu is open, clicking anywhere outside it (or pressing Escape) closes it. Panning the image does not close the menu, and clicking a different automated tool switches the menu to that tool.
+
+{% hint style="info" %}
+You can also find and activate any tool — or start adding a new one — from the [command palette](../viewing-your-data.md#command-palette) with ⌘K / Ctrl+K.
+{% endhint %}
+
 ## Manual blob/point/line/rectangle tools
 
 Manual blob/point/line/rectangle tools are the most basic tools in NimbusImage. Set it up by clicking on "Add New Tool" and choosing "Manual Blob", "Manual Point", "Manual Line", or "Manual Rectangle". Set the tag, and then you can use it to create objects in your image. You can use the same tag for multiple tools. For instance, you can use an automated cell finding tool and then add more cells using the manual tool, and they will be all treated the same for downstream analysis.

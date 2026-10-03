@@ -2,6 +2,24 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## October 2026
+
+### Command palette
+
+Press ⌘K (or Ctrl+K), or click the new magnifier in the app bar, to search across nearly everything the viewer can do: activate a tool, start adding a new one, open or close panels, toggle layers, jump to a snapshot, color objects by a property, or open import/export dialogs, the AI panel, docs, and tours. Search matches initials, partial words, and common synonyms, and an empty search shows your recent commands. See [Command palette](documentation/viewing-your-data.md#command-palette).
+
+### Pin and reorder tools
+
+Hover over any tool in the Tools palette to pin it, edit it, or drag it into a new position. Pinned tools get their own section at the top of the palette, and each section can be reordered by dragging. Pins and order are saved with the collection, so everyone working in it sees the same arrangement. See [Organizing your tools](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md#organizing-your-tools).
+
+**Click outside to close tool menus** — An automated tool's settings menu now closes when you click elsewhere or press Escape, instead of requiring the Close button. Panning the image keeps it open, and clicking another tool switches to that tool's menu.
+
+**Nimbus AI upgraded to Claude Sonnet 5.5** — The AI panel and automatic tool suggestions now run on Claude Sonnet 5.5.
+
+#### Bug fixes
+
+- Fixed the Delete button on a dataset's info page failing with a "No local worker is available" error.
+
 ## September 2026
 
 ### Illumination correction for already-stitched images

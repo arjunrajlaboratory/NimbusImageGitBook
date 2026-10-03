@@ -13,6 +13,20 @@ Once your images are loaded into NimbusImage, you can interact with it through t
 * **Zoom in and out of large images.** Scroll wheel zooms, just like Google Maps.
 * **Flexible layer settings.** See below for more information about layers.
 
+## Command palette
+
+Press **⌘K** (Mac) or **Ctrl+K** (Windows/Linux), or click the magnifier icon in the app bar, to open a search box over almost everything you can do in the viewer. Start typing and press Enter to run the highlighted command. Commands include:
+
+- **Use a tool**: "Use tool: Nuclei" activates an existing tool, and shows its hotkey if it has one.
+- **Add a tool**: "Add tool: Gaussian Blur…" opens the Add-new-tool dialog with that tool pre-selected. Nothing is created until you confirm.
+- **Open or close panels**: "Open Filters", "Close Layers".
+- **Toggle layers**: "Toggle layer: DAPI", with its number key shown.
+- **Jump to a snapshot**: "Go to snapshot: Fig 2".
+- **Color by a property**: "Color by: Area" opens the color-by-property dialog with that property selected.
+- **Actions and help**: Measure, Undo/Redo, data import/export, 3D view, upload, the AI panel, documentation, and guided tours.
+
+Search is forgiving: it matches initials, word starts, partial spellings, and common synonyms, so you don't need to know a command's exact name. With an empty search box, the palette shows your recently used commands first. The list updates automatically — a newly available analysis tool appears without reloading the page.
+
 ## Layers
 
 Understanding layers can help unlock more flexibility in how you visualize your data. Generally, layers are most commonly thought of as mapping to channels, but in NimbusImage, they are capable of more. For instance, you can make multiple layers that draw from the same channel, but show different times in different colors, which can be very helpful for time lapse analysis.
