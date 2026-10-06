@@ -152,6 +152,41 @@ This worker combines the flexibility of percentile selection with annular region
 
 * **Nth Percentile Intensity**: The intensity value at your specified percentile within the annular region
 
+## Point count
+
+The Point count worker counts how many point objects fall inside each blob (polygon) object — for example, the number of RNA FISH spots inside each cell or nucleus. The blobs to measure are chosen with the tag you pick in the Create New Property section; the points to count are chosen in the worker's own settings.
+
+### Parameters:
+
+* **Tags of points to count**: The tags of the point objects to count (for example, `spot`)
+* **Count points across all z-slices**: If "Yes" (default), points on every Z slice that fall within the blob's outline are counted, which suits a cell outlined on one slice with spots spread through the stack. If "No", only points on the blob's own Z slice are counted.
+* **Exact tag match?**: If "No" (default), points with any of the listed tags are counted. If "Yes", points must have exactly the listed tags.
+
+### Output:
+
+* A single value per blob: the number of matching points inside it, shown under the property's name
+
+{% hint style="info" %}
+Points are only counted against blobs at the same XY position and time point. Point count works from geometry alone — a point counts if it lies inside the outline, whether or not it is connected to the blob. To count points (or any objects) that you have explicitly connected to a parent object, use [Count connected objects](#count-connected-objects) instead.
+{% endhint %}
+
+## Blob overlap
+
+The Blob overlap worker measures how much each blob overlaps with blobs from a second set — for example, how much of each nucleus lies inside a region you've outlined, or how much two segmentations of the same cells agree. The first set is chosen with the tag you pick in the Create New Property section; the second set is chosen in the worker's settings.
+
+### Parameters:
+
+* **Annotations to compute overlap with**: The tags of the second set of blobs
+* **Compute reverse overlaps**: If checked (default), the overlap is also computed from the second set's point of view and stored on those blobs
+
+### Output:
+
+* **Overlap\_{tags}**: The fraction of each blob's area that overlaps blobs in the other set (overlapping area ÷ the blob's own area). A value of 0 means no overlap and 1 means the blob lies entirely within the other set.
+
+{% hint style="info" %}
+Only blobs at the same XY position, Z slice, and time point are compared. Overlaps with each blob in the other set are added together, so if blobs in the other set overlap one another, the value can exceed 1.
+{% endhint %}
+
 ## Properties for point objects
 
 The workers below measure **point** objects, such as detected spots or manually placed points. Choose a tag (or the point shape) in the Create New Property section as usual.
@@ -201,3 +236,29 @@ The Point metrics property worker records the coordinates of each point object a
 1. Create and tag point objects in your image
 2. Create a new property using the Point metrics worker
 3. Run the property worker to record coordinates for all matching points
+
+## Count connected objects
+
+The Count connected objects worker counts how many child objects are [connected](tools-for-connecting-objects.md) to each parent object — for example, the number of spots connected to each nucleus after running Connect to nearest. Unlike Point count, which counts points that fall inside an outline, this counts explicit connections, so it works for any object shapes and for children that sit outside their parent.
+
+The parent objects are chosen with the tag you pick in the Create New Property section; the children are chosen in the worker's settings.
+
+### Parameters:
+
+* **Child Tags**: The tags of the child objects to count. At least one tag is required.
+* **Child Tags Exclusive**: If "No" (default), children with any of the listed tags are counted. If "Yes", children must have exactly the listed tags.
+
+### Output:
+
+* **Children Count**: The number of matching children connected to each parent. Parents with no connected children get 0.
+
+### How to use:
+
+1. Create your parent and child objects (for example, nuclei and spots)
+2. Connect them, for instance with the Connect to nearest tool
+3. Create a new property for the parent tag using the Count connected objects worker, and select the child tags
+4. Run the property worker
+
+{% hint style="info" %}
+If no connections are found between the selected parents and children, the job warns you and records a count of 0 for every parent. Run a connection tool first.
+{% endhint %}

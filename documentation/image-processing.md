@@ -181,6 +181,40 @@ The rolling ball algorithm estimates the local background by "rolling" a ball of
 
 The implementation uses scikit-image's `restoration.rolling_ball` function. The result is uploaded as a new image in your dataset, with channel names and pixel size carried over from the original; the radius used is recorded in the new image's metadata.
 
+## H&E Deconvolution
+
+The H&E Deconvolution tool separates a brightfield RGB image of an H&E-stained (hematoxylin and eosin) histology slide into its individual stain components. Instead of a mixed pink-and-purple color image, you get separate channels for hematoxylin (which stains nuclei) and eosin (which stains cytoplasm and extracellular matrix). These channels behave like any other channel in NimbusImage, so you can contrast them independently or run segmentation tools, such as Cellpose-SAM, on the hematoxylin channel to find nuclei.
+
+{% hint style="info" %}
+This tool is designed specifically for H&E-stained histology images. It will not give meaningful results on fluorescence images or other stain types.
+{% endhint %}
+
+### How to use
+
+1. **Upload your RGB image** so that it has three channels (red, green, blue). If your file is imported as a single color image, use Advanced Import and make sure the RGB bands are split into separate channels.
+2. **Add the H&E Deconvolution tool** by clicking the "ADD NEW TOOL" button in the Toolset panel and choosing "H&E Deconvolution" from the Image Processing category
+3. **Set the Max percentile** (the default of 99 works well for most slides)
+4. **Process the image** by running the worker
+5. **Review the result** by selecting the deconvolved image from the "Select Image" dropdown just below the dataset navigator
+
+### Parameters
+
+- **Max percentile**: The upper percentile used to rescale each stain channel's intensity (range: 0–100, default: 99). Values above this percentile are clipped to the maximum brightness. Lower values increase contrast but clip more of the brightest pixels; higher values preserve more of the bright end at the cost of contrast.
+
+### Technical details
+
+The tool converts each RGB image into the HED (Hematoxylin–Eosin–DAB) color space using scikit-image's `rgb2hed` color deconvolution. It then rescales each resulting channel to 8-bit (0–255), mapping the range from zero to the chosen percentile onto the full output range. Every XY position, Z-slice, and time point is processed.
+
+The output is uploaded as a new image in your dataset with three channels:
+
+- **Channel 1**: Hematoxylin
+- **Channel 2**: Eosin
+- **Channel 3**: DAB (a stain used in immunohistochemistry; for a plain H&E slide this channel carries little real signal)
+
+The output channels keep the original channel names (for example, the red, green, and blue names), even though they now hold stain values rather than color values.
+
+**Requirements**: The image must have exactly three channels. Images with a different number of channels are rejected with an error.
+
 ## Deconvolution (Deconwolf)
 
 The Deconvolution tool uses [deconwolf](https://github.com/elgw/deconwolf), an open-source 3D deconvolution engine, to computationally reverse the optical blurring inherent in fluorescence microscopy images. It applies the Richardson-Lucy algorithm with a theoretically generated Born-Wolf point spread function (PSF) to produce sharper images with improved contrast and resolution. GPU acceleration is supported and enabled by default.
