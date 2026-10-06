@@ -151,3 +151,53 @@ This worker combines the flexibility of percentile selection with annular region
 ### Output:
 
 * **Nth Percentile Intensity**: The intensity value at your specified percentile within the annular region
+
+## Properties for point objects
+
+The workers below measure **point** objects, such as detected spots or manually placed points. Choose a tag (or the point shape) in the Create New Property section as usual.
+
+## Point intensity
+
+The Point intensity property worker measures pixel intensities in a small circle centered on each point object. With the default radius, this gives you the pixel value at the point's location. With a larger radius, it summarizes a small neighborhood, which can help when, for instance, you want to estimate the local background around a spot.
+
+### Parameters:
+
+* **Channel**: The image channel to measure intensity from (required). This can be different from the layer the points were drawn on.
+* **Radius**: The radius of the sampling circle in pixels (range: 0.5–10, default: 1). At 1 or smaller, only the pixel at the point's location is measured.
+
+### Available metrics:
+
+* **MeanIntensity**: The average pixel intensity within the circle
+* **MaxIntensity**: The brightest pixel value within the circle
+* **MinIntensity**: The dimmest pixel value within the circle
+* **MedianIntensity**: The median pixel value within the circle
+* **25thPercentileIntensity**: The intensity value below which 25% of pixels fall
+* **75thPercentileIntensity**: The intensity value below which 75% of pixels fall
+* **TotalIntensity**: The sum of all pixel intensities within the circle
+
+### How to use:
+
+1. Create point objects in your image (manually or using a spot detection tool)
+2. Tag these objects appropriately (e.g., `spot`)
+3. Create a new property using the Point intensity worker
+4. Select the channel to measure and, if needed, adjust the radius
+5. Run the property worker to calculate intensity metrics for all matching points
+
+{% hint style="info" %}
+Points near the edge of the image are measured using only the pixels of the circle that fall inside the image. Points whose circle contains no pixels at all are skipped.
+{% endhint %}
+
+## Point metrics
+
+The Point metrics property worker records the coordinates of each point object as properties, so they can be shown in the object list and included in CSV exports. It does not read any image data, so no channel needs to be selected.
+
+### Available metrics:
+
+* **x**: The x coordinate of the point, in pixels
+* **y**: The y coordinate of the point, in pixels
+
+### How to use:
+
+1. Create and tag point objects in your image
+2. Create a new property using the Point metrics worker
+3. Run the property worker to record coordinates for all matching points

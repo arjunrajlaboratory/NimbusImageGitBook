@@ -143,6 +143,35 @@ This tool is perfect for:
 
 After running the Connect timelapse tool, you can use the Time lapse mode (discussed in the [Time lapse mode](../time-lapse-mode.md) section) to visualize, review, and manually correct the resulting tracks.
 
+### Connect sequential
+
+The **Connect Sequential** tool (in the Connections category) links each object to its nearest neighbor in the immediately preceding slice, either across time or across Z:
+
+1. Objects with the chosen tag are compared slice by slice along the axis you pick (Time or Z)
+2. Each object becomes a "child" connected to the nearest matching object in the previous slice (time point − 1 or Z − 1), which becomes its "parent"
+3. Each object connects to at most one parent
+
+**Configuration options:**
+
+* **Object to connect tag**: Specifies which objects to connect (all objects with this tag will be connected)
+* **Connect sequentially across**: Choose **Time** to connect objects from one time point to the next, or **Z** to connect objects from one Z-slice to the next (default: Time)
+* **Max distance (pixels)**: The maximum distance between a child and its parent; objects farther apart than this are not connected (range: 0–5000, default: 1000)
+
+**How it works:**
+
+1. Objects are never connected across different XY positions. When connecting across Time, only objects in the same Z-slice are connected; when connecting across Z, only objects at the same time point are connected.
+2. Distance is always measured between object centroids (for points, the point itself).
+3. Created connections are tagged with the same tag as the input objects.
+
+**When to use it instead of Connect timelapse:**
+
+* Use **Connect sequential** when you need to link objects **across Z-slices** (for example, following a structure through a Z-stack), since Connect timelapse only works across time.
+* Use **Connect timelapse** for most time-lapse tracking, especially when objects can be missing from some frames: Connect sequential only looks at the immediately preceding slice and cannot bridge gaps.
+
+{% hint style="info" %}
+Connect sequential works on point and blob (polygon) objects. Line objects are not used.
+{% endhint %}
+
 ## Browsing and editing connections
 
 Once you have connections, the **Connections** tab in the Object Browser lets you see exactly what is connected to what, and clean up whatever is wrong — without hunting through the image for it.
