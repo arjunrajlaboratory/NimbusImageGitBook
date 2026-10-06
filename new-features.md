@@ -30,6 +30,10 @@ Compositing used to require one multi-position .nd2 file. You can now composite 
 
 **Nimbus AI upgraded to Claude Sonnet 5.5** — The AI panel and automatic tool suggestions now run on Claude Sonnet 5.5. The assistant also knows about the command palette and pinned tools, and can point you to them.
 
+**Cleaner illumination correction in stitched mosaics** — Stitch Refinement + Illumination Correction no longer over-corrects the centers of tiles, which removes a faint grid of slightly darker tile centers that could appear in corrected images, especially in dim background channels with stretched contrast.
+
+**New tool documentation** — Docs now cover the [SAM2 tools](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md#sam2-tools-for-segmentation-refinement-and-tracking) (automatic mask generator, few-shot segmentation, Refiner, propagator, and video tracking), [Connect sequential](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-connecting-objects.md#connect-sequential), [Rolling Ball](documentation/image-processing.md#rolling-ball) background subtraction, and the [Point intensity and Point metrics](documentation/analyzing-image-data-with-objects-connections-and-properties/measuring-object-properties.md#properties-for-point-objects) measurements.
+
 #### Bug fixes
 
 - Fixed the Delete button on a dataset's info page failing with a "No local worker is available" error.

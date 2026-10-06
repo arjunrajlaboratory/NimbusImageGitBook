@@ -65,6 +65,17 @@ Here is the paper:
 
 Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rolland, C., Gustafson, L., Xiao, T., Whitehead, S., Berg, A.C., Lo, W.Y., Dollár, P., & Girshick, R. (2023). [Segment Anything.](https://arxiv.org/abs/2304.02643) _arXiv:2304.02643_.
 
+### Segment Anything Model 2 (SAM 2)
+
+SAM 2 extends the Segment Anything Model to video, adding a memory of each object across frames so that objects can be tracked through a sequence. NimbusImage uses SAM 2 for its automated SAM2 tools, including automatic segmentation, few-shot segmentation, refinement, and propagating or tracking objects through time and Z.
+
+Here is the GitHub repository:  
+[https://github.com/facebookresearch/sam2](https://github.com/facebookresearch/sam2)
+
+Here is the paper:  
+
+Ravi, N., et al. (2024). [SAM 2: Segment Anything in Images and Videos.](https://arxiv.org/abs/2408.00714) _arXiv:2408.00714_.
+
 ### Piscis
 
 Piscis is a specialized deep learning algorithm developed by Will Niu while in the Raj Lab. It is designed specifically for detecting diffraction-limited spots in fluorescence microscopy images, such as single RNA molecules in FISH experiments. It uses a novel loss function, the SmoothF1 loss, that directly penalizes false positives and false negatives while remaining differentiable for deep learning training.

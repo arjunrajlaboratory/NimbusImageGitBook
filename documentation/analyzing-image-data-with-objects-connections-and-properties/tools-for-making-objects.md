@@ -506,3 +506,120 @@ CondensateNet processes brightfield images through a three-stage pipeline:
 3. **Use larger tile sizes** (1024 recommended) for consistent detection — smaller tiles can cause detection differences due to per-tile intensity normalization
 4. **Review results visually**: Always inspect the segmentation and refine parameters if needed
 5. **Post-process as needed**: Use NimbusImage's manual editing tools to correct any segmentation errors
+
+### SAM2 tools for segmentation, refinement, and tracking
+
+NimbusImage includes a family of automated tools built on Meta's Segment Anything Model 2 (SAM2). You'll find them under the **SAM2** category in the "Add new tool" dialog (the SAM1-based few-shot tool is under **SAM**). Unlike the interactive [Segment-Anything "God Mode"](#segment-anything-semi-automated-object-finding-aka-god-mode) and [Segment similar objects](#segment-similar-objects-experimental) tools, which run in your browser on the current view, these tools run as server jobs and can process many XY positions, Z-slices, and time points at once. They create blob (polygon) objects with the tags you set for the tool.
+
+{% hint style="info" %}
+If you use the SAM2 tools in your research, please cite [SAM 2](../../citations.md#segment-anything-model-2-sam-2). For the SAM few-shot segmentation tool, cite the original [Segment Anything Model (SAM)](../../citations.md#segment-anything-model-sam).
+{% endhint %}
+
+{% hint style="info" %}
+All of these tools "see" the image as it is displayed: they combine your channels using the current layer contrast and color settings. Adjust your layers so the objects you care about are clearly visible before running them.
+{% endhint %}
+
+Several settings are shared across these tools:
+
+- **Batch XY / Batch Z / Batch Time**: The positions, Z-slices, and time points to process (format: "1-3, 5-8", or `all`). Leave blank to use only the current one.
+- **Model** (SAM2 tools): The SAM2.1 model size: `sam2.1_hiera_tiny`, `sam2.1_hiera_small`, `sam2.1_hiera_base_plus`, or `sam2.1_hiera_large`. Larger models may give slightly better results but are slower and use more memory, which can matter when processing many objects at once.
+- **Smoothing**: How much the resulting outlines are simplified (0-3). Higher values give smoother outlines with fewer vertices.
+- **Padding**: Expands (positive) or shrinks (negative) the resulting outlines, in pixels (-20 to 20, default 0).
+
+### SAM2 automatic mask generator
+
+The **SAM2 automatic mask generator** finds and outlines *everything* SAM2 can identify in the image, without any examples or prompts. It's a quick way to get a first pass of objects in an image, which you can then filter or clean up.
+
+#### Key parameters
+
+- **Model**: The SAM2 model size (default: `sam2.1_hiera_small.pt`)
+- **Smoothing**: Outline simplification (default: 0.3)
+- **Points per side**: How densely SAM2 samples the image when looking for objects (16-128, default: 32). Higher values find more and smaller objects but take longer.
+
+#### Best practices
+
+Because it segments everything, expect to get background regions and other objects you don't want along with your objects of interest. If you only want objects that look like a few examples you've drawn, use few-shot segmentation instead. Each object is a single outline; holes inside objects are not preserved.
+
+### SAM and SAM2 few-shot segmentation
+
+The few-shot segmentation tools find objects that resemble a handful of examples you've outlined. Outline roughly 5-20 representative objects, give them a tag, and the tool searches the batch range for similar objects. No model training is needed.
+
+Under the hood, the tool generates every candidate object it can find (like the automatic mask generator), compares each candidate's appearance to your examples, and keeps only the candidates that are similar enough.
+
+There are two versions:
+
+- **SAM2 few-shot segmentation** (under **SAM2**): Uses SAM2. Faster, and lets you choose among SAM2 model sizes (default: `sam2.1_hiera_base_plus.pt`).
+- **SAM few-shot segmentation** (under **SAM**): Uses the original, larger SAM ViT-H model (`sam_vit_h_4b8939`). In our tests on microscopy images, it found more of the target objects than the SAM2 version, but it is considerably slower. Choose it when segmentation quality matters more than speed.
+
+#### How to use
+
+1. Outline 5-20 example objects with a manual blob tool and give them a common tag (e.g., "training\_cells"). Choose examples that represent the range of appearances you want to find.
+2. Add **SAM2 few-shot segmentation** or **SAM few-shot segmentation** from the "Add new tool" dialog.
+3. Set **Training Tag** to the tag of your examples, and set the batch range you want to segment.
+4. Run the tool and review the results. Adjust **Similarity Threshold** and the mask area limits as needed, and run again.
+
+#### Key parameters
+
+- **Training Tag**: **Required.** The tag of your example objects. Examples can be anywhere in the dataset.
+- **Similarity Threshold**: How closely a candidate must resemble your examples to be kept (0-1, default: 0.5). Increase (e.g., 0.6-0.8) if you get too many false positives; decrease (e.g., 0.3-0.4) if objects are being missed.
+- **Target Occupancy**: How much context around each object the model looks at, as the fraction of the view the object fills (0.05-0.8, default: 0.2). Try 0.1-0.15 for very small objects and 0.3-0.4 for large ones.
+- **Points per side**: How densely to search for candidate objects (default: 128; range 16-256 for SAM2 and 16-128 for SAM). Increase to find more small objects; decrease for faster processing.
+- **Min Mask Area** / **Max Mask Area**: Candidates smaller or larger than these areas (in pixels) are ignored (defaults: 30 and 1000). Set **Max Mask Area** to 0 for no upper limit. A good starting point is about half the area of your smallest example for the minimum and about twice the area of your largest example for the maximum. **Be sure to raise Max Mask Area if your objects are larger than 1000 pixels.**
+- **Smoothing**: Outline simplification (default: 0.3)
+
+{% hint style="info" %}
+Looking for something interactive? The [Segment similar objects](#segment-similar-objects-experimental) tool does a similar job in your browser on the current view, with immediate feedback. The few-shot tools are better when you want to process many positions, slices, or time points in one go.
+{% endhint %}
+
+### SAM2 Refiner
+
+The **SAM2 Refiner** cleans up existing objects. For each tagged object, it uses the object's bounding box as a prompt to SAM2 and creates a new outline that better follows the object's edges in the image. This is useful for tightening up rough hand-drawn outlines or objects from another segmentation tool.
+
+#### How to use
+
+1. Add **SAM2 Refiner** from the "Add new tool" dialog.
+2. Set **Tag of objects to refine** to the tag of the objects you want to clean up, and set the batch range to cover them.
+3. Set the tool's output tags. The refined objects get the tool's tags, not the tags of the originals.
+4. Run the tool and review the results.
+
+#### Key parameters
+
+- **Tag of objects to refine**: The tag of the objects to refine. Only objects within the batch range are refined. If left empty, all blob objects in the batch range are refined.
+- **Delete original annotations**: Delete the original objects after the refined ones are created (default: off).
+- **Model**: The SAM2 model size (default: `sam2.1_hiera_small.pt`)
+- **Padding**: Outline expansion or shrinkage in pixels (default: 0)
+- **Smoothing**: Outline simplification (default: 0.7)
+
+{% hint style="warning" %}
+The refiner creates new objects rather than editing the originals in place, so connections and other references to the original objects are not carried over to the refined ones.
+{% endhint %}
+
+### SAM2 propagator and SAM2 video
+
+These two tools take objects you've outlined in one frame and carry them through time or Z, creating a matching object in each subsequent frame (or slice). Both can connect the objects across frames so that each object forms a track you can browse and analyze with [connections](tools-for-connecting-objects.md) and review in [Time lapse mode](../time-lapse-mode.md).
+
+- **SAM2 propagator** works one frame at a time: it uses the bounding boxes of the objects in the current frame as prompts to segment the next frame, then repeats from there. It works well when objects change in appearance over time (e.g., cell differentiation or condensate dynamics), and uses less memory on long sequences.
+- **SAM2 video** uses SAM2's video mode, which considers the whole sequence together and keeps a memory of each object across frames. This tends to give more consistent tracking, but long sequences can require a lot of GPU memory. If a long sequence fails, try the propagator instead.
+
+#### How to use
+
+1. Outline the objects you want to follow in your starting frame and give them a tag. With SAM2 video, you can also provide starting objects in different frames; each one is tracked separately.
+2. Add **SAM2 propagator** or **SAM2 video** from the "Add new tool" dialog.
+3. Set the tag of your starting objects, choose whether to follow them across **Time** or **Z**, and choose the direction (**Forward** or **Backward**).
+4. Set **Batch Time** (or **Batch Z**, when working across Z) to the full range of frames to follow the objects through, including your starting frame, e.g., "1-50" or `all`. With the default (blank), only the current frame is processed and nothing is propagated.
+5. Run the tool and review the results.
+
+#### Key parameters
+
+- **Tag of objects to propagate** (propagator) / **Tag of objects to track** (video): The tag of your starting objects.
+- **Propagate across** / **Track across**: Whether to follow objects through **Time** or **Z** (default: Time).
+- **Propagation direction** / **Track direction**: **Forward** to go from earlier to later frames, or **Backward** to go from later to earlier (default: Forward).
+- **Connect sequentially**: Connect each object to its counterpart in the next frame (default: on). Connections run from earlier to later frames regardless of direction, and are tagged `SAM2_PROPAGATED` (propagator) or `SAM2_VIDEO` (video).
+- **Resegment propagation objects** (propagator only): Before propagating, re-segment your starting objects with SAM2 so the whole track is drawn consistently (default: on). This adds new SAM2-drawn objects in the starting frame alongside your originals.
+- **Model**: The SAM2 model size (default: `sam2.1_hiera_small.pt`)
+- **Padding**: Outline expansion or shrinkage in pixels (default: 0)
+- **Smoothing**: Outline simplification (default: 0.7 for the propagator, 0.3 for video)
+
+{% hint style="info" %}
+To find objects first and then follow them, you can combine tools: for example, segment the first time point with Cellpose-SAM or few-shot segmentation, then propagate those objects with the SAM2 propagator or SAM2 video.
+{% endhint %}

@@ -153,6 +153,34 @@ This technique is particularly useful for:
 - Preprocessing images before feature detection or segmentation
 - Creating depth-of-field effects
 
+## Rolling Ball
+
+The Rolling Ball tool performs background subtraction, removing slowly varying background signal such as uneven illumination or diffuse haze while leaving smaller foreground features (cells, spots, and other structures) intact. It is the tool to reach for when you want simple background correction on fluorescence microscopy images, for instance before measuring intensities.
+
+### How to use
+
+1. **Add the Rolling Ball tool** by clicking the "ADD NEW TOOL" button in the Toolset panel and choosing "Rolling Ball" from the Image Processing category
+2. **Configure the correction settings**:
+   - **Radius**: Set the size of the rolling ball (see below for how to choose it)
+   - **Channels to correct**: Check which channels should be background-subtracted
+3. **Process the image** by running the worker
+4. **Review the result** by switching between "Original image" and the corrected result in the dropdown menu
+
+### Parameters
+
+- **Radius**: The radius of the rolling ball, in pixels (range: 0–100, default: 20). Smaller radii remove finer-grained background variation; larger radii remove only broad, slowly varying background. Choose a radius larger than the features you want to keep.
+- **Channels to correct**: Select which channels to apply background subtraction to. Unselected channels are copied to the output unchanged.
+
+{% hint style="info" %}
+If you select a channel that doesn't exist in the dataset (for example, from a saved tool configuration run on a dataset with fewer channels), the job reports it: you get a warning if some of the selected channels are missing, or an error if none of them exist.
+{% endhint %}
+
+### Technical details
+
+The rolling ball algorithm estimates the local background by "rolling" a ball of the specified radius underneath the image's intensity surface. The surface traced out by the ball is taken as the background, and it is subtracted from the original image. Each selected frame (every XY position, Z-slice, and time point of the chosen channels) is corrected independently.
+
+The implementation uses scikit-image's `restoration.rolling_ball` function. The result is uploaded as a new image in your dataset, with channel names and pixel size carried over from the original; the radius used is recorded in the new image's metadata.
+
 ## Deconvolution (Deconwolf)
 
 The Deconvolution tool uses [deconwolf](https://github.com/elgw/deconwolf), an open-source 3D deconvolution engine, to computationally reverse the optical blurring inherent in fluorescence microscopy images. It applies the Richardson-Lucy algorithm with a theoretically generated Born-Wolf point spread function (PSF) to produce sharper images with improved contrast and resolution. GPU acceleration is supported and enabled by default.
@@ -252,11 +280,11 @@ Existing objects are **not** moved when tile positions are refined. If your data
 
 **Position refinement.** The existing stage geometry is used as a starting point rather than thrown away — the tool never re-derives the stage layout from scratch and never changes the camera's rotation or flip, only the translations. For each adjacent tile pair it builds a maximum-Z reference tile from the refinement channel, then searches around the position the metadata predicts (a coarse ±24 pixel search at 3 pixel steps, followed by a fine ±4 pixel search at 1 pixel steps), scoring each candidate by normalized cross-correlation. Pairs scoring below the NCC threshold are discarded. All the remaining constraints are then solved together, weighted by their NCC scores, with the average coordinate shift held at zero so the mosaic does not drift as a whole. If part of the tile grid ends up disconnected, a conservative global fit is used as a fallback for those tiles.
 
-**Illumination correction.** A smooth flat field is fitted per channel from the aligned raw-tile overlaps: wherever two tiles image the same piece of sample, any brightness difference between them must come from the illumination profile rather than the specimen. The fit uses a low-order (order-5) two-dimensional discrete cosine transform with a robust, outlier-resistant regression, computed at 128×128 and expanded to the full camera dimensions. The recommended algorithm additionally fits a regularized per-position gain, capped to a 1.10-fold range, to absorb small tile-to-tile brightness differences. Every channel is corrected independently, and all time points and Z planes are corrected using the model fitted from the reference Z plane at the first time point.
+**Illumination correction.** A smooth flat field is fitted per channel from the aligned raw-tile overlaps: wherever two tiles image the same piece of sample, any brightness difference between them must come from the illumination profile rather than the specimen. The fit uses a low-order (order-5) two-dimensional discrete cosine transform with a robust, outlier-resistant regression, computed at 128×128 and expanded to the full camera dimensions. Because overlaps only cover the margins of each tile, the fit is anchored so that the correction stays neutral in the un-overlapped tile interiors, where the overlaps provide no evidence about the illumination. Without this anchoring, the correction could over-shoot in the tile centers and leave corrected tiles a few percent darker in the middle than at the edges — a residual grid pattern most noticeable in dim, low-contrast background channels once you stretch the display contrast. The recommended algorithm additionally fits a regularized per-position gain, capped to a 1.10-fold range, to absorb small tile-to-tile brightness differences. Every channel is corrected independently, and all time points and Z planes are corrected using the model fitted from the reference Z plane at the first time point.
 
 **Output.** Corrected raw planes are streamed into a lossless pyramidal TIFF — the assembled mosaic is never held in memory, so very large tiled images can be processed. The result is uploaded as a new item in the dataset and appears alongside the original in the "Select Image" dropdown, where it can also be deleted independently if you don't want to keep it.
 
-**Diagnostics.** The job report and the new image's metadata record the predicted and measured offset and NCC score for every tile pair, the number of pairs accepted, the per-pair residuals from the solved fit, the mosaic bounds before and after, and per-channel illumination model diagnostics. A warning appears if the largest residual exceeds 2 pixels, or if the outer edge of the mosaic moves by more than 16 pixels.
+**Diagnostics.** The job report and the new image's metadata record the predicted and measured offset and NCC score for every tile pair, the number of pairs accepted, the per-pair residuals from the solved fit, the mosaic bounds before and after, and per-channel illumination model diagnostics (including the fraction of each tile covered by overlaps and the strength of the interior anchoring). A warning appears if the largest residual exceeds 2 pixels, or if the outer edge of the mosaic moves by more than 16 pixels.
 
 ### Tuning and troubleshooting
 
