@@ -45,6 +45,16 @@ The Object Browser offers three powerful filtering mechanisms:
 
 These filters can be combined to precisely target objects meeting multiple criteria.
 
+### Filtering by text-valued properties
+
+Some properties hold text rather than numbers — for example, a gene name or genotype assigned to each cell. When you add a property filter for one of these, the filter automatically switches from a numeric range to a **value picker**:
+
+* **Search box** — type to narrow the list of values; press Enter to add the exact (or top) match.
+* **Value list** — every distinct value with the number of objects that have it, most common first. Click values to select them, or use **Select N shown** to add everything that matches your search.
+* **Chips** — selected values appear as removable chips; **Clear** removes them all.
+
+An object passes the filter if its value matches **any** of the selected values. A new text filter starts with nothing selected, which lets every object through. Properties with very many distinct values (more than 20,000) are searched on the server instead of locally.
+
 ## Annotation list
 
 The Annotation List provides a detailed tabular view of all objects in your dataset:
@@ -57,11 +67,25 @@ The list offers several useful features:
 * **Sorting** - Click any column header to sort by that property
 * **Navigation** - Click on any row to navigate directly to that object in the image viewer
 * **Bulk actions** - Select multiple objects using the checkboxes and perform actions like deletion or tagging
-* **Pagination** - For datasets with many objects, navigate through pages with the pagination controls
+* **Pagination** - For datasets with many objects, navigate through pages with the pagination controls (10, 50, 100, or 200 objects per page)
 
 {% hint style="info" %}
 For very large datasets (hundreds of thousands of objects or more), NimbusImage loads annotations lazily and handles the list on the server so everything stays responsive. See [Working with large annotation datasets](large-annotation-datasets.md).
 {% endhint %}
+
+### Montage view
+
+The montage view shows the objects on the Object Browser's current page as a grid of image crops, one panel per object — a quick way to eyeball every cell that passed a filter, or every object at the top of a sorted column. Open it with the grid button next to the 3D toggle, or with "Open montage view" in the [command palette](../viewing-your-data.md#command-palette). It appears over the image viewer, and the other panels stay usable beside it.
+
+The montage follows the Object Browser exactly: the same filters, sort order, and page. To see more objects at once, raise the page size (up to 200) or step through pages.
+
+* **Crops** — each panel shows the object's bounding box plus adjustable padding, at the object's own XY position, Z slice, and time point, using your current layers and contrast settings. Point objects are shown using the padding alone.
+* **Scale** — **Same scale** (default) shows every object at one magnification so sizes are comparable; **Fit each** zooms each panel to fill its frame.
+* **Labels** — each panel shows the object's number (its Index in the list), plus any property values you choose to display.
+* **Interaction** — click a panel to toggle that object's selection; use the panel's "go to" button to navigate to the object in the viewer (which closes the montage). Hovering a panel highlights the object in the list and the image.
+* **Export PNG** — save the whole montage, labels included, as a single image.
+
+The montage closes when you switch datasets or enter 3D view.
 
 ## Finding and showing measurements
 

@@ -12,13 +12,30 @@ Press ⌘K (or Ctrl+K), or click the new magnifier in the app bar, to search acr
 
 Hover over any tool in the Tools palette to pin it, edit it, or drag it into a new position. Pinned tools get their own section at the top of the palette, and each section can be reordered by dragging. Pins and order are saved with the collection, so everyone working in it sees the same arrangement. See [Organizing your tools](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md#organizing-your-tools).
 
+### Montage view of objects
+
+See the objects on the Object Browser's current page side by side as a grid of image crops — at each object's own position, Z slice, and time point, using your current layers and contrast. The montage follows your filters, sort order, and paging; click panels to select objects, jump to any one in the viewer, label panels with property values, and export the whole grid as a PNG. Open it from the grid button next to the 3D toggle or the command palette. The Object Browser also gains a 100-per-page option. See [Montage view](documentation/analyzing-image-data-with-objects-connections-and-properties/interacting-with-objects.md#montage-view).
+
+### Filter by text-valued properties
+
+Property filters now work on properties whose values are text, such as a gene or genotype assigned to each cell. The filter switches automatically to a searchable value picker that lists every value with its object count; pick one or more values and objects matching any of them pass. It scales to properties with thousands of distinct values. See [Filtering by text-valued properties](documentation/analyzing-image-data-with-objects-connections-and-properties/interacting-with-objects.md#filtering-by-text-valued-properties).
+
+### Composite a folder of single-tile .nd2 files
+
+Compositing used to require one multi-position .nd2 file. You can now composite a folder of .nd2 files that each hold one tile — as in optical pooled screens, with thousands of fields per well — and each file is placed by its own recorded stage position. Duplicated tiles are caught before anything is created, sparse layouts get a warning, and transcoding turns on by default for composites of more than 16 tiles. See [Compositing](documentation/images-datasets-and-collections/README.md).
+
+**Live transcoding progress** — The progress bar now moves while a dataset is being transcoded, rather than jumping to done at the end, and very long transcodes no longer fail with a timeout error partway through.
+
 **Click outside to close tool menus** — An automated tool's settings menu now closes when you click elsewhere or press Escape, instead of requiring the Close button. Panning the image keeps it open, and clicking another tool switches to that tool's menu.
 
-**Nimbus AI upgraded to Claude Sonnet 5.5** — The AI panel and automatic tool suggestions now run on Claude Sonnet 5.5.
+**Nimbus AI upgraded to Claude Sonnet 5.5** — The AI panel and automatic tool suggestions now run on Claude Sonnet 5.5. The assistant also knows about the command palette and pinned tools, and can point you to them.
 
 #### Bug fixes
 
 - Fixed the Delete button on a dataset's info page failing with a "No local worker is available" error.
+- Fixed the dataset configuration screen occasionally hanging on "Preparing transcode" even though the transcode had finished.
+- Fixed switching between datasets without reloading the page sometimes showing the previous dataset's objects or property values.
+- Fixed property values being lost when several measurement workers wrote to the same objects at the same time.
 
 ## September 2026
 
