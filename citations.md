@@ -119,6 +119,17 @@ Here is the paper:
 
 Peng, T., Thorn, K., Schroeder, T., et al. (2017). [A BaSiC tool for background and shading correction of optical microscopy images.](https://doi.org/10.1038/ncomms14836) _Nature Communications, 8_, 14836.
 
+### UMAP
+
+UMAP (Uniform Manifold Approximation and Projection) is a dimension-reduction method widely used to visualize single-cell and spatial-transcriptomics data. NimbusImage's Xenium ingest tooling computes a UMAP embedding of the cells, and recomputing a spatial expression table can optionally recompute a UMAP, using the umap-learn implementation.
+
+Here is the GitHub repository:
+[https://github.com/lmcinnes/umap](https://github.com/lmcinnes/umap)
+
+Here is the paper:
+
+McInnes, L., Healy, J., & Melville, J. (2018). [UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction.](https://arxiv.org/abs/1802.03426) _arXiv_ 1802.03426.
+
 ## Packages
 
 ### Girder
