@@ -507,6 +507,36 @@ CondensateNet processes brightfield images through a three-stage pipeline:
 4. **Review results visually**: Always inspect the segmentation and refine parameters if needed
 5. **Post-process as needed**: Use NimbusImage's manual editing tools to correct any segmentation errors
 
+### StarDist for nucleus segmentation
+
+StarDist finds nuclei (and other round, compact objects) by predicting each object as a **star-convex polygon** — a shape where every point on the outline can be reached by a straight line from the object's center. That assumption suits nuclei very well, and it makes StarDist good at separating touching or crowded nuclei. It is a good choice for a DAPI or Hoechst channel. For cells with irregular or concave outlines, Cellpose-SAM is usually a better fit.
+
+{% hint style="info" %}
+If you use StarDist in your research, please cite the [relevant papers](../../citations.md#stardist).
+{% endhint %}
+
+#### How to use
+
+1. **Navigate to the position you want to segment.** StarDist processes the XY position, Z slice, and time point you are currently viewing.
+2. **Add the tool** by clicking "ADD NEW TOOL" and choosing "Stardist" from the Stardist category.
+3. **Pick the channel** containing your nuclei and choose a model.
+4. **Run the tool.** Each detected object is added as a polygon with the tool's tag.
+
+#### Key parameters
+
+- **Model**: The pretrained model to use. `2D_versatile_fluo` (default) is trained on fluorescent nuclei; `2D_versatile_he` is trained on H&E-stained histology.
+- **Channel**: The image channel to segment (required). StarDist works on one channel at a time.
+- **Probability Threshold**: How confident the model must be to report an object (range: 0–1, default: 0.5). Lower it to pick up dim or faint nuclei; raise it if you're getting spurious detections.
+- **NMS Threshold**: How much two candidate objects may overlap before the weaker one is discarded (range: 0–1, default: 0.4). Lower values remove more overlapping detections; raise it if neighboring nuclei are being merged or dropped in dense regions.
+- **Padding**: Expands (positive values) or shrinks (negative values) every outline by this many pixels (range: −20 to 20, default: 0).
+- **Smoothing**: Simplifies the outlines by removing vertices (range: 0–10, default: 1). Higher values give simpler polygons that are faster to display and compute on.
+
+#### Best practices
+
+- **Start with the defaults** and adjust Probability Threshold first; it has the biggest effect on what gets found.
+- **Check crowded regions.** If touching nuclei come out merged, try raising the NMS Threshold slightly.
+- **Be mindful of very large images.** StarDist analyzes the whole image at the current position in a single pass, so very large images need a lot of GPU memory.
+
 ### SAM2 tools for segmentation, refinement, and tracking
 
 NimbusImage includes a family of automated tools built on Meta's Segment Anything Model 2 (SAM2). You'll find them under the **SAM2** category in the "Add new tool" dialog (the SAM1-based few-shot tool is under **SAM**). Unlike the interactive [Segment-Anything "God Mode"](#segment-anything-semi-automated-object-finding-aka-god-mode) and [Segment similar objects](#segment-similar-objects-experimental) tools, which run in your browser on the current view, these tools run as server jobs and can process many XY positions, Z-slices, and time points at once. They create blob (polygon) objects with the tags you set for the tool.
