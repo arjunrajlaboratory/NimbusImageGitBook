@@ -158,7 +158,7 @@ To make a dataset public:
 To share the dataset, simply send this URL to anyone. When they open it, they will be able to view the dataset directly in the NimbusImage viewer without needing to log in or create an account.
 
 {% hint style="info" %}
-The shareable link is the same URL you see when viewing the dataset (the datasetView route). There is no separate "share link" to generate — just copy the URL from your browser and send it.
+For a public dataset, the shareable link is the same URL you see when viewing the dataset (the datasetView route) — just copy the URL from your browser and send it. If you'd rather not make the dataset public, create a [share link](#share-links-and-embed-links) instead.
 {% endhint %}
 
 #### What public viewers can see and do
@@ -173,6 +173,74 @@ Public viewers **cannot** modify annotations, run analysis tools, or change any 
 
 {% hint style="warning" %}
 Making a dataset public means anyone with the link can view it. You can revoke public access at any time by unchecking "Make Public" in the sharing dialog.
+{% endhint %}
+
+### Share links and embed links
+
+A **share link** gives anyone who has the URL a read-only view of one dataset in one collection, without making the dataset public and without requiring the recipient to have a NimbusImage account or sign in. Every share link also has an **embed** version that shows only the image viewer, with no toolbar or side panels, so you can place the view on another web page.
+
+How share links compare with the other ways of sharing:
+
+* **Sharing with specific users** gives named NimbusImage accounts Read or Edit access, and the dataset appears in their file navigator.
+* **Making a dataset public** opens the dataset (and its collections) to everyone, read-only.
+* **A share link** opens a single view of the dataset to whoever has that particular link, read-only. You can give each link an expiry date and revoke it at any time without affecting anyone else's access.
+
+#### Creating a share link
+
+Only the dataset's owner (or another user with admin access to it) sees the **Share links** section.
+
+1. **Open the Share Dataset dialog** for the dataset (the Share button next to the dataset name in the viewer).
+2. **Select exactly one collection** in "Select collections to share along with dataset". A link always opens the dataset in a single collection, with that collection's layers and settings, so the **Create** button is disabled until exactly one collection is checked.
+3. In the **Share links** section, optionally enter a **Label** (for example, "Reviewer 2" or "Lab website") so you can tell your links apart later.
+4. Choose when the link **Expires**: **7 days**, **30 days** (the default), **90 days**, or **Never**.
+5. Click **Create**.
+
+The new link appears in a green box, along with its **Embed (no toolbar)** version. Use the copy button to copy the link.
+
+{% hint style="warning" %}
+Copy the link (and the embed link, if you need it) right away — it is **shown only once**. If you lose it, create a new link and revoke the old one.
+{% endhint %}
+
+#### What recipients can and can't do
+
+Someone who opens a share link sees the dataset in the NimbusImage viewer, with no sign-in required. They can:
+
+* View the image data and navigate through Z-slices, time points, XY positions, and channels
+* See the existing annotations (objects, connections, and properties)
+
+They **cannot**:
+
+* Modify annotations, run analysis tools, or change any settings — the link is read-only
+* Download the underlying image files or export data through the link
+* See any of your other datasets — the link opens only the one dataset and collection it was created for
+* Create share links of their own
+
+If the link has expired or been revoked, the recipient sees a "This link does not work" message instead of the dataset.
+
+{% hint style="info" %}
+If the recipient is already signed in to NimbusImage in the same browser, opening a share link does not sign them out — their own session is restored when they leave the shared view.
+{% endhint %}
+
+#### Embedding a view on another web page
+
+The **Embed (no toolbar)** link shows only the image canvas — the toolbar and side panels are hidden — which makes it suitable for placing a live, explorable view of your data on a lab website, a project page, or an online paper supplement. To embed it, use the embed link as the source of an `<iframe>` on your page, for example:
+
+```html
+<iframe src="PASTE-YOUR-EMBED-LINK-HERE" width="800" height="600"></iframe>
+```
+
+The embed link follows the same rules as the share link it came from: it is read-only, it expires when the share link expires, and revoking the share link also disables the embed.
+
+#### Managing and revoking share links
+
+The **Share links** section of the Share Dataset dialog lists the dataset's existing links with their **Label**, **Collection**, **Created** date, and **Expires** date ("never" for links without an expiry; expired links are marked "(expired)"). The link URLs themselves are not shown again in this list.
+
+To disable a link, click **Revoke** next to it. Revoking takes effect immediately: the link is removed from the list, and both the share link and its embed version stop working for everyone who has them. Revoking one link does not affect any other links or any users you've shared the dataset with directly.
+
+Deleting a dataset automatically revokes all of its share links.
+
+{% hint style="warning" %}
+Anyone who has a share link can view the dataset, so treat the link like a password: only send it to people you intend to see the data, prefer an expiry date over "Never" when you only need temporary access, use labels so you know who each link was for, and revoke links you no longer need. Remember that anything you embed on a public web page can be viewed by every visitor to that page.
 {% endhint %}
 
 ### Important considerations

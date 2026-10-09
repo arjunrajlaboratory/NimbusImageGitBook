@@ -4,6 +4,14 @@ Stay up to date with the latest additions to [NimbusImage](https://app.nimbusima
 
 ## October 2026
 
+### Spatial transcriptomics
+
+NimbusImage can now hold a whole 10x Xenium run — the images, every segmented cell, the full per-cell expression table, and the individual molecules — loaded with the new `nimbusimage-xenium` ingest tooling. A Transcripts palette shows molecules as points or density heat maps, and any gene can be added as a live measurement that works in filters, scatter plots and gates, color-by, and CSV export. The Selection summary adds expression summaries, differential expression (Welch t-test or Wilcoxon), neighborhood enrichment between cell types, and per-region composition. After you edit cell outlines, you can recompute the expression table from the molecules, and earlier tables are kept as versions you can switch between. See [Spatial transcriptomics](documentation/analyzing-image-data-with-objects-connections-and-properties/spatial-transcriptomics.md).
+
+### Share links and embeds
+
+Share a read-only view of a dataset with anyone — no account or sign-in needed, and without making the dataset public. Each link has an optional label and an expiry (7, 30, or 90 days, or never), comes with a toolbar-free embed version for a lab website or paper supplement, and can be revoked at any time from the Share Dataset dialog. See [Share links and embed links](documentation/images-datasets-and-collections/managing-files.md#share-links-and-embed-links).
+
 ### Command palette
 
 Press ⌘K (or Ctrl+K), or click the new magnifier in the app bar, to search across nearly everything the viewer can do: activate a tool, start adding a new one, open or close panels, toggle layers, jump to a snapshot, color objects by a property, or open import/export dialogs, the AI panel, docs, and tours. Search matches initials, partial words, and common synonyms, and an empty search shows your recent commands. See [Command palette](documentation/viewing-your-data.md#command-palette).
@@ -38,6 +46,7 @@ Compositing used to require one multi-position .nd2 file. You can now composite 
 
 #### Bug fixes
 
+- Fixed snapshot ZIP downloads that macOS reported as empty when filenames were very long.
 - Fixed the Delete button on a dataset's info page failing with a "No local worker is available" error.
 - Fixed the dataset configuration screen occasionally hanging on "Preparing transcode" even though the transcode had finished.
 - Fixed switching between datasets without reloading the page sometimes showing the previous dataset's objects or property values.
