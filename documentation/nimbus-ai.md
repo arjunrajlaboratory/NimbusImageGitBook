@@ -10,6 +10,8 @@ Nimbus AI is a conversational assistant built into NimbusImage. You describe wha
 
 Nimbus AI can only do what you could do yourself by clicking, and it works with your own account and permissions.
 
+To work with your data from outside the app, with Claude Code, Codex, claude.ai, or Claude Desktop, see [Agentic control](agentic-control/README.md).
+
 ## Opening Nimbus AI
 
 You need to be logged in to use Nimbus AI. Open the panel in either of these ways:

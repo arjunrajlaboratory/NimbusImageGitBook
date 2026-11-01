@@ -27,3 +27,6 @@
 * [Snapshots](documentation/snapshots.md)
 * [Time lapse mode](documentation/time-lapse-mode.md)
 * [Nimbus AI](documentation/nimbus-ai.md)
+* [Agentic control](documentation/agentic-control/README.md)
+  * [Python package and skill pack](documentation/agentic-control/python-package-and-skill-pack.md)
+  * [Connect Claude to NimbusImage (MCP connector)](documentation/agentic-control/mcp-connector.md)
