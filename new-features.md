@@ -2,6 +2,16 @@
 
 Stay up to date with the latest additions to [NimbusImage](https://app.nimbusimage.com).
 
+## November 2026
+
+### Connect Claude to NimbusImage
+
+Add NimbusImage as a connector in claude.ai or the Claude Desktop app, and ask Claude about your data in a chat. It can find datasets, count and summarize objects, look at images, read measurements, run workers, and tag objects. Claude signs in as you, so it sees only what your account can see, and it asks before changing anything. See [Connect Claude to NimbusImage (MCP connector)](documentation/agentic-control/mcp-connector.md).
+
+**Connected apps** — A new **Connected apps** section in the account menu lists each app you've connected to NimbusImage, where it connects from, and when it was last used, with a **Disconnect** button that ends access immediately.
+
+**Agentic control guide** — A new [Agentic control](documentation/agentic-control/README.md) section explains the ways AI agents can work with your data: Nimbus AI in the app, the [Python package and skill pack](documentation/agentic-control/python-package-and-skill-pack.md) for Claude Code and Codex, and the MCP connector for claude.ai and Claude Desktop.
+
 ## October 2026
 
 ### Spatial transcriptomics
@@ -32,6 +42,10 @@ Property filters now work on properties whose values are text, such as a gene or
 
 Compositing used to require one multi-position .nd2 file. You can now composite a folder of .nd2 files that each hold one tile — as in optical pooled screens, with thousands of fields per well — and each file is placed by its own recorded stage position. Duplicated tiles are caught before anything is created, sparse layouts get a warning, and transcoding turns on by default for composites of more than 16 tiles. See [Compositing](documentation/images-datasets-and-collections/README.md).
 
+### Pipeline steps stay in sync with your tools
+
+A pipeline step added from an existing tool or measurement is now linked to it. The step runs with the tool's current settings, so the pipeline and the tool no longer drift apart, and a measurement step computes your own property instead of creating a duplicate. Linked steps are read-only in the pipeline editor; choose **Unlink** to turn one into an independent copy you can edit. Removing a property that a pipeline step uses now warns you first, and is blocked while a running pipeline is computing it.
+
 **Live transcoding progress** — The progress bar now moves while a dataset is being transcoded, rather than jumping to done at the end, and very long transcodes no longer fail with a timeout error partway through.
 
 **Click outside to close tool menus** — An automated tool's settings menu now closes when you click elsewhere or press Escape, instead of requiring the Close button. Panning the image keeps it open, and clicking another tool switches to that tool's menu.
@@ -44,6 +58,16 @@ Compositing used to require one multi-position .nd2 file. You can now composite 
 
 **New tool documentation** — Docs now cover the [StarDist](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md#stardist-for-nucleus-segmentation), the [SAM2 tools](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-making-objects.md#sam2-tools-for-segmentation-refinement-and-tracking) (automatic mask generator, few-shot segmentation, Refiner, propagator, and video tracking), [Connect sequential](documentation/analyzing-image-data-with-objects-connections-and-properties/tools-for-connecting-objects.md#connect-sequential), [Rolling Ball](documentation/image-processing.md#rolling-ball) background subtraction, [H&E Deconvolution](documentation/image-processing.md), and the [Point intensity, Point metrics](documentation/analyzing-image-data-with-objects-connections-and-properties/measuring-object-properties.md#properties-for-point-objects), [Point count](documentation/analyzing-image-data-with-objects-connections-and-properties/measuring-object-properties.md#point-count), [Blob overlap](documentation/analyzing-image-data-with-objects-connections-and-properties/measuring-object-properties.md#blob-overlap), and [Count connected objects](documentation/analyzing-image-data-with-objects-connections-and-properties/measuring-object-properties.md#count-connected-objects) measurements.
 
+**Typed commands in the command palette** — Type `z 12`, `t 40`, `xy 3`, or `show only dapi` in the ⌘K palette to jump straight there. Every viewer control now has a command, and anything the palette can't match can go to Nimbus AI with one click (or ⌘↵).
+
+**Gene expression card** — For datasets with an expression table, the Measure objects dialog now has a Gene expression card that shows which genes you've added as measurements, with an **Add genes…** button. See [Spatial transcriptomics](documentation/analyzing-image-data-with-objects-connections-and-properties/spatial-transcriptomics.md).
+
+**Spatial Genomics import** — The Python package and a new agent skill can load a Spatial Genomics (GenePS) export into NimbusImage. Each region becomes a dataset with its images, cells, clusters, UMAP, gene-expression table, and transcripts.
+
+**Safer sharing** — You can no longer share a dataset with more access than you have yourself, and collaborators with read-only access can no longer start measurement computations.
+
+**Clearer Zenodo errors** — If Zenodo upload, publish, or discard fails, the reason now appears on screen, including what to fix when owner access is missing.
+
 #### Bug fixes
 
 - Fixed snapshot ZIP downloads that macOS reported as empty when filenames were very long.
@@ -51,6 +75,13 @@ Compositing used to require one multi-position .nd2 file. You can now composite 
 - Fixed the dataset configuration screen occasionally hanging on "Preparing transcode" even though the transcode had finished.
 - Fixed switching between datasets without reloading the page sometimes showing the previous dataset's objects or property values.
 - Fixed property values being lost when several measurement workers wrote to the same objects at the same time.
+- Fixed users who weren't administrators getting "Administrator access required" when downloading files or exporting JSON, CSV, or GeoJSON.
+- Fixed raw-channel TIFF snapshots looking blank, because 16-bit images were being reduced to 8 bits.
+- Fixed blocky color halos around cells in the object overview, especially when cells are colored by a property.
+- Fixed datasets without a pixel size showing a kilometer-long scale bar and measuring in meters.
+- Fixed a dataset sometimes opening at a position, Z slice, or time point outside its range, which made snapshot downloads fail.
+- Fixed deleting many objects at once leaving their connections behind.
+- Fixed a failed object edit sometimes overwriting other objects on screen or bringing back an older value.
 
 ## September 2026
 
